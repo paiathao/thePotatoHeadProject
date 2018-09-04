@@ -11,7 +11,12 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
-import Admin from './components/RequestForm/RequestForm'
+
+/////testing the page
+import Admin from './components/RequestForm/RequestForm';
+import Auto from './components/Email/autoResponse';
+import FollowUp from './components/Email/followUp'
+
 
 import './styles/main.css';
 
@@ -37,9 +42,19 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
-                <Route
+      {/*  All Testing route */}
+        <Route
           path="/admin"
           component={Admin}
+        />
+
+        <Route
+          path="/auto"
+          component={Auto}
+        />
+                <Route
+          path="/FollowUp"
+          component={FollowUp}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
