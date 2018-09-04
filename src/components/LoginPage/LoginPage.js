@@ -62,7 +62,7 @@ class LoginPage extends Component {
         )} />
 
         <Route render={() => (
-          <form className="auth-form">
+          <form className="auth-form" onSubmit={this.login}>
             <Input 
               label="Password"
               type="password"
