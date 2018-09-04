@@ -4,6 +4,11 @@ import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
+import { Switch, Route } from 'react-router-dom';
+import Input from '../Input/Input';
+import Logo from '../Logo/Logo';
+import './LoginPage.css';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -15,13 +20,12 @@ class LoginPage extends Component {
     super(props);
 
     this.state = {
-      username: '',
       password: '',
+      confirm: '',
     };
   }
 
   componentDidMount() {
-    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch(clearError());
   }
 
@@ -47,57 +51,58 @@ class LoginPage extends Component {
     });
   }
 
+  renderForm() {
+    return (
+      <Switch>
+
+        <Route path="/reset-password" render={() => (
+          <form>
+            
+          </form>
+        )} />
+
+        <Route render={() => (
+          <form className="auth-form">
+            <Input 
+              label="Password"
+              type="password"
+              submitLabel="Login"
+              value={this.state.password}
+              onChange={this.handleInputChangeFor('password')}
+            />
+          </form>
+        )} />
+
+    </Switch>
+    )
+  }
+
   renderAlert() {
-    if (this.props.login.message !== '') {
+    const { login: { message } } = this.props;
+    if (message !== '') {
       return (
         <h2
           className="alert"
           role="alert"
         >
-          { this.props.login.message }
+          { message }
         </h2>
       );
     }
-    return (<span />);
+    return null;
   }
 
   render() {
     return (
-      <div>
-        { this.renderAlert() }
-        <form id="login" onSubmit={this.login}>
-          <h1>Login</h1>
-          <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
-          </div>
-          <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
-            <Link to="/register">Register</Link>
-          </div>
-        </form>
+      <div className="LoginPage">
+        <div className="content">
+          <Logo />
+
+          { this.renderAlert() }
+
+          { this.renderForm() }
+
+        </div>
       </div>
     );
   }
