@@ -7,6 +7,7 @@ export const LOGIN_ACTIONS = {
   LOGIN_FAILED_NO_CODE: 'LOGIN_FAILED_NO_CODE',
   INPUT_ERROR: 'INPUT_ERROR',
   LOGOUT: 'LOGOUT',
+  AUTHENTICATE_USER: 'AUTHENTICATE_USER'
 };
 
 export const clearError = () => ({
