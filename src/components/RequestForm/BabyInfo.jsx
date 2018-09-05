@@ -3,25 +3,10 @@ import React, { Component } from 'react';
 
 
 class BabyInfo extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      numberBabies: 1,
-    };
-  }
-
-
-  addAnotherBaby = () => {
-    this.setState({
-      ...this.state,
-      numberBabies: this.state.numberBabies + 1
-    });
-  };
  
 
   render() {
-    console.log(this.state.numberBabies);
     return (
      
       
@@ -119,7 +104,7 @@ class BabyInfo extends Component {
                 <option value="15">15</option>
               </select>
               <br />
-              <button onClick={this.addAnotherBaby}>Add Another Baby</button>
+              <button onClick={this.props.addAnotherBaby}>Add Another Baby</button>
             </div>
           
      

@@ -9,23 +9,20 @@ class RequestForm extends Component {
 
     this.state = {
       numberBabies: 1,
-      babyArray: []
+      
     };
   }
 
-
   addAnotherBaby = () => {
     this.setState({
-      ...this.state,
-      numberBabies: this.state.numberBabies + 1 
+      numberBabies: this.state.numberBabies + 1
     });
   };
- 
 
   render() {
-    // console.log(this.state.numberBabies);
+    console.log(this.state.numberBabies);
 
-  let babyInfoArray = new Array(this.state.numberBabies).fill(<BabyInfo/>)
+  let babyInfoArray = new Array(this.state.numberBabies).fill(null).map((item, index) => <BabyInfo key="index" addAnotherBaby={this.addAnotherBaby}/>)
 console.log(babyInfoArray);
 
 
@@ -36,7 +33,7 @@ console.log(babyInfoArray);
           <div id="babyInfoField">
           {babyInfoArray}
           </div>
-          <br /> Nominator:
+          {/* <br /> Nominator:
          <input type="text" placeholder="Your Name" />
           <br /> Nominator Email:
          <input type="text" placeholder="Your Email" />
@@ -120,7 +117,7 @@ console.log(babyInfoArray);
             </select>
           </label>
           <br /> Postal/Zip:
-         <input type="number" placeholder="Zip" />
+         <input type="number" placeholder="Zip" /> */}
         </form>
       </div>
 
