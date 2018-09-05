@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export function callLogin(payload) {
   const body = ({
-    username: payload.username,
-    password: payload.password,
+    username: 'admin',
+    password: payload,
   });
 
   const config = {

@@ -7,18 +7,16 @@ export const LOGIN_ACTIONS = {
   LOGIN_FAILED_NO_CODE: 'LOGIN_FAILED_NO_CODE',
   INPUT_ERROR: 'INPUT_ERROR',
   LOGOUT: 'LOGOUT',
+  AUTHENTICATE_USER: 'AUTHENTICATE_USER'
 };
 
 export const clearError = () => ({
   type: LOGIN_ACTIONS.CLEAR_LOGIN_ERROR,
 });
 
-export const triggerLogin = (username, password) => ({
+export const triggerLogin = (password) => ({
   type: LOGIN_ACTIONS.LOGIN,
-  payload: {
-    username,
-    password,
-  },
+  payload: password
 });
 
 export const triggerLogout = () => ({
