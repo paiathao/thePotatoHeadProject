@@ -18,6 +18,7 @@ import Auto from './components/Email/autoResponse';
 import FollowUp from './components/Email/followUp';
 import RequestForm from './components/RequestForm/RequestForm'
 
+import AutoComplete from './components/GoogleAutoComplete/AutoComplete'
 
 
 import './styles/main.css';
@@ -43,19 +44,23 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
-      {/*  All Testing route */}
+        {/*  All Testing route */}
         <Route
-          path="/admin"
+          path="/Admin"
           component={Admin}
         />
 
         <Route
-          path="/auto"
+          path="/Auto"
           component={Auto}
         />
-                <Route
+        <Route
           path="/FollowUp"
           component={FollowUp}
+        />
+        <Route
+          path="/AutoComplete"
+          component={AutoComplete}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
