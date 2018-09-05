@@ -10,9 +10,8 @@ import Logo from '../Logo/Logo';
 import './LoginPage.css';
 
 
-const mapStateToProps = state => ({
-  user: state.user,
-  login: state.login,
+const mapStateToProps = ({ auth: { isAuthenticated } }) => ({
+  isAuthenticated
 });
 
 class LoginPage extends Component {
@@ -30,7 +29,7 @@ class LoginPage extends Component {
   }
 
   componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName !== null) {
+    if (this.props.isAuthenticated) {
       this.props.history.push('user');
     }
   }
