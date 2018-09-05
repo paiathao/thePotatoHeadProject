@@ -1,0 +1,21 @@
+.AuthPage {
+  background-color: rgb(252,252,252);
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+  border: 4px solid #e5512f;
+  border-radius: 8px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.AuthPage > * {
+  margin: 16px 0;
+}
+
+.AuthPage .auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 12px;
+}
