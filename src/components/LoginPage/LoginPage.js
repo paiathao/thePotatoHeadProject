@@ -57,13 +57,30 @@ class LoginPage extends Component {
 
         <Route path="/reset-password" render={() => (
           <form>
-            
+            <Input
+                data-test="login-password" 
+                label="Password"
+                type="password"
+                submitLabel="Login"
+                value={this.state.password}
+                onChange={this.handleInputChangeFor('password')}
+              />
+            <Input
+              data-test="confirm-password" 
+              label="Confirm Password"
+              type="password"
+              submitLabel="Submit"
+              value={this.state.confirm}
+              onChange={this.handleInputChangeFor('confirm')}
+            />
+    
           </form>
         )} />
 
-        <Route render={() => (
+        <Route path="/login" render={() => (
           <form className="auth-form" onSubmit={this.login}>
-            <Input 
+            <Input
+              data-test="login-password" 
               label="Password"
               type="password"
               submitLabel="Login"
@@ -108,4 +125,12 @@ class LoginPage extends Component {
   }
 }
 
+LoginPage.defaultProps = {
+  login: {
+    message: ''
+  },
+  dispatch: () => {}
+}
+
+export { LoginPage };
 export default connect(mapStateToProps)(LoginPage);
