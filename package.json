@@ -39,5 +39,17 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "nodemon": "^1.17.2"
-  }
+  },
+  "description": "test`",
+  "main": "RequestForm.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeamPotatoHead/ThePotatoHead.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TeamPotatoHead/ThePotatoHead/issues"
+  },
+  "homepage": "https://github.com/TeamPotatoHead/ThePotatoHead#readme"
 }

@@ -15,7 +15,9 @@ import InfoPage from './components/InfoPage/InfoPage';
 /////testing the page
 import Admin from './components/RequestForm/RequestForm';
 import Auto from './components/Email/autoResponse';
-import FollowUp from './components/Email/followUp'
+import FollowUp from './components/Email/followUp';
+import RequestForm from './components/RequestForm/RequestForm'
+
 
 
 import './styles/main.css';
@@ -61,6 +63,7 @@ const App = () => (
 
       </Switch>
     </Router>
+    <RequestForm />
   </div>
 );
 
