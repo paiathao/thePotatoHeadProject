@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Header from './components/Header/Header';
-import LoginPage from './components/LoginPage/LoginPage';
+import AuthPage from './components/AuthPage/AuthPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
@@ -22,13 +22,12 @@ import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
         <Route
-          path="/home"
-          component={LoginPage}
+          path="/login"
+          component={AuthPage}
         />
         <Route
           path="/register"

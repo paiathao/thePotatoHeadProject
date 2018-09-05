@@ -10,10 +10,7 @@ function* loginUser(action) {
     yield put({ type: LOGIN_ACTIONS.REQUEST_START });
     yield callLogin(action.payload);
     yield put({
-      type: LOGIN_ACTIONS.LOGIN_REQUEST_DONE,
-    });
-    yield put({
-      type: USER_ACTIONS.FETCH_USER,
+      type: LOGIN_ACTIONS.AUTHENTICATE_USER,
     });
   } catch (error) {
     yield put({
