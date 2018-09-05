@@ -12,10 +12,8 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
 
-/////testing the page
-import Admin from './components/RequestForm/RequestForm';
-import Auto from './components/Email/autoResponse';
-import FollowUp from './components/Email/followUp'
+import RequestForm from './components/RequestForm/RequestForm';
+import AdminPortal from './components/AdminPortal/AdminPortal';
 
 
 import './styles/main.css';
@@ -24,38 +22,22 @@ const App = () => (
   <div>
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+      
         <Route
           path="/login"
           component={AuthPage}
         />
-        <Route
-          path="/register"
-          component={RegisterPage}
-        />
-        <Route
-          path="/user"
-          component={UserPage}
-        />
-        <Route
-          path="/info"
-          component={InfoPage}
-        />
-      {/*  All Testing route */}
+
         <Route
           path="/admin"
-          component={Admin}
+          component={AdminPortal}
         />
 
         <Route
-          path="/auto"
-          component={Auto}
+          path="/form"
+          component={RequestForm}
         />
-                <Route
-          path="/FollowUp"
-          component={FollowUp}
-        />
-        {/* OTHERWISE (no path!) */}
+
         <Route render={() => <h1>404</h1>} />
 
       </Switch>

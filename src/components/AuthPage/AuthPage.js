@@ -29,7 +29,7 @@ class AuthPage extends Component {
 
   componentWillReceiveProps = ({ isAuthenticated, history }) => {
     if (isAuthenticated) {
-      history.push('/info');
+      history.push('/admin');
     }
   }
 

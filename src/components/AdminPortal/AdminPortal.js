@@ -7,7 +7,7 @@ import Header from '../Header/Header';
 
 class AdminPortal extends Component {
   render() {
-    reutnr (
+    return (
       <Main>
         <Header />
       </Main>
