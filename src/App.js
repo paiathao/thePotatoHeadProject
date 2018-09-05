@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Header from './components/Header/Header';
-import LoginPage from './components/LoginPage/LoginPage';
+import AuthPage from './components/AuthPage/AuthPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
@@ -27,7 +27,7 @@ const App = () => (
         <Redirect exact from="/" to="/home" />
         <Route
           path="/login"
-          component={LoginPage}
+          component={AuthPage}
         />
         <Route
           path="/register"

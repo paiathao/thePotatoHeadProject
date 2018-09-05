@@ -1,12 +1,4 @@
-.LoginPage {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #71cbcf;
-}
-
-.LoginPage > .content {
+.AuthPage {
   background-color: rgb(252,252,252);
   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
   border: 4px solid #e5512f;
@@ -17,11 +9,11 @@
   align-items: center;
 }
 
-.LoginPage > .content > * {
+.AuthPage > * {
   margin: 16px 0;
 }
 
-.auth-form {
+.AuthPage .auth-form {
   display: flex;
   flex-direction: column;
   align-items: center;

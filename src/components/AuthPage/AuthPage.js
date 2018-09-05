@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
 
 import { Switch, Route } from 'react-router-dom';
 import Input from '../Input/Input';
 import Logo from '../Logo/Logo';
-import './LoginPage.css';
+import LandingPage from '../LandingPage/LandingPage';
+import './AuthPage.css';
 
 
 const mapStateToProps = ({ auth: { isAuthenticated } }) => ({
   isAuthenticated
 });
 
-class LoginPage extends Component {
+class AuthPage extends Component {
   constructor(props) {
     super(props);
 
@@ -28,20 +27,24 @@ class LoginPage extends Component {
     this.props.dispatch(clearError());
   }
 
-  componentDidUpdate() {
-    if (this.props.isAuthenticated) {
-      this.props.history.push('user');
+  componentWillReceiveProps = ({ isAuthenticated, history }) => {
+    if (isAuthenticated) {
+      history.push('/');
     }
   }
 
   login = (event) => {
     event.preventDefault();
 
-    if (this.state.username === '' || this.state.password === '') {
+    if (this.state.password === '') {
       this.props.dispatch(formError());
     } else {
-      this.props.dispatch(triggerLogin(this.state.username, this.state.password));
+      this.props.dispatch(triggerLogin(this.state.password));
     }
+  }
+
+  resetPassword = event => {
+    event.preventDefault();
   }
 
   handleInputChangeFor = propertyName => (event) => {
@@ -55,7 +58,7 @@ class LoginPage extends Component {
       <Switch>
 
         <Route path="/reset-password" render={() => (
-          <form>
+          <form className="auth-form" onSubmit={this.resetPassword}>
             <Input
                 data-test="login-password" 
                 label="Password"
@@ -110,26 +113,25 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="LoginPage">
-        <div className="content">
+      <LandingPage>
+        <div className="AuthPage">
           <Logo />
 
           { this.renderAlert() }
 
           { this.renderForm() }
-
         </div>
-      </div>
+      </LandingPage>
     );
   }
 }
 
-LoginPage.defaultProps = {
+AuthPage.defaultProps = {
   login: {
     message: ''
   },
   dispatch: () => {}
 }
 
-export { LoginPage };
-export default connect(mapStateToProps)(LoginPage);
+export { AuthPage };
+export default connect(mapStateToProps)(AuthPage);
