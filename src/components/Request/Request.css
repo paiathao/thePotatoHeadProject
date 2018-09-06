@@ -1,0 +1,27 @@
+.Request-headers {
+  background-color: #e5512f;
+  color: white;
+  border: 2px solid black
+}
+
+.Request-headers td {
+  text-align: center;
+}
+
+.Request-details {
+  background-color: #eee;
+}
+
+.Request-details td {
+  vertical-align: top;
+  text-align: center;
+}
+
+.RequestDetail > p:first-of-type {
+  font-weight: bold;
+}
+
+.closed {
+  visibility: collapse;
+  background-color: 'red'
+}
