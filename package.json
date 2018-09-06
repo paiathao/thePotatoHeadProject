@@ -24,6 +24,8 @@
     "react-dom": "^16.2.0",
     "react-google-autocomplete": "^1.0.16",
     "react-google-autocomplete-address-fields": "^1.0.9",
+    "react-google-places-component": "0.0.5",
+    "react-google-places-suggest": "^3.5.0",
     "react-places-autocomplete": "^7.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",

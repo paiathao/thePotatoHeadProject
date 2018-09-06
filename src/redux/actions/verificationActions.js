@@ -1,0 +1,3 @@
+export const CHECK_VERIFICATION_ACTION={
+    CHECK: 'CHECK_HOSPITAL',
+}
