@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 import BabyInfo from './BabyInfo';
+import AutoComplete from '../GoogleAutoComplete/AutoComplete';
 
 
 class RequestForm extends Component {
@@ -9,7 +10,7 @@ class RequestForm extends Component {
 
     this.state = {
       numberBabies: 1,
-      
+
     };
   }
 
@@ -22,29 +23,65 @@ class RequestForm extends Component {
   render() {
     console.log(this.state.numberBabies);
 
-  let babyInfoArray = new Array(this.state.numberBabies).fill(null).map((item, index) => <BabyInfo key="index" addAnotherBaby={this.addAnotherBaby}/>)
-console.log(babyInfoArray);
+    let babyInfoArray = new Array(this.state.numberBabies).fill(null).map((item, index) => <BabyInfo key="index" addAnotherBaby={this.addAnotherBaby} />)
+    console.log(babyInfoArray);
 
 
     return (
-     
-      <div>
-        <form onSubmit={()}>
+
+      <div id="formDiv">
+        <form onSubmit={e => e.preventDefault()}>
           <div id="babyInfoField">
-          {babyInfoArray}
+            {babyInfoArray}
           </div>
-          {/* <br /> Nominator:
+          <br />
+          <div id="contactDiv">
+            <div id="nominatorDiv">
+              Nominator Name:
          <input type="text" placeholder="Your Name" />
-          <br /> Nominator Email:
+              <br /> Nominator Email:
          <input type="text" placeholder="Your Email" />
-          <br /> Would Parents Like to Be Contacted? Yes:
-         <input type="radio" id="contactYes" /> No:
-         <input type="radio" id="contactNo" />
-          <br /> Parent Name(s):
+              <br />
+              <br />
+              If you are not the parents,
+              <br />
+              would the parents like to be contacted? Yes:
+         <input type="radio" id="contactYes" name="contact" value="yes" checked />
+              No:
+         <input type="radio" id="contactNo" name="contact" value="no" />
+            </div>
+            <br />
+            <div id="parentDiv">
+              Parent Name(s):
          <input type="text" placeholder="Parent Name(s)" />
-          <br /> Parent Email:
+              <br /> Parent Email:
          <input type="text" placeholder="Parent Email" />
-          <br /> Hospital Name:
+            </div>
+          </div>
+          <br />
+          <br />
+          <AutoComplete />
+          <br />
+          <br />
+          <div id="extrasDiv">
+            <div id="notesDiv">
+              <label for="specialNotes">Would You Like to Add a Personalized Note?</label>
+              <br />
+              <textarea id="specialNotes" rows="5" cols="55">
+              </textarea>
+            </div>
+            <div id="subscribeDiv">
+              <div id="">
+                <input type="checkbox" name="subscribe" value="subscribe" checked />
+                <label htmlFor="subscribe">&nbsp;I would like to <b>subscribe</b> to <br />the Potato Head Project newsletter</label>
+              </div>
+              <br />
+              <input type="submit" value="Submit Request" />
+            </div>
+          </div>
+
+
+          {/* <br /> Hospital Name:
          <br />
           <input type="text" placeholder="Hospital Name" />
           <br /> Hospital Address:
