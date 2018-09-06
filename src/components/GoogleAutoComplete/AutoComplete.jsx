@@ -53,17 +53,29 @@ export default class GoogleAutoComplete extends React.Component {
 
   renderFields() {
     return Object.keys(this.props.fields).map((key, i) => {
+
+      let required = true;
+      if(this.state.labels[key] === 'Street Address 2'){
+        required = false;
+      }
       return (
 
         <div id="autoCompleteDiv2" key={i} className={`address-field address-${key}`}>
           <label htmlFor="this" >{this.state.labels[key]}</label>
-          <input type="text" className="hospAddInputs" id="this" value={this.state.fieldsForState[key]} />
+          <input required={required} type="text" className="hospAddInputs" id="this" onChange={this.handleInputChangeFor()} value={this.state.fieldsForState[key]} />
         </div>
       )
     }
     )
   }
 
+  handleInputChangeFor = propertyName => (event) => {
+    this.setState({
+      ...this.state.fieldsForState,
+      [propertyName]: event.target.value
+
+    })
+  }
 
   handleSearchClear(searchText) {
     if (searchText.target.type === "search") {

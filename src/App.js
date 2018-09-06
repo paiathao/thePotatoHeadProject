@@ -63,7 +63,7 @@ const App = () => (
           component={AutoComplete}
         /> */}
         {/* OTHERWISE (no path!) */}
-        <Route render={() => <h1>404</h1>} />
+        {/* <Route render={() => <h1>404</h1>} /> */}
 
       </Switch>
     </Router>

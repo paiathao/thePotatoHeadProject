@@ -10,11 +10,22 @@ class Checkbox extends Component {
     };
   }
   handleCheck = () => {
-    this.setState({ checked: !this.state.checked });
+    if(this.state.checked === false){
+      this.setState({ checked: !this.state.checked });
+    } else {
+      this.setState({
+        checked: true
+      })
+    } 
   }
+
+  handleUncheck = () => {
+    this.setState({
+      checked: false
+    })
+  }
+
   render = () => {
-
-
     var msg;
     if (this.state.checked) {
       msg = <div id="parentDiv">
@@ -29,8 +40,10 @@ class Checkbox extends Component {
     }
     return (
       <div>
-        <label for="parentContact"> Yes</label>
-          <input type="checkbox" name="parentContact" onChange={this.handleCheck} defaultChecked={this.state.checked} />
+        <label for="parentContactYes"> Yes</label>
+          <input type="radio" name="parentContact" onChange={this.handleCheck} defaultChecked={this.state.checked} />
+          <label for="parentContactNo" > No</label>
+          <input type="radio" name="parentContact" onChange={this.handleUncheck}/>
         
         {msg}
       </div>
