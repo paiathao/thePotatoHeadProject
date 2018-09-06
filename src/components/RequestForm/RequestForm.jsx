@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 import BabyInfo from './BabyInfo';
 import AutoComplete from '../GoogleAutoComplete/AutoComplete';
+import Checkbox from './Checkbox';
 
 
 class RequestForm extends Component {
@@ -45,18 +46,19 @@ class RequestForm extends Component {
               <br />
               If you are not the parents,
               <br />
-              would the parents like to be contacted? Yes:
-         <input type="radio" id="contactYes" name="contact" value="yes" checked />
+              would the parents like to be contacted?<Checkbox/>
+         {/* <input type="radio" id="contactYes" name="contact" value="yes" checked />
               No:
-         <input type="radio" id="contactNo" name="contact" value="no" />
+         <input type="radio" id="contactNo" name="contact" value="no" /> */}
             </div>
             <br />
-            <div id="parentDiv">
+            
+            {/* <div id="parentDiv">
               Parent Name(s):
          <input type="text" placeholder="Parent Name(s)" />
               <br /> Parent Email:
          <input type="text" placeholder="Parent Email" />
-            </div>
+            </div> */}
           </div>
           <br />
           <br />
@@ -67,7 +69,7 @@ class RequestForm extends Component {
             <div id="notesDiv">
               <label for="specialNotes">Would You Like to Add a Personalized Note?</label>
               <br />
-              <textarea id="specialNotes" rows="5" cols="55">
+              <textarea id="specialNotes" rows="5" cols="50">
               </textarea>
             </div>
             <div id="subscribeDiv">

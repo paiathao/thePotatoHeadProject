@@ -127,19 +127,21 @@ form{
 
 #extrasDiv{
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 12px;
+  justify-content: space-between;
+  margin: 12px;
 }
 
 #subscribeDiv{
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 12px;
 }
 
 #contactDiv{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
   /* margin: 0px 6px; */
   padding: 15px;
   border: 6px solid #74CAD1;
