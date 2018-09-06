@@ -1,27 +1,37 @@
-.Request-headers {
+.Request {
+  margin: 12px;
+}
+
+.request-header,
+.request-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.request-header > *,
+.request-details > * {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.request-header {
   background-color: #e5512f;
   color: white;
-  border: 2px solid black
 }
 
-.Request-headers td {
-  text-align: center;
+.request-details {
+  background-color: #aaa;
+  overflow: hidden;
+  height: 0;
+  transition: 800ms;
 }
 
-.Request-details {
-  background-color: #eee;
-}
-
-.Request-details td {
-  vertical-align: top;
-  text-align: center;
-}
 
 .RequestDetail > p:first-of-type {
   font-weight: bold;
 }
 
-.closed {
-  visibility: collapse;
-  background-color: 'red'
+.open {
+  height: auto;
 }

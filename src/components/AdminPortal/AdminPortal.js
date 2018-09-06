@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Main from '../Main/Main';
 import Header from '../Header/Header';
-import Table from '../Table/Table';
+import RequestList from '../RequestList/RequestList';
 import Request from '../Request/Request';
 
 
@@ -21,8 +21,8 @@ class AdminPortal extends Component {
       <Main>
         <Header />
 
-        <Table 
-          columns={['', 'Baby', 'Nominator', 'Parents', 'Hospital']}
+        <RequestList
+          columns={['Baby', 'Nominator', 'Parents', 'Hospital']}
           data={this.props.data}
           renderRow={this.renderRequest}
         />

@@ -26,9 +26,8 @@ class Request extends Component {
       parentEmail
     } = this.props;
     return (
-      <tr className={`Request-details ${!this.state.open ? 'closed' : null}`}>
-        <td></td>
-        <td>
+      <div className={`request-details ${this.state.open ? 'open' : null}`}>
+        <div>
           <div style={{ display: 'flex' }}>
           { baby.map((b, i) => (
             <div key={i}>
@@ -41,20 +40,20 @@ class Request extends Component {
             </div>
           )) }
           </div>     
-        </td> 
-        <td>
+        </div> 
+        <div>
           <RequestDetail title="Email" data={nominatorEmail} />
           { subscription && <RequestDetail title="Subscribed" data={String(subscription)} /> }
-        </td> 
-        <td>
+        </div> 
+        <div>
           <RequestDetail title="Email" data={parentEmail} />
-        </td>
-        <td>
+        </div>
+        <div>
           <RequestDetail title="Address" data={address} />
           <RequestDetail data={address2} />
           <RequestDetail data={`${city}, ${state} ${zip}`} />
-        </td>
-      </tr> 
+        </div>
+      </div> 
     )
   }
 
@@ -66,28 +65,33 @@ class Request extends Component {
       hospitalName
     } = this.props;
     return (
-      <React.Fragment>
-        <tr className="Request-headers">
-            <td>
-              <button onClick={() => this.setState({ open: !this.state.open })}>open</button>
-            </td>
-            <td>
-              <p>{baby[0].first}</p>
-            </td>
-            <td>
-              <p>{nominatorName}</p>
-            </td>
-            <td>
-              <p>{parentName}</p>
-            </td>
-            <td>
-              <p>{hospitalName}</p>
-            </td>
-        </tr>
+        <div
+          className="Request"
+          onClick={() => this.setState({ open: !this.state.open })}
+        >
+          <div className="request-header">
 
-        {  this.renderRequestDetails() }
+              <div>
+                <p>{baby[0].first}</p>
+              </div>
 
-      </React.Fragment>
+              <div>
+                <p>{nominatorName}</p>
+              </div>
+
+              <div>
+                <p>{parentName}</p>
+              </div>
+
+              <div>
+                <p>{hospitalName}</p>
+              </div>
+  
+          </div>
+
+          { this.renderRequestDetails() }
+
+        </div>
     )
   }
 }
