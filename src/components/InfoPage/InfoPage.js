@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
-const mapStateToProps = state => ({
-  user: state.user,
+const mapStateToProps = ({ auth: { isAuthenticated } }) => ({
+  isAuthenticated
 });
 
 class InfoPage extends Component {
@@ -13,16 +13,10 @@ class InfoPage extends Component {
     this.props.dispatch({type: USER_ACTIONS.FETCH_USER});
   }
 
-  componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
-    }
-  }
-
   render() {
     let content = null;
 
-    if (this.props.user.userName) {
+    if (this.props.isAuthenticated) {
       content = (
         <div>
           <p>
