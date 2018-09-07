@@ -66,7 +66,7 @@ const App = () => (
           component={Verification}
         />
         {/* OTHERWISE (no path!)*/}
-        <Route render={() => <h1>404</h1>} />
+        {/* <Route render={() => <h1>404</h1>} /> */}
 
       </Switch>
     </Router>

@@ -12,31 +12,19 @@ export default class GoogleAutoComplete extends React.Component {
     this.state = {
       scriptError: false,
       scriptLoaded: false,
-      fieldsForState: {
-        streetAddress: '',
-        streetAddress2: '',
-        floorNumber: '',
-        roomNumber: '',
-        locality: '',
-        cityOrState: '',
-        postalcode: '',
-        country: '',
-        searchField: '',
-      },
       labels: {
         streetAddress: "Street Address 1",
         streetAddress2: "Street Address 2",
         floorNumber: "Floor #",
         roomNumber: "Room #",
-        locality: "City",
+        city: "City",
         postalcode: "Postal / Zip Code",
-        cityOrState: "State / Province",
+        state: "State / Province",
         country: "Country",
         searchField: "Hospital Name",
       },
       showResult: false,
     };
-    this.baseFields = clone(this.state.fieldsForState);
     this.handleMapChange = this.handleMapChange.bind(this);
     this.renderFields = this.renderFields.bind(this);
     this.handleSearchClear = this.handleSearchClear.bind(this);
@@ -63,33 +51,25 @@ export default class GoogleAutoComplete extends React.Component {
 
         <div id="autoCompleteDiv2" key={i} className={`address-field address-${key}`}>
           <label htmlFor="this" >{this.state.labels[key]}</label>
-          <input required={required} type="text" className="hospAddInputs" id="this" onChange={this.handleInputChangeFor(key)} value={this.state.fieldsForState[key]} />
+          <input required={required} type="text" className="hospAddInputs" id="this" onChange={this.props.handleInputChangeFor(key)} value={this.props[key]} />
         </div>
       )
     }
     )
   }
 
-  handleInputChangeFor = propertyName => (event) => {
-    this.setState({
-      ...this.state,
-      fieldsForState: {
-        ...this.state.fieldsForState,
-        [propertyName]: event.target.value
-      }
-
-    })
-  }
 
   handleSearchClear(searchText) {
     if (searchText.target.type === "search") {
       if (searchText.target.value === "") {
         const { fieldsForState } = this.state;
-        Object.keys(fieldsForState).map((key, i) => {
-          fieldsForState[key] = "";
-          key = { i }
-        })
-        this.setState({ fieldsForState });
+        if (fieldsForState) {
+          Object.keys(fieldsForState).map((key, i) => {
+            fieldsForState[key] = "";
+            key = { i }
+          })
+          this.setState({ fieldsForState });
+        }
       }
     }
   }
@@ -97,7 +77,7 @@ export default class GoogleAutoComplete extends React.Component {
   handleMapChange() {
     this.place = this.autocomplete.getPlace();
     this.props.callbackFunction(this.place);
-    const fieldsForState = { ...this.state.fieldsForState, ...this.baseFields };
+    const fieldsForState = { ...this.state.fieldsForState };
     if (this.place.address_components) {
       const addrComps = this.place.address_components;
       var matchForStreet1 = this.place.adr_address ? this.place.adr_address.match(/<span class="street-address">(.*?)<\/span>/) : false;
@@ -109,10 +89,10 @@ export default class GoogleAutoComplete extends React.Component {
 
         switch (addrType) {
 
-          case fields.locality: fieldsForState.locality = addrComps[index].long_name;
+          case fields.city: fieldsForState.city = addrComps[index].long_name;
             break;
 
-          case fields.cityOrState: fieldsForState.cityOrState = addrComps[index].long_name;
+          case fields.state: fieldsForState.state = addrComps[index].long_name;
             break;
 
           case fields.country: fieldsForState.country = addrComps[index].long_name;
@@ -124,7 +104,17 @@ export default class GoogleAutoComplete extends React.Component {
           default:
         }
       });
-      this.setState({ fieldsForState, showResult: true });
+
+      Object.keys(fieldsForState).forEach(field => {
+        const event = {
+          target: {
+            value: fieldsForState[field]
+          }
+        }
+        this.props.handleInputChangeFor(field)(event);
+      })
+
+      this.setState({ showResult: true });
     }
     else {
       console.log("It is not okay.")
@@ -180,8 +170,8 @@ GoogleAutoComplete.defaultProps = {
     streetAddress2: "administrative_level_4",
     floorNumber: "Floor #",
     roomNumber: "Room #",
-    locality: "locality",
-    cityOrState: "administrative_area_level_1",
+    city: "locality",
+    state: "administrative_area_level_1",
     postalcode: "postal_code",
     country: "country",
   },

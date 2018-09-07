@@ -5,35 +5,46 @@ class Radiobox extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      checked: false
-    };
-  }
-  handleCheck = () => {
-    if(this.state.checked === false){
-      this.setState({ checked: !this.state.checked });
-    } else {
-      this.setState({
-        checked: true
-      })
-    } 
-  }
 
-  handleUncheck = () => {
-    this.setState({
-      checked: false
-    })
   }
+  // handleCheck = () => {
+  //   if(this.props.contactChecked === false){
+  //     this.setState({ 
+  //       contactChecked: !this.props.contactChecked });
+  //   } else {
+  //     this.setState({
+  //       contactChecked: true
+  //     })
+  //   } 
+  // }
+
+  // handleUncheck = () => {
+  //   this.setState({
+  //     contactChecked: false
+  //   })
+  // }
+
+
 
   render = () => {
     var msg;
-    if (this.state.checked) {
+    if (this.props.contactChecked === "true") {
       msg = <div id="parentDiv">
         Parent Name(s):
-          <input type="text" placeholder="Parent Name(s)" />
+          <input 
+            type="text" 
+            placeholder="Parent Name(s)" 
+            onChange={this.props.handleInputChangeFor('parentName')} 
+            value={this.props.parentName}
+          />
         <br />
         Parent Email:
-          <input type="text" placeholder="Parent Email" />
+          <input 
+            type="text" 
+            placeholder="Parent Email" 
+            onChange={this.props.handleInputChangeFor('parentEmail')} 
+            value={this.props.parentEmail}
+          />
       </div>;
     } else {
       msg = "";
@@ -41,10 +52,9 @@ class Radiobox extends Component {
     return (
       <div>
         <label for="parentContactYes"> Yes</label>
-          <input type="radio" name="parentContact" onChange={this.handleCheck} defaultChecked={this.state.checked} />
-          <label for="parentContactNo" > No</label>
-          <input type="radio" name="parentContact" onChange={this.handleUncheck}/>
-        
+        <input type="radio" name="parentContact" value="true" onChange={this.props.handleInputChangeFor('contactChecked')} />
+        <label for="parentContactNo" > No</label>
+        <input type="radio" name="parentContact" value="false" onChange={this.props.handleClearParents} />
         {msg}
       </div>
     );

@@ -4,6 +4,11 @@ import React, { Component } from 'react';
 
 class BabyInfo extends Component {
 
+  constructor(props) {
+    super(props);
+
+   
+  }
 
 
   render() {
@@ -12,26 +17,26 @@ class BabyInfo extends Component {
 
       <div id="babyInfoDiv">
         <div id="babyNameDiv">
-          Baby's First Name:&nbsp; <input type="text" placeholder="First Name" />&nbsp;
-          Baby's Last Name:&nbsp; <input type="text" placeholder="Last Name" />
+          Baby's First Name:&nbsp; <input type="text" placeholder="First Name"  onChange={this.props.handleInputChangeFor('firstName')}/>&nbsp;
+          Baby's Last Name:&nbsp; <input type="text" placeholder="Last Name" onChange={this.props.handleInputChangeFor('lastName')} />
         </div>
         <br />
         <br />
         <div id="genderAndStatsDiv">
           <div id="genderDiv">
-            Birth Date: <input type="date" />
+            Birth Date: <input type="date" onChange={this.props.handleInputChangeFor('birthDate')} />
             <br />
             <br />
             Girl
-            <input id="genderGirl" type="radio" name="gender" value="girl" checked />
+            <input id="genderGirl" type="radio" name="gender" value="girl" onChange={this.props.handleInputChangeFor('gender')}  />
             <br />
             Boy
-            <input id="genderBoy" type="radio" name="gender" value="boy" />
+            <input id="genderBoy" type="radio" name="gender" value="boy" onChange={this.props.handleInputChangeFor('gender')} />
           </div>
           <br />
           <div id="statsDiv">
             Gestation: Weeks:
-            <select name="Weeks" id="selectWeeks">
+            <select name="Weeks" id="selectWeeks" onChange={this.props.handleInputChangeFor('gestationWeeks')}>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -75,7 +80,7 @@ class BabyInfo extends Component {
               <option value="40">40</option>
             </select>
             Days:
-            <select name="Days" id="selectDays">
+            <select name="Days" id="selectDays" onChange={this.props.handleInputChangeFor('gestationDays')}>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -87,7 +92,7 @@ class BabyInfo extends Component {
             <br />
             <br />
             Weight: Pounds:
-            <select name="Pounds" id="selectPounds">
+            <select name="Pounds" id="selectPounds" onChange={this.props.handleInputChangeFor('weightPounds')}>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -98,7 +103,7 @@ class BabyInfo extends Component {
               <option value="7">7</option>
             </select>
             Ounces:
-            <select name="Ounces" id="selectOunces">
+            <select name="Ounces" id="selectOunces" onChange={this.props.handleInputChangeFor('weightOunces')}>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
