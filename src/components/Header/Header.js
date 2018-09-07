@@ -1,11 +1,11 @@
 import React from 'react';
+import './Header.css';
 
-const Header = ({ title }) => (
-  <div className="instructions">
-    <div>
-      <h1 className="lead">{ title }</h1>
-    </div>
-  </div>
+const Header = ({ title, onLogout }) => (
+  <header className="Header">
+    <h1>The Potato Head Project Requests</h1>
+    <button>Logout</button>
+  </header>
 );
 
 export default Header;
