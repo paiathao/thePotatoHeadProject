@@ -14,11 +14,11 @@ import InfoPage from './components/InfoPage/InfoPage';
 
 /////testing the page
 import Admin from './components/RequestForm/RequestForm';
-// import Auto from './components/Email/autoResponse';
-// import FollowUp from './components/Email/followUp';
 import RequestForm from './components/RequestForm/RequestForm';
-
-// import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
+import Auto from './components/Email/autoResponse';
+import FollowUp from './components/Email/followUp';
+import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
+import Verification from './components/Verification/Verification';
 
 
 import './styles/main.css';
@@ -50,25 +50,29 @@ const App = () => (
           component={Admin}
         />
 
-        {/* <Route
+        <Route
           path="/Auto"
           component={Auto}
         />
         <Route
           path="/FollowUp"
           component={FollowUp}
-        /> */}
-        {/* <Route
+        />
+        <Route
           path="/AutoComplete"
           component={AutoComplete}
-        /> */}
-        {/* OTHERWISE (no path!) */}
-        {/* <Route render={() => <h1>404</h1>} /> */}
+        />
+        <Route
+          path="/Verification"
+          component={Verification}
+        />
+        {/* OTHERWISE (no path!)*/}
+        <Route render={() => <h1>404</h1>} />
 
       </Switch>
     </Router>
     <RequestForm />
-    {/* <AutoComplete /> */}
+    <AutoComplete />
   </div>
 );
 

@@ -56,7 +56,7 @@ export default class GoogleAutoComplete extends React.Component {
     return Object.keys(this.props.fields).map((key, i) => {
 
       let required = true;
-      if(this.state.labels[key] === 'Street Address 2'){
+      if (this.state.labels[key] === 'Street Address 2') {
         required = false;
       }
       return (
@@ -160,7 +160,7 @@ export default class GoogleAutoComplete extends React.Component {
       />,
       <div id="autoCompleteDiv" className={`address ${this.state.showResult ? "showFields" : ""}`}>
         <div className="addressInput">
-        <label for="hospitalInput">Hospital Name</label>
+          <label for="hospitalInput">Hospital Name</label>
           <input type="search" className="hospitalInput" id={id} placeholder="Hospital Name" ref={ele => {
             this.searchInput = ele;
             (ele || {}).onsearch = this.handleSearchClear
