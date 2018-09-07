@@ -17,11 +17,11 @@ class AdminPortal extends Component {
     }
   }
 
-  sendEmail = ({ personalNote, tracking }) => {
+  sendEmail = ({ note, tracking }) => {
     this.props.dispatch({
       type: 'SEND_EMAIL_WITH_TRACKING',
       payload: {
-        personalNote,
+        note,
         tracking,
         nominatorEmail: this.state.emailForm.nominator.nominatorEmail,
         nominatorName: this.state.emailForm.nominator.nominatorName

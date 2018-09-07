@@ -9,7 +9,7 @@ class EmailFormModal extends Component {
 
   state = {
     tracking: '',
-    personalNote: ''
+    note: ''
   }
 
   handleChange = name => e => {
@@ -48,8 +48,8 @@ class EmailFormModal extends Component {
         
           <Input 
             label="Message"
-            onChange={this.handleChange('personalNote')}
-            value={this.state.personalNote}
+            onChange={this.handleChange('note')}
+            value={this.state.note}
           />
 
           <Button 
