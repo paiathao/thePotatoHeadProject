@@ -13,7 +13,6 @@ class Request extends Component {
   state = { open: false }
 
   renderRequestDetails() {
-    console.log(this.props)
     const {
       baby,
       address,
@@ -23,12 +22,13 @@ class Request extends Component {
       zip,
       subscription,
       nominatorEmail,
-      parentEmail
+      parentEmail,
+      showEmailForm
     } = this.props;
     return (
       <div className={`request-details ${this.state.open ? 'open' : null}`}>
         <div>
-          <div style={{ display: 'flex' }}>
+          <div>
           { baby.map((b, i) => (
             <div key={i}>
               <RequestDetail title="DOB" data={b.dob} />      
@@ -50,8 +50,11 @@ class Request extends Component {
         </div>
         <div>
           <RequestDetail title="Address" data={address} />
-          <RequestDetail data={address2} />
+          { address2 && <RequestDetail data={address2} />}
           <RequestDetail data={`${city}, ${state} ${zip}`} />
+        </div>
+        <div className="request-toolbar">
+          <button onClick={showEmailForm}>Send Email</button>
         </div>
       </div> 
     )

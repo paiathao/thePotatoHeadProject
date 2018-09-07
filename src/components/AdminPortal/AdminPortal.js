@@ -5,14 +5,37 @@ import Main from '../Main/Main';
 import Header from '../Header/Header';
 import RequestList from '../RequestList/RequestList';
 import Request from '../Request/Request';
+import EmailFormModal from '../EmailFormModal/EmailFormModal';
 
 
 class AdminPortal extends Component {
+
+  state = { 
+    emailForm: {
+      show: false,
+      nominator: {}
+    }
+  }
+
+  sendEmail = email => {
+    console.log(email);
+  }
+
+  showEmailForm = nominator => {
+    this.setState({
+      ...this.state,
+      emailForm: {
+        show: true,
+        nominator
+      }
+    });
+  }
 
   renderRequest = request => (
     <Request 
       key={request.id} 
       {...request} 
+      showEmailForm={this.showEmailForm.bind(this, { email: request.nominatorEmail, name: request.nominatorName})}
     />
   );
 
@@ -25,6 +48,20 @@ class AdminPortal extends Component {
           columns={['Baby', 'Nominator', 'Parents', 'Hospital']}
           data={this.props.data}
           renderRow={this.renderRequest}
+        />
+
+        <EmailFormModal 
+          onSend={this.sendEmail}
+          visible={this.state.emailForm.show}
+          nominator={this.state.emailForm.nominator}
+          closeModal={() => {
+            this.setState({ 
+              ...this.state, emailForm: {
+                ...this.state.emailForm,
+                show: false
+              } 
+            });
+          }}
         />
 
       </Main>

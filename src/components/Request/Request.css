@@ -15,22 +15,40 @@
   justify-content: center;
 }
 
+.request-details > div,
+.request-details > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .request-header {
   background-color: #e5512f;
   color: white;
 }
 
 .request-details {
-  background-color: #aaa;
+  background-color: #ddd;
   overflow: hidden;
   height: 0;
   transition: 800ms;
 }
 
+.RequestDetail {
+  margin: 12px 4px;
+}
+
+.RequestDetail p {
+  margin: 4px 0;
+}
 
 .RequestDetail > p:first-of-type {
+  margin: 0;
   font-weight: bold;
 }
+
+
 
 .open {
   height: auto;
