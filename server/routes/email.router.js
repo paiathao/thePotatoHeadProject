@@ -28,19 +28,19 @@ const email = new Email({
     transport: transporter
 });
 
-email.send({
-    template: 'trackingEmail',
-    message: {
-        to: 'caclowers@gmail.com',
-    },
-    locals: {
-        name: 'Friends',
-        tracking: '123',
-        note: 'We appreciate you'
-    },
-})
-  .then(console.log)
-  .catch(console.error);
+// email.send({
+//     template: 'trackingEmail',
+//     message: {
+//         to: 'caclowers@gmail.com',
+//     },
+//     locals: {
+//         name: 'Friends',
+//         tracking: '123',
+//         note: 'We appreciate you'
+//     },
+// })
+//   .then(console.log)
+//   .catch(console.error);
 
 
 /**

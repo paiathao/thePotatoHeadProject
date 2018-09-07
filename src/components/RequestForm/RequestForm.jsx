@@ -4,6 +4,8 @@ import BabyInfo from './BabyInfo';
 import AutoComplete from '../GoogleAutoComplete/AutoComplete';
 import Radiobox from './Radiobox';
 
+import GoogleMap from '../Map/map'
+
 
 class RequestForm extends Component {
   constructor(props) {
@@ -42,7 +44,7 @@ class RequestForm extends Component {
       (item, index) => <BabyInfo key="index" removeBaby={this.removeBaby} addAnotherBaby={this.addAnotherBaby} />)
 
     return (
-
+      
       <div id="formDiv">
         <form onSubmit={e => e.preventDefault()}>
           <div id="babyInfoField">

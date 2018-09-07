@@ -6,23 +6,15 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Header from './components/Header/Header';
 import AuthPage from './components/AuthPage/AuthPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
-
-
 import RequestForm from './components/RequestForm/RequestForm';
 import AdminPortal from './components/AdminPortal/AdminPortal';
-
-import RequestForm from './components/RequestForm/RequestForm';
-import Auto from './components/Email/autoResponse';
-import FollowUp from './components/Email/followUp';
 import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
 import Verification from './components/Verification/Verification';
-
-
+import ImpactMap from './components/Map/map'
 import './styles/main.css';
 
 const App = () => (
@@ -64,14 +56,6 @@ const App = () => (
           component={RequestForm}
         />
 
-        <Route
-          path="/Auto"
-          component={Auto}
-        />
-        <Route
-          path="/FollowUp"
-          component={FollowUp}
-        />
   
         <Route
           path="/AutoComplete"
@@ -83,6 +67,11 @@ const App = () => (
         <Route
           path="/Verification"
           component={Verification}
+        />
+                />
+        <Route
+          path="/Map"
+          component={ImpactMap}
         />
 
 

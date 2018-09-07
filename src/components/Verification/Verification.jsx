@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { CHECK_VERIFICATION_ACTION } from '../../redux/actions/verificationActions';
 
 //
+import MapContainer  from '../Map/map'
+
 const mapStateToProps = (state) => ({
     user: state.user,
   }
@@ -36,14 +38,16 @@ class Verification extends Component{
       }
     render(){
         return(
+            
             <div>
+                
                 <form onSubmit={this.handleFormInfo}>
                 <input 
                 onChange={this.handleInput('input')}
                 placeholder='this.data'>
-                
                 </input>
                 </form>
+                
                 {JSON.stringify(this.state)}
             </div>
         )
