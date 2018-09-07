@@ -37,7 +37,6 @@ export default class GoogleAutoComplete extends React.Component{
         this.handleSearchClear = this.handleSearchClear.bind(this);
     }
 
-
     shouldComponentUpdate( nextProps, nextState ) {
         if ( ( this.state.scriptLoaded !== nextState.scriptLoaded ) && ( this.autocomplete === null ) ) {
             this.autocomplete = new window.google.maps.places.Autocomplete((this.searchInput));
@@ -45,7 +44,6 @@ export default class GoogleAutoComplete extends React.Component{
         }
         return true;
     }
-
 
     renderFields(){
         return Object.keys(this.props.fields).map((key,i) => {
@@ -58,7 +56,6 @@ export default class GoogleAutoComplete extends React.Component{
             }
         )
     }
-
 
     handleSearchClear(searchText) {
         if(searchText.target.type === "search"){
@@ -82,6 +79,7 @@ export default class GoogleAutoComplete extends React.Component{
             var matchForStreet1 = this.place.adr_address ? this.place.adr_address.match(/<span class="street-address">(.*?)<\/span>/) : false;
             if( matchForStreet1 && matchForStreet1[1]) fieldsForState.streetAddress = matchForStreet1[1];
             const { fields } = this.props;
+            console.log('rjgrjoi',fieldsForState)
             Object.keys(addrComps).map((index,i) => {
                 
                 const addrType = addrComps[index].types[0];
@@ -110,7 +108,6 @@ export default class GoogleAutoComplete extends React.Component{
         }
     }
 
-
     handleScriptCreate() {
         this.setState({ scriptLoaded: false })
     }
@@ -124,8 +121,6 @@ export default class GoogleAutoComplete extends React.Component{
     handleScriptLoad() {
         this.setState({ scriptLoaded: true })
     }
-
-
 
     render(){
         const { scriptLoaded } = this.state;
