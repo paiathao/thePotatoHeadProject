@@ -19,6 +19,7 @@ export default class GoogleAutoComplete extends React.Component{
                 postalcode: '',
                 country: '',
                 searchField: '',
+                testing:'',
             }, 
             labels: {
                 streetAddress: "Street Address",
@@ -146,6 +147,7 @@ export default class GoogleAutoComplete extends React.Component{
                 {this.renderFields()}
                 </div>
             </div>
+           
             ]
         )
     }

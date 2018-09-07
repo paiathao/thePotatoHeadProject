@@ -13,6 +13,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const verifyRouter = require('./routes/verify.router')
 const emailRouter = require('./routes/email.router')
 
 // Body parser middleware
@@ -28,7 +29,8 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/email', emailRouter)
+app.use('/api/verify', verifyRouter);
+app.use('/api/email', emailRouter);
 
 // Serve static files
 app.use(express.static('build'));

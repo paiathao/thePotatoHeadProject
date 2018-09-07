@@ -16,7 +16,8 @@ import InfoPage from './components/InfoPage/InfoPage';
 import Admin from './components/RequestForm/RequestForm';
 import Auto from './components/Email/autoResponse';
 import FollowUp from './components/Email/followUp';
-import AutoComplete from './components/GoogleAutoComplete/AutoComplete'
+import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
+import Verification from './components/Verification/Verification';
 
 
 import './styles/main.css';
@@ -59,6 +60,10 @@ const App = () => (
         <Route
           path="/AutoComplete"
           component={AutoComplete}
+        />
+        <Route
+          path="/Verification"
+          component={Verification}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
