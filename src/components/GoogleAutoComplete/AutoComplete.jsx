@@ -160,7 +160,6 @@ GoogleAutoComplete.defaultProps = {
         cityOrState: "administrative_area_level_1",
         postalcode: "postal_code",
         country: "country",
-        testing:'',
     },
     callbackFunction: f => f
 }

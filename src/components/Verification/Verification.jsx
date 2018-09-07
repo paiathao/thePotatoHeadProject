@@ -6,7 +6,7 @@ import { CHECK_VERIFICATION_ACTION } from '../../redux/actions/verificationActio
 
 //
 const mapStateToProps = (state) => ({
-    user:state.user
+    user: state.user,
   }
   );
 
@@ -25,7 +25,7 @@ class Verification extends Component{
         console.log('did we get the right data?', data)
         this.props.dispatch({ type: CHECK_VERIFICATION_ACTION.CHECK, payload: data   });
     }
-
+    
     /// This will need to be remove, for now it's for testing purpose
     /// this will take info from requestor form
     /// a button will be build and use their address info and check it if its
