@@ -1,6 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    
 }
 
 .instructions h1 {
@@ -65,4 +66,99 @@ li a:hover {
 .Google_image{
    height: 20px;
    width: 155px;
+}
+
+#formDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  
+}
+
+form{
+  background-color: #B8E1E3;
+  border-radius: 15px;
+}
+
+#genderAndStatsDiv{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#babyInfoDiv{
+  margin-bottom: 6px;
+  padding: 15px;
+  border: 6px solid #E75128;
+  border-radius: 15px;
+}
+
+#babyNameDiv{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#autoCompleteDiv{
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+  /* margin: 0px 6px; */
+  padding: 15px;
+  border: 6px solid #74CAD1;
+  border-radius: 15px;
+}
+
+#autoCompleteDiv2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin-top: 2px;
+  padding: 4px 15px;
+  border: 2px solid #74CAD1;
+  border-radius: 15px;
+}
+
+.hospAddInputs{
+ 
+  width: 200px;
+}
+
+#extrasDiv{
+  display: flex;
+  justify-content: space-between;
+  margin: 12px;
+}
+
+#subscribeDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 12px;
+}
+
+#contactDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 0px 6px; */
+  padding: 15px;
+  border: 6px solid #74CAD1;
+  border-radius: 15px;
+}
+
+.hospitalInput{
+  width: 500px;
+}
+
+.addressInput{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin-top: 2px;
+  padding: 8px 15px;
+  border: 2px solid #74CAD1;
+  border-radius: 15px;
 }
