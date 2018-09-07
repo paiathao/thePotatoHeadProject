@@ -12,8 +12,11 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
 
-/////testing the page
-import Admin from './components/RequestForm/RequestForm';
+
+import RequestForm from './components/RequestForm/RequestForm';
+import AdminPortal from './components/AdminPortal/AdminPortal';
+
+import RequestForm from './components/RequestForm/RequestForm';
 import Auto from './components/Email/autoResponse';
 import FollowUp from './components/Email/followUp';
 import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
@@ -26,11 +29,22 @@ const App = () => (
   <div>
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+      
         <Route
           path="/login"
           component={AuthPage}
         />
+
+        <Route
+          path="/admin"
+          component={AdminPortal}
+        />
+
+        <Route
+          path="/form"
+          component={RequestForm}
+        />
+
         <Route
           path="/register"
           component={RegisterPage}
@@ -44,9 +58,10 @@ const App = () => (
           component={InfoPage}
         />
         {/*  All Testing route */}
+  
         <Route
-          path="/Admin"
-          component={Admin}
+          path="/form"
+          component={RequestForm}
         />
 
         <Route
@@ -57,15 +72,20 @@ const App = () => (
           path="/FollowUp"
           component={FollowUp}
         />
+  
         <Route
           path="/AutoComplete"
           component={AutoComplete}
+
+        />
+
         />
         <Route
           path="/Verification"
           component={Verification}
         />
-        {/* OTHERWISE (no path!) */}
+
+
         <Route render={() => <h1>404</h1>} />
 
       </Switch>

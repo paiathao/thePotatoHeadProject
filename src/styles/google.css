@@ -24,7 +24,7 @@
     
 }
 .address-field input {
-    width: 100%;
+    width: 100px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 14px;
@@ -46,6 +46,12 @@
 .addressInput {
     padding-bottom: 20px;
     position: relative;
+}
+
+.addressInput input{
+  width: 200px;
+  padding-bottom: 20px;
+  position: relative;
 }
 .addressInput:before {
     content: "";
@@ -80,4 +86,3 @@
 .address.showFields .addressFields {
     display: block;
 }
-
