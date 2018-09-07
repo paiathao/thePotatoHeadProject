@@ -6,7 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Header from './components/Header/Header';
 import AuthPage from './components/AuthPage/AuthPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
@@ -16,7 +15,6 @@ import InfoPage from './components/InfoPage/InfoPage';
 import RequestForm from './components/RequestForm/RequestForm';
 import AdminPortal from './components/AdminPortal/AdminPortal';
 
-import RequestForm from './components/RequestForm/RequestForm';
 import Auto from './components/Email/autoResponse';
 import FollowUp from './components/Email/followUp';
 import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
