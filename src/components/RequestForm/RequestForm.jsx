@@ -79,7 +79,7 @@ class RequestForm extends Component {
             </div>
             <div id="subscribeDiv">
               <div >
-                <input type="checkbox" name="subscribe" value="subscribe" onChange={this.handleSubscribe} checked />
+                <input type="checkbox" name="subscribe" value="subscribe" onChange={this.handleSubscribe}  />
                 <label htmlFor="subscribe">&nbsp;I would like to <b>subscribe</b> to
                 <br />the Potato Head Project newsletter</label>
               </div>
