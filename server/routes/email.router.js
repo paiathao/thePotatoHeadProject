@@ -31,7 +31,7 @@ const email = new Email({
 email.send({
     template: 'trackingEmail',
     message: {
-        to: 'paiathao09@gmail.com',
+        to: 'caclowers@gmail.com',
     },
     locals: {
         name: 'Friends',
