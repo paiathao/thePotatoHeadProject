@@ -17,6 +17,8 @@ const RequestSchema = new Schema({
     country: { type: String, required: true },  
     personalNote: { type: String},
     subscription: { type: Boolean, default: false },
+    tracking: { type: String},
+    note: { type: String},
  });
  
  
