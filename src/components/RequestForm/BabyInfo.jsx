@@ -12,11 +12,9 @@ class BabyInfo extends Component {
 
       <div id="babyInfoDiv">
         <div id="babyNameDiv">
-          Baby's First Name: <input type="text" placeholder="First Name" />&nbsp;
-          Baby's Last Name: <input type="text" placeholder="Last Name" />
+          Baby's First Name:&nbsp; <input type="text" placeholder="First Name" />&nbsp;
+          Baby's Last Name:&nbsp; <input type="text" placeholder="Last Name" />
         </div>
-
-
         <br />
         <br />
         <div id="genderAndStatsDiv">
@@ -121,16 +119,10 @@ class BabyInfo extends Component {
             <br />
             <br />
             <button onClick={this.props.addAnotherBaby}>Add Another Baby</button>
+            <button onClick={this.props.removeBaby}>Undo Add</button>
           </div>
         </div>
-
-
-
-
       </div>
-
-
-
     )
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Script from 'react-load-script';
+import { thisExpression } from 'babel-types';
 // import '../../styles/google.css'
 
 var clone = require('clone');
@@ -62,7 +63,7 @@ export default class GoogleAutoComplete extends React.Component {
 
         <div id="autoCompleteDiv2" key={i} className={`address-field address-${key}`}>
           <label htmlFor="this" >{this.state.labels[key]}</label>
-          <input required={required} type="text" className="hospAddInputs" id="this" onChange={this.handleInputChangeFor()} value={this.state.fieldsForState[key]} />
+          <input required={required} type="text" className="hospAddInputs" id="this" onChange={this.handleInputChangeFor(this.state.fieldsForState[key])} value={this.state.fieldsForState[key]} />
         </div>
       )
     }
@@ -71,6 +72,7 @@ export default class GoogleAutoComplete extends React.Component {
 
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
+      ...this.state,
       ...this.state.fieldsForState,
       [propertyName]: event.target.value
 
@@ -156,6 +158,7 @@ export default class GoogleAutoComplete extends React.Component {
       />,
       <div id="autoCompleteDiv" className={`address ${this.state.showResult ? "showFields" : ""}`}>
         <div className="addressInput">
+        <label for="hospitalInput">Hospital Name</label>
           <input type="search" className="hospitalInput" id={id} placeholder="Hospital Name" ref={ele => {
             this.searchInput = ele;
             (ele || {}).onsearch = this.handleSearchClear

@@ -151,3 +151,14 @@ form{
 .hospitalInput{
   width: 500px;
 }
+
+.addressInput{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin-top: 2px;
+  padding: 8px 15px;
+  border: 2px solid #74CAD1;
+  border-radius: 15px;
+}

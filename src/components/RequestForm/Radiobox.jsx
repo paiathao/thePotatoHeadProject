@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Checkbox extends Component {
+class Radiobox extends Component {
 
   constructor(props) {
     super(props);
@@ -51,4 +51,4 @@ class Checkbox extends Component {
   }
 };
 
-export default Checkbox;
+export default Radiobox;
