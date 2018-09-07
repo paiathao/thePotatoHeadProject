@@ -17,8 +17,16 @@ class AdminPortal extends Component {
     }
   }
 
-  sendEmail = email => {
-    console.log(email);
+  sendEmail = ({ personalNote, tracking }) => {
+    this.props.dispatch({
+      type: 'SEND_EMAIL_WITH_TRACKING',
+      payload: {
+        personalNote,
+        tracking,
+        nominatorEmail: this.state.emailForm.nominator.nominatorEmail,
+        nominatorName: this.state.emailForm.nominator.nominatorName
+      }
+    });
   }
 
   showEmailForm = nominator => {
@@ -35,7 +43,10 @@ class AdminPortal extends Component {
     <Request 
       key={request.id} 
       {...request} 
-      showEmailForm={this.showEmailForm.bind(this, { email: request.nominatorEmail, name: request.nominatorName})}
+      showEmailForm={this.showEmailForm.bind(this, {
+        nominatorEmail: request.nominatorEmail,
+        nominatorName: request.nominatorName
+      })}
     />
   );
 

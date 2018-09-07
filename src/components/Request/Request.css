@@ -2,20 +2,25 @@
   margin: 12px;
 }
 
+
 .request-header,
-.request-details {
+.request-details > div {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.request-details {
+  flex-direction: column;
 }
 
 .request-header > *,
-.request-details > * {
+.request-details > div > * {
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
-.request-details > div,
 .request-details > div > div {
   display: flex;
   flex-direction: column;
@@ -48,8 +53,10 @@
   font-weight: bold;
 }
 
-
-
 .open {
   height: auto;
+}
+
+.request-toolbar {
+  justify-content: flex-end;
 }

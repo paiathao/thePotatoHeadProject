@@ -29,33 +29,35 @@ class Request extends Component {
       <div className={`request-details ${this.state.open ? 'open' : null}`}>
         <div>
           <div>
-          { baby.map((b, i) => (
-            <div key={i}>
-              <RequestDetail title="DOB" data={b.dob} />      
-              <RequestDetail title="Gender" data={b.gender} />      
-              <RequestDetail title="Gestation" data={`${b.weeks} weeks`} />
-              { b.days > 0 && <RequestDetail data={`${b.days} days`} /> }
-              <RequestDetail title="Weight" data={`${b.pounds} pounds`} />
-              { b.ounces > 0 && <RequestDetail data={`${b.ounces} ounces`} /> }
-            </div>
-          )) }
-          </div>     
+            <div>
+              { baby.map((b, i) => (
+                <div key={i}>
+                  <RequestDetail title="DOB" data={b.dob} />      
+                  <RequestDetail title="Gender" data={b.gender} />      
+                  <RequestDetail title="Gestation" data={`${b.weeks} weeks`} />
+                  { b.days > 0 && <RequestDetail data={`${b.days} days`} /> }
+                  <RequestDetail title="Weight" data={`${b.pounds} pounds`} />
+                  { b.ounces > 0 && <RequestDetail data={`${b.ounces} ounces`} /> }
+                </div>
+              )) }
+            </div>     
+          </div> 
+          <div>
+            <RequestDetail title="Email" data={nominatorEmail} />
+            { subscription && <RequestDetail title="Subscribed" data={String(subscription)} /> }
+          </div> 
+          <div>
+            <RequestDetail title="Email" data={parentEmail} />
+          </div>
+          <div>
+            <RequestDetail title="Address" data={address} />
+            { address2 && <RequestDetail data={address2} />}
+            <RequestDetail data={`${city}, ${state} ${zip}`} />
+          </div> 
         </div> 
-        <div>
-          <RequestDetail title="Email" data={nominatorEmail} />
-          { subscription && <RequestDetail title="Subscribed" data={String(subscription)} /> }
-        </div> 
-        <div>
-          <RequestDetail title="Email" data={parentEmail} />
-        </div>
-        <div>
-          <RequestDetail title="Address" data={address} />
-          { address2 && <RequestDetail data={address2} />}
-          <RequestDetail data={`${city}, ${state} ${zip}`} />
-        </div>
         <div className="request-toolbar">
-          <button onClick={showEmailForm}>Send Email</button>
-        </div>
+            <button onClick={showEmailForm}>Send Email</button>
+        </div>      
       </div> 
     )
   }

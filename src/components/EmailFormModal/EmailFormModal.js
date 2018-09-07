@@ -3,12 +3,13 @@ import './EmailFormModal.css';
 
 import Modal from '../Modal/Modal';
 import Input from '../Input/Input';
+import Button from '../Button/Button';
 
 class EmailFormModal extends Component {
 
   state = {
     tracking: '',
-    message: ''
+    personalNote: ''
   }
 
   handleChange = name => e => {
@@ -21,8 +22,8 @@ class EmailFormModal extends Component {
       closeModal,
       onSend,
       nominator: {
-        name,
-        email
+        nominatorName,
+        nominatorEmail
       }
     } = this.props;
     return (
@@ -35,8 +36,8 @@ class EmailFormModal extends Component {
 
           <div>
             <span>To:</span>
-            <p>{name}</p>
-            <p>{email}</p>
+            <p>{nominatorName}</p>
+            <p>{nominatorEmail}</p>
           </div>
         
           <Input 
@@ -47,15 +48,14 @@ class EmailFormModal extends Component {
         
           <Input 
             label="Message"
-            onChange={this.handleChange('message')}
-            value={this.state.message}
+            onChange={this.handleChange('personalNote')}
+            value={this.state.personalNote}
           />
 
-          <button 
+          <Button 
+            title="SEND"
             onClick={() => onSend(this.state)}
-          >
-          SEND
-        </button>
+          />
         
         </div>
       </Modal>
