@@ -3,9 +3,13 @@ import axios from 'axios';
 
 import {
   HANDLE_GET_ALL_REQUESTS,
+  HANDLE_TOGGLE_REQUEST,
   getAllRequests,
   getAllRequestsSuccess,
-  getAllRequestsFail
+  getAllRequestsFail,
+  updateRequest,
+  updateRequestSuccess,
+  updateRequestFail
 } from '../actions/requestActions';
 
 function* handleGetRequests() {
@@ -33,9 +37,29 @@ function* sendTrackingEmail(action) {
   }
 }
 
+function* toggleRequestSent(request) {
+  try {
+
+    const data = {
+      ...request,
+      markedSent: !request.markedSent
+    }
+
+    put(updateRequest());
+    let updatedRequest = axios.put(`/api/request/${request._id}`, { data });
+    put(updateRequestSuccess(updatedRequest))
+     
+  } catch (err) {
+
+    put(updateRequestFail(err.message));
+
+  }
+}
+
 function* requestSaga() {
   yield takeLatest('SEND_EMAIL_WITH_TRACKING', sendTrackingEmail);
   yield takeLatest(HANDLE_GET_ALL_REQUESTS, handleGetRequests);
-}
+  yield takeLatest(HANDLE_TOGGLE_REQUEST, toggleRequestSent);
+} 
 
 export default requestSaga;

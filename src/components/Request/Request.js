@@ -26,7 +26,9 @@ class Request extends Component {
       nominatorEmail,
       parentEmail,
       showEmailForm,
-      showNotes
+      showNotes,
+      markedSent,
+      toggleMarkedSent
     } = this.props;
     return (
       <div className={`request-details ${this.state.open ? 'open' : null}`}>
@@ -64,6 +66,7 @@ class Request extends Component {
             <Button title="Print Shipping Label" onClick={() => {
               window.open('https://www.paypal.com/shiplabel/create/', '_blank');
             }}/>
+            <Button title={markedSent ? 'Unsent' : 'Sent'} onClick={toggleMarkedSent} />
 
         </div>      
       </div> 

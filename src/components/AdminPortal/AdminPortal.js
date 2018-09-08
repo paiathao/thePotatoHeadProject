@@ -7,7 +7,7 @@ import RequestList from '../RequestList/RequestList';
 import Request from '../Request/Request';
 import EmailFormModal from '../EmailFormModal/EmailFormModal';
 import NotesModal from '../NotesModal/NotesModal';
-import { handleGetAllRequests } from '../../redux/actions/requestActions';
+import { handleGetAllRequests, handleToggle } from '../../redux/actions/requestActions';
 
 
 class AdminPortal extends Component {
@@ -59,10 +59,15 @@ class AdminPortal extends Component {
     });
   }
 
+  handleToggleRequest = request => {
+    this.props.dispatch(handleToggle(request));
+  }
+
   renderRequest = request => (
     <Request 
-      key={request.id} 
+      key={request._id} 
       {...request}
+      toggleMarkedSent={this.handleToggleRequest.bind(this, request)}
       showNotes={this.showNotes.bind(this, request.note)} 
       showEmailForm={this.showEmailForm.bind(this, {
         nominatorEmail: request.nominatorEmail,
