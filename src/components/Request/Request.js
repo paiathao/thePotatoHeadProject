@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Request.css';
 
+import Button from '../Button/Button';
+
 const RequestDetail = ({ title, data }) => (
   <div className="RequestDetail">
     <p>{title}</p>
@@ -23,7 +25,8 @@ class Request extends Component {
       subscription,
       nominatorEmail,
       parentEmail,
-      showEmailForm
+      showEmailForm,
+      showNotes
     } = this.props;
     return (
       <div className={`request-details ${this.state.open ? 'open' : null}`}>
@@ -56,7 +59,8 @@ class Request extends Component {
           </div> 
         </div> 
         <div className="request-toolbar">
-            <button onClick={showEmailForm}>Send Email</button>
+            <Button title="Show Notes" onClick={showNotes}/>
+            <Button title="Send Email" onClick={showEmailForm}/>
         </div>      
       </div> 
     )
