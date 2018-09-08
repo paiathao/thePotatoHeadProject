@@ -15,4 +15,4 @@ const checkHospital = (state = [], action)=>{
 
 export default combineReducers({
     checkHospital
-})
+});
