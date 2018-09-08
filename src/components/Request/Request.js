@@ -32,12 +32,12 @@ class Request extends Component {
             <div>
               { baby.map((b, i) => (
                 <div key={i}>
-                  <RequestDetail title="DOB" data={b.dob} />      
+                  <RequestDetail title="DOB" data={b.birthDate} />      
                   <RequestDetail title="Gender" data={b.gender} />      
-                  <RequestDetail title="Gestation" data={`${b.weeks} weeks`} />
-                  { b.days > 0 && <RequestDetail data={`${b.days} days`} /> }
-                  <RequestDetail title="Weight" data={`${b.pounds} pounds`} />
-                  { b.ounces > 0 && <RequestDetail data={`${b.ounces} ounces`} /> }
+                  <RequestDetail title="Gestation" data={`${b.gestationWeeks} weeks`} />
+                  { b.gestationDays > 0 && <RequestDetail data={`${b.gestationDays} days`} /> }
+                  <RequestDetail title="Weight" data={`${b.weightPounds} pounds`} />
+                  { b.weightOunces > 0 && <RequestDetail data={`${b.weightOunces} ounces`} /> }
                 </div>
               )) }
             </div>     
@@ -77,7 +77,7 @@ class Request extends Component {
           <div className="request-header">
 
               <div>
-                <p>{baby[0].first}</p>
+                <p>{baby[0].firstName}</p>
               </div>
 
               <div>
