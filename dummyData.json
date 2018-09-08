@@ -13,11 +13,13 @@
         "weightOunces": "12"
       }
     ],
+    "hospitalName": "UofM Children's Hospital",
     "address": "123 Fake St.",
     "address2": "",
     "city": "Minneapolis",
     "state": "MN",
     "zip": "55405",
+    "country": "United State",
     "subscription": false,
     "nominatorName": "Toua",
     "nominatorEmail": "toua@toua.com",
@@ -39,11 +41,13 @@
         "weightOunces": "0"
       }
     ],
+    "hospitalName": "St. Paul General",
     "address": "4726 Lamada Pl",
     "address2": "Apt 2",
     "city": "Eden Prarie",
     "state": "MN",
     "zip": "55405",
+    "country": "United State",
     "subscription": true,
     "nominatorName": "Toua",
     "nominatorEmail": "toua@toua.com",
@@ -75,11 +79,13 @@
         "weightOunces": "0"
       }
     ],
+    "hospitalName": "Sacred Heart ICU",
     "address": "4726 Lamada Pl",
     "address2": "Apt 2",
     "city": "Eden Prarie",
     "state": "MN",
     "zip": "55405",
+    "country": "United State",
     "subscription": true,
     "nominatorName": "Casey",
     "nominatorEmail": "casey@casey.com",
