@@ -61,6 +61,10 @@ class Request extends Component {
         <div className="request-toolbar">
             <Button title="Show Notes" onClick={showNotes}/>
             <Button title="Send Email" onClick={showEmailForm}/>
+            <Button title="Print Shipping Label" onClick={() => {
+              window.open('https://www.paypal.com/shiplabel/create/', '_blank');
+            }}/>
+
         </div>      
       </div> 
     )
