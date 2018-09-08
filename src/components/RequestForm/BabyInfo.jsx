@@ -10,6 +10,15 @@ class BabyInfo extends Component {
    
   }
 
+  handleInputChangeForBaby = name => event => {
+    console.log(name);
+    this.props.handleInputChangeForBaby({
+      name,
+      value: event.target.value,
+      index: this.props.babyIndex
+    })
+  }
+
 
   render() {
     return (
@@ -17,27 +26,36 @@ class BabyInfo extends Component {
 
       <div id="babyInfoDiv">
         <div id="babyNameDiv">
-          Baby's First Name:&nbsp; <input type="text" placeholder="First Name"  onChange={this.props.handleInputChangeFor('firstName')}/>&nbsp;
-          Baby's Last Name:&nbsp; <input type="text" placeholder="Last Name" onChange={this.props.handleInputChangeFor('lastName')} />
+          Baby's First Name: 
+          <input 
+            type="text" 
+            placeholder="First Name"  
+            onChange={this.handleInputChangeForBaby('firstName')}
+          />
+          
+          &nbsp;
+
+          Baby's Last Name: 
+          <input type="text" placeholder="Last Name" onChange={this.handleInputChangeForBaby('lastName')} />
         </div>
         <br />
         <br />
         <div id="genderAndStatsDiv">
           <div id="genderDiv">
-            Birth Date: <input type="date" onChange={this.props.handleInputChangeFor('birthDate')} />
+            Birth Date: <input type="date" onChange={this.handleInputChangeForBaby('birthDate')} />
             <br />
             <br />
             Girl
-            <input id="genderGirl" type="radio" name="gender" value="girl" onChange={this.props.handleInputChangeFor('gender')}  />
+            <input id="genderGirl" type="radio" name="gender" value="girl" onChange={this.handleInputChangeForBaby('gender')}  />
             <br />
             Boy
-            <input id="genderBoy" type="radio" name="gender" value="boy" onChange={this.props.handleInputChangeFor('gender')} />
+            <input id="genderBoy" type="radio" name="gender" value="boy" onChange={this.handleInputChangeForBaby('gender')} />
           </div>
           <br />
           <div id="statsDiv">
-            Gestation: Weeks:
-            <select name="Weeks" id="selectWeeks" onChange={this.props.handleInputChangeFor('gestationWeeks')}>
-              <option value="0">0</option>
+            Gestation:&nbsp;&nbsp;Weeks:
+            <select name="Weeks" id="selectWeeks" onChange={this.handleInputChangeForBaby('gestationWeeks')}>
+              {/* <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -56,7 +74,8 @@ class BabyInfo extends Component {
               <option value="16">16</option>
               <option value="17">17</option>
               <option value="18">18</option>
-              <option value="19">19</option>
+              <option value="19">19</option> */}
+              <option value="">---</option>
               <option value="20">20</option>
               <option value="21">21</option>
               <option value="22">22</option>
@@ -79,8 +98,9 @@ class BabyInfo extends Component {
               <option value="39">39</option>
               <option value="40">40</option>
             </select>
-            Days:
-            <select name="Days" id="selectDays" onChange={this.props.handleInputChangeFor('gestationDays')}>
+            &nbsp;Days:
+            <select name="Days" id="selectDays" onChange={this.handleInputChangeForBaby('gestationDays')}>
+            <option value="">---</option>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -91,8 +111,9 @@ class BabyInfo extends Component {
             </select>
             <br />
             <br />
-            Weight: Pounds:
-            <select name="Pounds" id="selectPounds" onChange={this.props.handleInputChangeFor('weightPounds')}>
+            Weight:&nbsp;&nbsp;Pounds:
+            <select name="Pounds" id="selectPounds" onChange={this.handleInputChangeForBaby('weightPounds')}>
+            <option value="">---</option>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -102,8 +123,9 @@ class BabyInfo extends Component {
               <option value="6">6</option>
               <option value="7">7</option>
             </select>
-            Ounces:
-            <select name="Ounces" id="selectOunces" onChange={this.props.handleInputChangeFor('weightOunces')}>
+            &nbsp;Ounces:
+            <select name="Ounces" id="selectOunces" onChange={this.handleInputChangeForBaby('weightOunces')}>
+              <option value="">---</option>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>

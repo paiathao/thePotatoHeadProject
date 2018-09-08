@@ -6,26 +6,30 @@ import Radiobox from './Radiobox';
 
 
 class RequestForm extends Component {
+  
   constructor(props) {
     super(props);
 
     this.state = {
+      baby: [
+        {
+          birthDate: '',
+          firstName: '',
+          lastName: '',
+          gender: '',
+          gestationWeeks: '',
+          gestationDays: '',
+          weightPounds: '',
+          weightOunces: '',
+        }
+      ],
       numberBabies: 1,
-      babyNumber: 1,
-      subscribeChecked: null,
+      subscription: null,
       nominatorName: '',
       nominatorEmail: '',
       contactChecked: false,
       parentName: '',
       parentEmail: '',
-      birthDate: '',
-      firstName: '',
-      lastName: '',
-      gender: '',
-      gestationWeeks: '',
-      gestationDays: '',
-      weightPounds: '',
-      weightOunces: '',
       personalNote: '',
       streetAddress: '',
       streetAddress2: '',
@@ -39,12 +43,14 @@ class RequestForm extends Component {
     };
   }
 
+
   handleSubscribe = (event) => {
     this.setState({
       ...this.state,
-      subscribeChecked: !this.state.subscribeChecked
+      subscription: !this.state.subscription
     })
   }
+
 
   handleInputChangeFor = propertyName => (event) => {
     console.log(propertyName, event.target.value);
@@ -53,24 +59,50 @@ class RequestForm extends Component {
       [propertyName]: event.target.value
     })
   }
-handleClearParents =  () => {
- 
-  this.setState({
-    ...this.state,
-    parentName: '',
-    parentEmail: '',
-    contactChecked: "false"
-  })
-}
-  handleSubmit = () => {
-//do this 
+
+
+  handleInputChangeForBaby = ({index, name, value}) => {
+    console.log(index, name, value);
+
+    let babies = this.state.baby;
+    babies[index][name] = value;
+
+    this.setState({
+      ...this.state,
+      baby: babies
+    });
+    
   }
 
+
+  handleClearParents = () => {
+    this.setState({
+      ...this.state,
+      parentName: '',
+      parentEmail: '',
+      contactChecked: "false"
+    })
+  }
+
+
+  handleSubmit = () => {
+    //do this 
+  }
+
+
   addAnotherBaby = () => {
+  //    this.setState({
+  //     ...this.state,
+  //     babies:{
+  //       ...this.state.babies.push(this.state.baby)
+  //     }
+  //   })
     this.setState({
       numberBabies: this.state.numberBabies + 1
-    });
+    })
+   
   };
+
 
   removeBaby = () => {
     if (this.state.numberBabies > 1) {
@@ -79,16 +111,27 @@ handleClearParents =  () => {
       })
     }
   }
+
+
+
   render() {
     console.log(this.state);
-
-    let babyInfoArray = new Array(this.state.numberBabies).fill(null).map(
-      (item, index) => <BabyInfo key="index" handleInputChangeFor={this.handleInputChangeFor} 
-                        removeBaby={this.removeBaby} addAnotherBaby={this.addAnotherBaby} />)
+    // mapping through how many times to render the babyInfoDiv
+    // switch to this eventually, once the babies array is set
+    let babyInfoArray = this.state.baby.map(
+    // let babyInfoArray = new Array(this.state.numberBabies).fill(null).map(
+    (item, index) => (
+      <BabyInfo 
+        key={index}
+        babyIndex={index} 
+        handleInputChangeForBaby={this.handleInputChangeForBaby}
+        removeBaby={this.removeBaby} 
+        addAnotherBaby={this.addAnotherBaby} 
+      />
+    ))
 
 
     return (
-
       <div id="formDiv">
         <form onSubmit={e => e.preventDefault()}>
           <div id="babyInfoField">
@@ -98,31 +141,28 @@ handleClearParents =  () => {
           <div id="contactDiv">
             <div id="nominatorDiv">
               Nominator Name:&nbsp;
-                <input type="text" placeholder="Your Name" onChange={this.handleInputChangeFor('nominatorName')}/>
+                <input type="text" placeholder="Your Name" onChange={this.handleInputChangeFor('nominatorName')} />
               <br />
               Nominator Email:&nbsp;
-                <input type="text" placeholder="Your Email" onChange={this.handleInputChangeFor('nominatorEmail')}/>
+                <input type="text" placeholder="Your Email" onChange={this.handleInputChangeFor('nominatorEmail')} />
               <br />
               <br />
               If you are not the parents,
               <br />
               would the parents like to be contacted?
-              <Radiobox contactChecked={this.state.contactChecked} 
-                        handleInputChangeFor={this.handleInputChangeFor}
-                        handleClearInput={this.handleClearInput}
-                        handleClearParents={this.handleClearParents}
-                        parentName={this.state.parentName}
-                        parentEmail={this.state.parentEmail}
-                        />
-                        
-
+              <Radiobox contactChecked={this.state.contactChecked}
+                handleInputChangeFor={this.handleInputChangeFor}
+                handleClearInput={this.handleClearInput}
+                handleClearParents={this.handleClearParents}
+                parentName={this.state.parentName}
+                parentEmail={this.state.parentEmail}
+              />
             </div>
             <br />
           </div>
           <br />
           <br />
-
-          <AutoComplete 
+          <AutoComplete
             handleInputChangeFor={this.handleInputChangeFor}
             streetAddress={this.state.streetAddress}
             streetAddress2={this.state.streetAddress2}
@@ -134,7 +174,6 @@ handleClearParents =  () => {
             country={this.state.country}
             searchField={this.state.searchField}
           />
-
           <br />
           <br />
           <div id="extrasDiv">
@@ -151,12 +190,11 @@ handleClearParents =  () => {
                 <br />the Potato Head Project newsletter</label>
               </div>
               <br />
-              <input type="submit" value="Submit Request" onSubmit={this.handleSubmit}/>
+              <input type="submit" value="Submit Request" onSubmit={this.handleSubmit} />
             </div>
           </div>
         </form>
       </div>
-
     )
   }
 }
