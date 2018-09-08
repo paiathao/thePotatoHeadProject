@@ -7,6 +7,7 @@ import RequestList from '../RequestList/RequestList';
 import Request from '../Request/Request';
 import EmailFormModal from '../EmailFormModal/EmailFormModal';
 import { handleGetAllRequests } from '../../redux/actions/requestActions';
+import { handleSendEmail } from '../../redux/actions/emailActions';
 
 
 class AdminPortal extends Component {
@@ -23,15 +24,12 @@ class AdminPortal extends Component {
   }
 
   sendEmail = ({ note, tracking }) => {
-    this.props.dispatch({
-      type: 'SEND_EMAIL_WITH_TRACKING',
-      payload: {
+    this.props.dispatch(handleSendEmail({
         note,
         tracking,
         nominatorEmail: this.state.emailForm.nominator.nominatorEmail,
         nominatorName: this.state.emailForm.nominator.nominatorName
-      }
-    });
+      }));
   }
 
   showEmailForm = nominator => {
