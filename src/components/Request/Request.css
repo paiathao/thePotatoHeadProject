@@ -1,5 +1,7 @@
 .Request {
-  margin: 12px;
+  margin: 22px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 
@@ -10,25 +12,28 @@
   flex-wrap: wrap;
 }
 
+.request-header > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.request-header > *,
+.request-details > * {
+  flex: 1;
+  text-align: center;
+}
+
 .request-header:hover {
   cursor: pointer;
 }
 
 .request-details {
-  flex-direction: column;
+  display: flex;
 }
 
-.request-header > *,
-.request-details > div > * {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.request-details > div > div {
-  display: flex;
+.request-details > div {
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
 }
 
@@ -37,25 +42,27 @@
   color: white;
 }
 
-.request-details {
+.request-sub-menu {
   background-color: #ddd;
   overflow: hidden;
   animation: slide 600ms;
   transform-origin: top;
-  
 }
 
 .RequestDetail {
   margin: 12px 4px;
+  display: flex;
+  flex-direction: column;
 }
 
 .RequestDetail p {
   margin: 4px 0;
 }
 
-.RequestDetail > p:first-of-type {
+.request-detail-header {
   margin: 0;
   font-weight: bold;
+  font-size: .8em;
 }
 
 .open {
