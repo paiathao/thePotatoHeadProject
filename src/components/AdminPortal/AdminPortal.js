@@ -6,13 +6,9 @@ import Header from '../Header/Header';
 import RequestList from '../RequestList/RequestList';
 import Request from '../Request/Request';
 import EmailFormModal from '../EmailFormModal/EmailFormModal';
-<<<<<<< HEAD
 import NotesModal from '../NotesModal/NotesModal';
 import { handleGetAllRequests, handleToggle } from '../../redux/actions/requestActions';
-=======
-import { handleGetAllRequests } from '../../redux/actions/requestActions';
 import { handleSendEmail } from '../../redux/actions/emailActions';
->>>>>>> master
 
 
 class AdminPortal extends Component {
