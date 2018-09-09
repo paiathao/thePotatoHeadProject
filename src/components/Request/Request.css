@@ -26,6 +26,7 @@
 
 .request-header:hover {
   cursor: pointer;
+  filter: brightness(92%);
 }
 
 .request-details {
@@ -38,12 +39,12 @@
 }
 
 .request-header {
-  background-color: #e5512f;
+  background-color: #71cbcf;
   color: white;
 }
 
 .request-sub-menu {
-  background-color: #ddd;
+  background-color: #eee;
   overflow: hidden;
   animation: slide 600ms;
   transform-origin: top;
