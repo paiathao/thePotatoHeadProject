@@ -28,10 +28,14 @@ class Request extends Component {
       showEmailForm,
       showNotes,
       markedSent,
-      toggleMarkedSent
+      toggleMarkedSent,
+      opened
     } = this.props;
+
+    if (!opened) return null;
+
     return (
-      <div className={`request-details ${this.props.opened ? 'open' : null}`}>
+      <div className={`request-details`}>
         <div>
           <div>
             <div>
