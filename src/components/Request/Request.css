@@ -10,6 +10,10 @@
   flex-wrap: wrap;
 }
 
+.request-header:hover {
+  cursor: pointer;
+}
+
 .request-details {
   flex-direction: column;
 }
@@ -36,8 +40,9 @@
 .request-details {
   background-color: #ddd;
   overflow: hidden;
-  height: 0;
-  transition: 800ms;
+  animation: slide 600ms;
+  transform-origin: top;
+  
 }
 
 .RequestDetail {
@@ -59,4 +64,13 @@
 
 .request-toolbar {
   justify-content: flex-end;
+}
+
+@keyframes slide {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }

@@ -28,10 +28,14 @@ class Request extends Component {
       showEmailForm,
       showNotes,
       markedSent,
-      toggleMarkedSent
+      toggleMarkedSent,
+      opened
     } = this.props;
+
+    if (!opened) return null;
+
     return (
-      <div className={`request-details ${this.state.open ? 'open' : null}`}>
+      <div className={`request-details`}>
         <div>
           <div>
             <div>
@@ -83,7 +87,7 @@ class Request extends Component {
     return (
         <div
           className="Request"
-          onClick={() => this.setState({ open: !this.state.open })}
+          onClick={this.props.openRequest}
         >
           <div className="request-header">
 

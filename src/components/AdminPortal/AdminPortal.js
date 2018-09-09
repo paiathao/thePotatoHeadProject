@@ -7,7 +7,7 @@ import RequestList from '../RequestList/RequestList';
 import Request from '../Request/Request';
 import EmailFormModal from '../EmailFormModal/EmailFormModal';
 import NotesModal from '../NotesModal/NotesModal';
-import { handleGetAllRequests, handleToggle } from '../../redux/actions/requestActions';
+import { handleGetAllRequests, handleToggle, setCurrentOpenedRequest } from '../../redux/actions/requestActions';
 import { handleSendEmail } from '../../redux/actions/emailActions';
 
 
@@ -61,10 +61,16 @@ class AdminPortal extends Component {
     this.props.dispatch(handleToggle(request));
   }
 
+  openRequest = id => {
+    this.props.dispatch(setCurrentOpenedRequest(id))
+  }
+
   renderRequest = request => (
     <Request 
       key={request._id} 
       {...request}
+      openRequest={this.openRequest.bind(this, request._id)}
+      opened={request._id === this.props.opened}
       toggleMarkedSent={this.handleToggleRequest.bind(this, request)}
       showNotes={this.showNotes.bind(this, request.note)} 
       showEmailForm={this.showEmailForm.bind(this, {
@@ -114,6 +120,7 @@ class AdminPortal extends Component {
 }
 
 const mapStateToProps = ({ requests }) => ({
+  opened: requests.currentlyOpened,
   requests: requests.all
 });
 
