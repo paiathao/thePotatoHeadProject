@@ -1,5 +1,7 @@
 .Request {
-  margin: 12px;
+  margin: 22px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 
@@ -10,52 +12,63 @@
   flex-wrap: wrap;
 }
 
-.request-header:hover {
-  cursor: pointer;
-}
-
-.request-details {
-  flex-direction: column;
+.request-header > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .request-header > *,
-.request-details > div > * {
+.request-details > * {
   flex: 1;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
-.request-details > div > div {
+.request-header:hover {
+  cursor: pointer;
+  filter: brightness(92%);
+}
+
+.request-details {
   display: flex;
+}
+
+.request-details > div {
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
 }
 
 .request-header {
-  background-color: #e5512f;
+  background-color: #71cbcf;
   color: white;
 }
 
-.request-details {
-  background-color: #ddd;
+.request-sub-menu {
+  background-color: #eee;
   overflow: hidden;
   animation: slide 600ms;
   transform-origin: top;
-  
 }
 
 .RequestDetail {
   margin: 12px 4px;
+  display: flex;
+  flex-direction: column;
 }
 
 .RequestDetail p {
   margin: 4px 0;
 }
 
-.RequestDetail > p:first-of-type {
+.request-detail-header {
   margin: 0;
   font-weight: bold;
+  font-size: .8em;
+  color: #555;
+}
+
+.request-detail-data {
+  color: #666
 }
 
 .open {
@@ -63,7 +76,13 @@
 }
 
 .request-toolbar {
+  display: flex;
   justify-content: flex-end;
+  margin: 18px;
+}
+
+.request-toolbar > * {
+  margin: 0 8px;
 }
 
 @keyframes slide {
