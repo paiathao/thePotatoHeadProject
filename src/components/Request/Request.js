@@ -68,26 +68,26 @@ class Request extends Component {
 
           <div>
             <RequestDetail title="Email">
-              <p>{nominatorEmail}</p>
+              <p className="request-detail-data">{nominatorEmail}</p>
             </RequestDetail>
 
             <RequestDetail title="Subscribed">
-              <p>{String(subscription)}</p>
+              <p className="request-detail-data">{String(subscription)}</p>
             </RequestDetail>
           </div>  
 
           <div>
             <RequestDetail title="Email">
-              <p>{parentEmail}</p>
+              <p className="request-detail-data">{parentEmail}</p>
             </RequestDetail>
           </div>
             
 
           <div>
             <RequestDetail title="Address">
-              <p>{address}</p>
-              { address2 && <p>{address2}</p> }
-              <p>{`${city}, ${state} ${zip}`}</p>
+              <p className="request-detail-data">{address}</p>
+              { address2 && <p className="request-detail-data">{address2}</p> }
+              <p className="request-detail-data">{`${city}, ${state} ${zip}`}</p>
             </RequestDetail>
           </div> 
 
@@ -125,7 +125,14 @@ class Request extends Component {
           <div className="request-header">
 
               <div>
-                <p>{baby[0].firstName}</p>
+                {
+                  baby.map((b, i) => (
+                    i === 0 ? 
+                      <p key={i}>{b.firstName}</p> :
+                      <p key={i} style={{ marginLeft: '6px' }}> {`and ${b.firstName}`}</p>
+                  ))
+                }
+                
               </div>
 
               <div>

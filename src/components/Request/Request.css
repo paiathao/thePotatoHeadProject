@@ -64,6 +64,11 @@
   margin: 0;
   font-weight: bold;
   font-size: .8em;
+  color: #555;
+}
+
+.request-detail-data {
+  color: #666
 }
 
 .open {
