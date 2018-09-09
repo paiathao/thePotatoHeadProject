@@ -4,7 +4,8 @@ import {
   GET_ALL_REQUESTS_FAIL,
   TOGGLE_REQUEST,
   TOGGLE_REQUEST_SUCCESS,
-  TOGGLE_REQUEST_FAIL
+  TOGGLE_REQUEST_FAIL,
+  SET_CURRENT_OPENED_REQUEST
 } from '../actions/requestActions';
 
 const initialState = {
@@ -29,6 +30,10 @@ export default (state=initialState, action) => {
     case GET_ALL_REQUESTS_FAIL:
     case TOGGLE_REQUEST_FAIL:
       return { ...state, isLoading: false, error: action.error }  
+
+    case SET_CURRENT_OPENED_REQUEST:
+      return { ...state, currentlyOpened: action.payload }
+
     default:
       return state;
   }

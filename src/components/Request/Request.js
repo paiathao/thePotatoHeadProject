@@ -31,7 +31,7 @@ class Request extends Component {
       toggleMarkedSent
     } = this.props;
     return (
-      <div className={`request-details ${this.state.open ? 'open' : null}`}>
+      <div className={`request-details ${this.props.opened ? 'open' : null}`}>
         <div>
           <div>
             <div>
@@ -83,7 +83,7 @@ class Request extends Component {
     return (
         <div
           className="Request"
-          onClick={() => this.setState({ open: !this.state.open })}
+          onClick={this.props.openRequest}
         >
           <div className="request-header">
 

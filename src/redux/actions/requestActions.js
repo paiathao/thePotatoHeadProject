@@ -11,6 +11,8 @@ export const TOGGLE_REQUEST = 'TOGGLE_REQUEST';
 export const TOGGLE_REQUEST_SUCCESS = 'TOGGLE_REQUEST_SUCCESS';
 export const TOGGLE_REQUEST_FAIL = 'TOGGLE_REQUEST_FAIL';
 
+export const SET_CURRENT_OPENED_REQUEST = 'SET_CURRENT_OPENED_REQUEST';
+
 // SAGA action creators
 export const handleGetAllRequests = () => ({
   type: HANDLE_GET_ALL_REQUESTS
@@ -50,4 +52,9 @@ export const updateRequestSuccess = request => ({
 export const updateRequestFail = error => ({
   type: TOGGLE_REQUEST_FAIL,
   error
+});
+
+export const setCurrentOpenedRequest = id => ({
+  type: SET_CURRENT_OPENED_REQUEST,
+  payload: id
 });
