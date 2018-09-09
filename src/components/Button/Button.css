@@ -3,6 +3,7 @@
   padding: 8px;
   background-color: #e5512f;
   color: white;
+  border-radius: 8px;
 }
 
 .Button:hover {

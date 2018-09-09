@@ -70,7 +70,13 @@
 }
 
 .request-toolbar {
+  display: flex;
   justify-content: flex-end;
+  margin: 18px;
+}
+
+.request-toolbar > * {
+  margin: 0 8px;
 }
 
 @keyframes slide {
