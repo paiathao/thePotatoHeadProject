@@ -26,17 +26,6 @@ function* handleGetRequests() {
   }
 }
 
-function* sendTrackingEmail(action) {
-  try {
-
-    yield axios.post('/api/email/tracking', action.payload);
-
-
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 function* toggleRequestSent(action) {
   try {
 
@@ -57,7 +46,6 @@ function* toggleRequestSent(action) {
 }
 
 function* requestSaga() {
-  yield takeLatest('SEND_EMAIL_WITH_TRACKING', sendTrackingEmail);
   yield takeLatest(HANDLE_GET_ALL_REQUESTS, handleGetRequests);
   yield takeLatest(HANDLE_TOGGLE_REQUEST, toggleRequestSent);
 } 
