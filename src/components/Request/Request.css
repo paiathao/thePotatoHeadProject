@@ -10,6 +10,10 @@
   flex-wrap: wrap;
 }
 
+.request-header:hover {
+  cursor: pointer;
+}
+
 .request-details {
   flex-direction: column;
 }
