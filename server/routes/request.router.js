@@ -28,6 +28,18 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     res.send(err);
 
   }
+});
+
+router.put('/:id', rejectUnauthenticated, async (req, res) => {
+  try {
+
+    const { id } = req.params;
+    let updatedRequest = await Request.findByIdAndUpdate(id, req.body, { new: true });
+    res.send(updatedRequest);
+
+  } catch (err) {
+    res.send(err);
+  }
 })
 
 module.exports = router;

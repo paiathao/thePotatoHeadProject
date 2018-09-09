@@ -6,7 +6,8 @@ import Header from '../Header/Header';
 import RequestList from '../RequestList/RequestList';
 import Request from '../Request/Request';
 import EmailFormModal from '../EmailFormModal/EmailFormModal';
-import { handleGetAllRequests } from '../../redux/actions/requestActions';
+import NotesModal from '../NotesModal/NotesModal';
+import { handleGetAllRequests, handleToggle } from '../../redux/actions/requestActions';
 import { handleSendEmail } from '../../redux/actions/emailActions';
 
 
@@ -16,6 +17,10 @@ class AdminPortal extends Component {
     emailForm: {
       show: false,
       nominator: {}
+    },
+    notes: {
+      show: false,
+      notes: ''
     }
   }
 
@@ -42,16 +47,42 @@ class AdminPortal extends Component {
     });
   }
 
+  showNotes = notes => {
+    this.setState({
+      ...this.state,
+      notes: {
+        show: true,
+        notes
+      }
+    });
+  }
+
+  handleToggleRequest = request => {
+    this.props.dispatch(handleToggle(request));
+  }
+
   renderRequest = request => (
     <Request 
-      key={request.id} 
-      {...request} 
+      key={request._id} 
+      {...request}
+      toggleMarkedSent={this.handleToggleRequest.bind(this, request)}
+      showNotes={this.showNotes.bind(this, request.note)} 
       showEmailForm={this.showEmailForm.bind(this, {
         nominatorEmail: request.nominatorEmail,
         nominatorName: request.nominatorName
       })}
     />
   );
+
+  closeModal(name) {
+    this.setState({ 
+      ...this.state, 
+      [name]: {
+        ...this.state[name],
+        show: false
+      } 
+    });
+  }
 
   render() {
     return (
@@ -68,14 +99,13 @@ class AdminPortal extends Component {
           onSend={this.sendEmail}
           visible={this.state.emailForm.show}
           nominator={this.state.emailForm.nominator}
-          closeModal={() => {
-            this.setState({ 
-              ...this.state, emailForm: {
-                ...this.state.emailForm,
-                show: false
-              } 
-            });
-          }}
+          closeModal={this.closeModal.bind(this, 'emailForm')}
+        />
+
+        <NotesModal
+          visible={this.state.notes.show} 
+          closeModal={this.closeModal.bind(this, 'notes')}
+          note={this.state.notes.notes}
         />
 
       </Main>

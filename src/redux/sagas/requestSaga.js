@@ -3,9 +3,13 @@ import axios from 'axios';
 
 import {
   HANDLE_GET_ALL_REQUESTS,
+  HANDLE_TOGGLE_REQUEST,
   getAllRequests,
   getAllRequestsSuccess,
-  getAllRequestsFail
+  getAllRequestsFail,
+  updateRequest,
+  updateRequestSuccess,
+  updateRequestFail
 } from '../actions/requestActions';
 
 function* handleGetRequests() {
@@ -22,8 +26,28 @@ function* handleGetRequests() {
   }
 }
 
+function* toggleRequestSent(action) {
+  try {
+
+    const request = {
+      ...action.payload,
+      markedSent: !action.payload.markedSent
+    }
+
+    yield put(updateRequest());
+    let { data } = yield axios.put(`/api/request/${request._id}`, request);
+    yield put(updateRequestSuccess(data));
+     
+  } catch (err) {
+
+    yield put(updateRequestFail(err.message));
+
+  }
+}
+
 function* requestSaga() {
   yield takeLatest(HANDLE_GET_ALL_REQUESTS, handleGetRequests);
-}
+  yield takeLatest(HANDLE_TOGGLE_REQUEST, toggleRequestSent);
+} 
 
 export default requestSaga;
