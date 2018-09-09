@@ -13,16 +13,10 @@ describe('authReducer', () => {
     expect(authReducer(undefined, action)).toEqual(initialState);
   });
 
-  it('resets isLoading and error once authenticated with AUTHENTICATE_USER', () => {
-    const action = { type: 'AUTHENTICATE_USER' };
-    expect(authReducer(initialState, action)).toEqual({
-      ...initialState,
-      isAuthenticated: true
-    });
+  it('unauthenticated on user logout', () => {
+    const action = { type: 'LOGOUT' }
+    const state = { ...initialState, isAuthenticated: true }
+    expect(authReducer(state, action).isAuthenticated).toEqual(false);
   });
 
-  it('resets to initialState when after logout with UNAUTHENTICATE_USER', () => {
-    const action = { type: 'UNAUTHENTICATE_USER' };
-    expect(authReducer({ ...initialState, isAuthenticated: true }, action)).toEqual(initialState);
-  });
 });

@@ -9,6 +9,7 @@ import EmailFormModal from '../EmailFormModal/EmailFormModal';
 import NotesModal from '../NotesModal/NotesModal';
 import { handleGetAllRequests, handleToggle, setCurrentOpenedRequest } from '../../redux/actions/requestActions';
 import { handleSendEmail } from '../../redux/actions/emailActions';
+import { triggerLogout } from '../../redux/actions/loginActions';
 
 
 class AdminPortal extends Component {
@@ -25,7 +26,11 @@ class AdminPortal extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(handleGetAllRequests());
+    const { isAuthenticated, history, dispatch } = this.props;
+    if (!isAuthenticated) {
+      history.push('/login');
+    }
+    dispatch(handleGetAllRequests());
   }
 
   sendEmail = ({ note, tracking }) => {
@@ -90,10 +95,18 @@ class AdminPortal extends Component {
     });
   }
 
+  handleLogout = () => {
+    const { dispatch, history } = this.props;
+    dispatch(triggerLogout());
+    history.push('/login');
+  }
+
   render() {
     return (
       <Main>
-        <Header />
+        <Header 
+          logout={this.handleLogout}
+        />
 
         <RequestList
           columns={['Baby', 'Nominator', 'Parents', 'Hospital']}
@@ -119,9 +132,10 @@ class AdminPortal extends Component {
   }
 }
 
-const mapStateToProps = ({ requests }) => ({
+const mapStateToProps = ({ requests, auth }) => ({
   opened: requests.currentlyOpened,
-  requests: requests.all
+  requests: requests.all,
+  isAuthenticated: auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(AdminPortal);
