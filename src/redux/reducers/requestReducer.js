@@ -18,13 +18,13 @@ export default (state=initialState, action) => {
   switch (action.type) {
     case GET_ALL_REQUESTS:
     case TOGGLE_REQUEST:
-      return { ...initialState, isLoading: true }  
+      return { ...state, isLoading: true }  
 
     case GET_ALL_REQUESTS_SUCCESS:
-      return { ...initialState, all: action.payload } 
+      return { ...state, all: action.payload, isLoading: false } 
     case TOGGLE_REQUEST_SUCCESS:
       const all = state.all.map(r => r._id === action.payload._id ? action.payload : r);
-      return { ...initialState, all }
+      return { ...state, all }
       
     case GET_ALL_REQUESTS_FAIL:
     case TOGGLE_REQUEST_FAIL:

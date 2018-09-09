@@ -37,21 +37,21 @@ function* sendTrackingEmail(action) {
   }
 }
 
-function* toggleRequestSent(request) {
+function* toggleRequestSent(action) {
   try {
 
-    const data = {
-      ...request,
-      markedSent: !request.markedSent
+    const request = {
+      ...action.payload,
+      markedSent: !action.payload.markedSent
     }
 
-    put(updateRequest());
-    let updatedRequest = axios.put(`/api/request/${request._id}`, { data });
-    put(updateRequestSuccess(updatedRequest))
+    yield put(updateRequest());
+    let { data } = yield axios.put(`/api/request/${request._id}`, request);
+    yield put(updateRequestSuccess(data));
      
   } catch (err) {
 
-    put(updateRequestFail(err.message));
+    yield put(updateRequestFail(err.message));
 
   }
 }

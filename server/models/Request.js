@@ -20,7 +20,8 @@ const RequestSchema = new Schema({
     subscription: { type: Boolean, default: false },
     tracking: { type: String},
     note: { type: String},
-    verified: { type: Boolean, default: false }
+    verified: { type: Boolean, default: false },
+    markedSent: { type: Boolean, default: false }
  });
  
  
