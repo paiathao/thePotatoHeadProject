@@ -6,16 +6,15 @@ import {
   Switch,
 } from 'react-router-dom';
 
-// import Header from './components/Header/Header';
 import AuthPage from './components/AuthPage/AuthPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
 
-/////testing the page
+
 import RequestForm from './components/RequestForm/RequestForm';
-// import Auto from './components/Email/autoResponse';
-// import FollowUp from './components/Email/followUp';
+import AdminPortal from './components/AdminPortal/AdminPortal';
+
 import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
 import Verification from './components/Verification/Verification';
 
@@ -26,11 +25,22 @@ const App = () => (
   <div>
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+      
         <Route
           path="/login"
           component={AuthPage}
         />
+
+        <Route
+          path="/admin"
+          component={AdminPortal}
+        />
+
+        <Route
+          path="/form"
+          component={RequestForm}
+        />
+
         <Route
           path="/register"
           component={RegisterPage}
@@ -44,34 +54,30 @@ const App = () => (
           component={InfoPage}
         />
         {/*  All Testing route */}
-        {/* <Route
-          path="/Admin"
-          component={Admin}
-        /> */}
+  
+        <Route
+          path="/form"
+          component={RequestForm}
+        />
 
-        {/* <Route
-          path="/Auto"
-          component={Auto}
-        /> */}
-        {/* <Route
-          path="/FollowUp"
-          component={FollowUp}
-        /> */}
+  
         <Route
           path="/AutoComplete"
           component={AutoComplete}
+
+        />
+
         />
         <Route
           path="/Verification"
           component={Verification}
         />
-        {/* OTHERWISE (no path!)*/}
-        {/* <Route render={() => <h1>404</h1>} /> */}
+
+
+        <Route render={() => <h1>404</h1>} />
 
       </Switch>
     </Router>
-    <RequestForm />
-    {/* <AutoComplete /> */}
   </div>
 );
 

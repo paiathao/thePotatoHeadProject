@@ -14,11 +14,16 @@ const RequestSchema = new Schema({
     address2: { type: String},
     floorNumber:{ type: Number, required: true},
     roomNumber: { type: Number, required: true },
+    city: { type: String, required: true },
     state: { type: String, required: true },
     postalcode: { type: String, required: true },
     country: { type: String, required: true },  
     personalNote: { type: String},
     subscription: { type: Boolean, default: false },
+    tracking: { type: String},
+    note: { type: String},
+    verified: { type: Boolean, default: false },
+    markedSent: { type: Boolean, default: false }
  });
  
  

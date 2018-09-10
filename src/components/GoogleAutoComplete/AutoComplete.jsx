@@ -107,7 +107,6 @@ export default class GoogleAutoComplete extends React.Component {
 
           case fields.postalcode: fieldsForState.postalcode = addrComps[index].long_name;
             break;
-
           default:
         }
       });
