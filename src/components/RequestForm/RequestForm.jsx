@@ -4,9 +4,6 @@ import BabyInfo from './BabyInfo';
 import AutoComplete from '../GoogleAutoComplete/AutoComplete';
 import Radiobox from './Radiobox';
 
-import GoogleMap from '../Map/map'
-
-
 class RequestForm extends Component {
   constructor(props) {
     super(props);

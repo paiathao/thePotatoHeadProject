@@ -4,7 +4,6 @@ import { combineReducers } from 'redux';
 import {CHECK_VERIFICATION_ACTION} from '../actions/verificationActions'
 
 const checkHospital = (state = [], action)=>{
-    console.log('verifiy',action)
     switch(action){
         case CHECK_VERIFICATION_ACTION.POST:
         return action.payload

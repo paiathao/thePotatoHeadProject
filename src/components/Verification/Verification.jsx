@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { CHECK_VERIFICATION_ACTION } from '../../redux/actions/verificationActions';
 
 //
-import MapContainer  from '../Map/map'
 
 const mapStateToProps = (state) => ({
     user: state.user,

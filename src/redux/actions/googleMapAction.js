@@ -1,0 +1,8 @@
+export const GET_MAP={
+    GET: 'GET_MAP_GEOCODE',
+    RUN_GEO:'GET_MAP_SET_ADDRESS',
+    RUN_GOOGLEMAP:'GET_MAP_RUN_GOOGLEMAP',
+    SET_GOOGLE_MARKER:'GET_MAP_SET_GOOGLE_MARKER'
+}
+
+console.log('googlemapAction')

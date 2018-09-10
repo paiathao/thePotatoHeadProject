@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 ///Google map
 import { Map,  Marker, GoogleApiWrapper } from 'google-maps-react';
 
+//action
+import {GET_MAP} from '../../redux/actions/googleMapAction'
+
 //css
 import '../../styles/googleMap.css'
 
@@ -15,10 +18,6 @@ class MapContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            link: true,
-            search: '',
-            vendor: '',
-            showingInfoWindow: false,
             activeMarker: {},
             selectedPlace: {},
             latLng: {
@@ -30,9 +29,29 @@ class MapContainer extends Component {
 
     }
 
+    componentDidMount() {
+        console.log('did this run?')
+        this.props.dispatch({ type: GET_MAP.GET });
+    }
+
+    onMarkerClick = (props, marker, e) => {
+        this.setState({
+            activeMarker: marker,
+        });
+    }
+
+    // handle = (props) => {
+    //     console.log('click')
+    //     this.props.dispatch({ type: GET_MAP.GET });
+    // }
+
     render() {
+        console.log('whatisthisstatehere',this.props)
         return (
             <div className="mapContainer">
+                <button onClick={this.handle}>
+                Test  button
+            </button>
             <Map
                 onClick={this.onMapClick}
                 google={this.props.google}
@@ -40,13 +59,14 @@ class MapContainer extends Component {
                 initialCenter={this.state.latLng}
             >
             </Map>
+        
             </div>
         )
     }
 }
 
 const connectToGoogleMaps = GoogleApiWrapper({
-    apiKey: ('AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M')
+    // apiKey: ('AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M')
 })(MapContainer)
 
-export default (connect(mapStateToProps) (connectToGoogleMaps))
+export default (connect(mapStateToProps)(connectToGoogleMaps))
