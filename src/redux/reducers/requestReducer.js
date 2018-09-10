@@ -8,6 +8,8 @@ import {
   SET_CURRENT_OPENED_REQUEST
 } from '../actions/requestActions';
 
+import { LOGIN_ACTIONS } from '../actions/loginActions';
+
 const initialState = {
   all: [],
   isLoading: false,
@@ -33,6 +35,9 @@ export default (state=initialState, action) => {
 
     case SET_CURRENT_OPENED_REQUEST:
       return { ...state, currentlyOpened: action.payload }
+
+    case LOGIN_ACTIONS.LOGOUT:
+      return initialState;  
 
     default:
       return state;

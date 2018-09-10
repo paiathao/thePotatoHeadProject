@@ -1,10 +1,10 @@
 import React from 'react';
 import './Header.css';
 
-const Header = ({ title, onLogout }) => (
+const Header = ({ title, logout }) => (
   <header className="Header">
     <h1>The Potato Head Project Requests</h1>
-    <button>Logout</button>
+    <button onClick={logout}>Logout</button>
   </header>
 );
 
