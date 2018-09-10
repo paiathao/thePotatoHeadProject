@@ -1,84 +1,165 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    
-}
-
-.instructions h1 {
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.instructions {
-    background-color: #00acb0;
-    padding: 5px;
-    color: #ece7e7;
-}
-
-.message {
-    padding: 10px 0;
-}
-
-.message p {
-    margin-left: 10px;
-}
-
-.message:nth-child(odd) {
-     background-color: #eeeeee;
-}
-
-.message:nth-child(even) {
-    background-color: #f8f8f8;
-}
-
-.navbar {
-  background-color: #00acb0;
-  width: 100%;
-  border-radius: 0px;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
 }
 
 li {
-    float: left;
+  float: left;
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-
+  color: white;
+  display: block;
+  padding: 1rem 1rem;
+  text-align: center;
+  text-decoration: none;
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    text-decoration: underline;
-    color: #eee;
+  color: #eee;
+  text-decoration: underline;
+}
+
+p {
+  margin:0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+
+
+.addressInput{
+  align-items: center;
+  border: 0.125rem solid #74CAD1;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.125rem;
+  padding: 0.5rem 1rem;
+  width: 31.25rem;
 }
 
 .Google_image{
-   height: 20px;
-   width: 155px;
+  height: 1.25rem;
+  width: 10rem;
 }
 
-#formDiv{
+.hospAddInputs{
+  width: 12.5rem;
+}
+
+.hospitalInput{
+  width: 31.25rem;
+}
+
+.instructions {
+  background-color: #00acb0;
+  color: #ece7e7;
+  padding: 0.25rem;
+}
+
+.instructions h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.message {
+  padding: 0.625rem 0;
+}
+
+.message:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.message:nth-child(odd) {
+  background-color: #eeeeee;
+}
+
+.message p {
+  margin-left: 0.625rem;
+}
+
+.navbar {
+  background-color: #00acb0;
+  border-radius: 0rem;
+  width: 100%;
+}
+
+
+
+#autoCompleteDiv{
+  align-items: center;
+  border: 0.5rem solid #74CAD1;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+#autoCompleteDiv2{
+  align-items: center;
+  border: 0.125rem solid #74CAD1;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.125rem;
+  padding: 0.25rem 1rem;
+  width: 31.25rem;
+}
+
+#babyInfoDiv{
+  animation: fadeIn 1s;
+  border: 0.5rem solid #E75128;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+}
+
+#babyNameDiv{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+#contactDiv{
+  border: 0.5rem solid #74CAD1;
+  border-radius: 1rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
-  
+  margin-bottom: 0.5rem;
+  padding: 1rem; 
 }
 
-form{
-  background-color: #B8E1E3;
-  border-radius: 15px;
+#extrasDiv{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+#requestFormDiv{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3.125rem;
+}
+
+#genderDiv{
+display: flex;
+justify-content: space-evenly;
+margin-bottom: 2rem;
+margin-right: 0.75rem;
+}
+
+#genderAndBirthdateDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #genderAndStatsDiv{
@@ -86,99 +167,52 @@ form{
   justify-content: space-evenly;
 }
 
-#babyInfoDiv{
-  margin-bottom: 6px;
-  padding: 15px;
-  border: 6px solid #E75128;
-  border-radius: 15px;
-}
-
-#babyNameDiv{
-  display: flex;
-  justify-content: space-evenly;
-}
-
-#autoCompleteDiv{
-  display: flex;
-  /* justify-content: center; */
-  flex-direction: column;
-  align-items: center;
-  /* margin: 0px 6px; */
-  padding: 15px;
-  border: 6px solid #74CAD1;
-  border-radius: 15px;
-}
-
-#autoCompleteDiv2{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 500px;
-  margin-top: 2px;
-  padding: 4px 15px;
-  border: 2px solid #74CAD1;
-  border-radius: 15px;
-}
-
-.hospAddInputs{
- 
-  width: 200px;
-}
-
-#extrasDiv{
+#gestationAndWeightDiv{
   display: flex;
   justify-content: space-between;
-  margin: 12px;
+  margin-bottom: 1rem;
 }
 
-#subscribeDiv{
+#nominatorDiv{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-left: 12px;
-}
-
-#contactDiv{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* margin: 0px 6px; */
-  padding: 15px;
-  border: 6px solid #74CAD1;
-  border-radius: 15px;
-}
-
-.hospitalInput{
-  width: 500px;
-}
-
-.addressInput{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 500px;
-  margin-top: 2px;
-  padding: 8px 15px;
-  border: 2px solid #74CAD1;
-  border-radius: 15px;
+  margin-right: 1rem;
 }
 
 #parentDiv{
   animation: fadeIn 1s;
+  display: flex;
+  flex-direction: column; 
 }
 
-@keyframes slide-down {
-  from {
-    margin-top: -100%;
-    height: 0%;
-   
-  }
-
-  to {
-    margin-top: 0%;
-    height: 0%;
-  }
+#requestForm{
+  background-color: #B8E1E3;
+  border-radius: 1rem;
 }
+
+#statsDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#subscribeAndSubmitDiv{
+  display: flex;
+  flex-direction: column
+}
+
+#subscribeDiv{
+  display: flex;
+  justify-content: space-evenly; 
+  margin-left: 1rem;
+}
+
+#submitDiv{
+  margin-left: 6rem;
+  margin-top: 3rem;
+}
+
+
 
 @keyframes fadeIn {
   from { opacity: 0; }

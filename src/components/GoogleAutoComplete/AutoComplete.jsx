@@ -1,9 +1,9 @@
 import React from 'react';
 import Script from 'react-load-script';
-import { thisExpression } from 'babel-types';
+// import { thisExpression } from 'babel-types';
 // import '../../styles/google.css'
 
-var clone = require('clone');
+// var clone = require('clone');
 
 export default class GoogleAutoComplete extends React.Component {
   constructor(props) {
@@ -51,7 +51,14 @@ export default class GoogleAutoComplete extends React.Component {
 
         <div id="autoCompleteDiv2" key={i} className={`address-field address-${key}`}>
           <label htmlFor="this" >{this.state.labels[key]}</label>
-          <input required={required} type="text" className="hospAddInputs" id="this" onChange={this.props.handleInputChangeFor(key)} value={this.props[key]} />
+          <input 
+            required={required} 
+            type="text" 
+            className="hospAddInputs" 
+            id="this" 
+            onChange={this.props.handleInputChangeFor(key)} 
+            value={this.props[key]} 
+          />
         </div>
       )
     }
@@ -140,7 +147,7 @@ export default class GoogleAutoComplete extends React.Component {
 
   render() {
     const { scriptLoaded } = this.state;
-    const { id, placeholder, label } = this.props;
+    const { id } = this.props;
     return (
       [!scriptLoaded && <Script
         url={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M&libraries=places`}
@@ -150,11 +157,17 @@ export default class GoogleAutoComplete extends React.Component {
       />,
       <div id="autoCompleteDiv" className={`address ${this.state.showResult ? "showFields" : ""}`}>
         <div className="addressInput">
-          <label for="hospitalInput">Hospital Name</label>
-          <input type="search" className="hospitalInput" id={id} placeholder="Hospital Name" ref={ele => {
-            this.searchInput = ele;
-            (ele || {}).onsearch = this.handleSearchClear
-          }} />
+          <label htmlFor="hospitalInput">Hospital Name</label>
+          <input 
+            type="search" 
+            className="hospitalInput" 
+            id={id} 
+            placeholder="Hospital Name" 
+            ref={ele => {
+              this.searchInput = ele;
+              (ele || {}).onsearch = this.handleSearchClear
+            }} 
+          />
         </div>
         <div className="addressFields">
           {this.renderFields()}

@@ -4,26 +4,26 @@ import BabyInfo from './BabyInfo';
 import AutoComplete from '../GoogleAutoComplete/AutoComplete';
 import Radiobox from './Radiobox';
 
+const BABY_OBJECT = {
+  gender: '',
+  lastName: '',
+  firstName: '',
+  birthDate: '',
+  weightOunces: '',
+  weightPounds: '',
+  gestationDays: '',
+  gestationWeeks: '',
+}
 
 class RequestForm extends Component {
-  
+
   constructor(props) {
     super(props);
 
     this.state = {
       baby: [
-        {
-          birthDate: '',
-          firstName: '',
-          lastName: '',
-          gender: '',
-          gestationWeeks: '',
-          gestationDays: '',
-          weightPounds: '',
-          weightOunces: '',
-        }
+        BABY_OBJECT
       ],
-      numberBabies: 1,
       subscription: null,
       nominatorName: '',
       nominatorEmail: '',
@@ -43,36 +43,26 @@ class RequestForm extends Component {
     };
   }
 
-
-  handleSubscribe = (event) => {
-    this.setState({
-      ...this.state,
-      subscription: !this.state.subscription
-    })
-  }
-
-
-  handleInputChangeFor = propertyName => (event) => {
-    console.log(propertyName, event.target.value);
-    this.setState({
-      ...this.state,
-      [propertyName]: event.target.value
-    })
-  }
-
-
-  handleInputChangeForBaby = ({index, name, value}) => {
+  handleInputChangeForBaby = ({ index, name, value }) => {
     console.log(index, name, value);
-
     let babies = this.state.baby;
     babies[index][name] = value;
-
     this.setState({
       ...this.state,
       baby: babies
     });
-    
-  }
+  };
+
+
+  addAnotherBaby = () => {
+    this.setState({
+      ...this.state,
+      baby: [
+        ...this.state.baby,
+        BABY_OBJECT
+      ]
+    });
+  };
 
 
   handleClearParents = () => {
@@ -81,75 +71,89 @@ class RequestForm extends Component {
       parentName: '',
       parentEmail: '',
       contactChecked: "false"
-    })
-  }
+    });
+  };
+
+
+  handleInputChangeFor = propertyName => (event) => {
+    console.log(propertyName, event.target.value);
+    this.setState({
+      ...this.state,
+      [propertyName]: event.target.value
+    });
+  };
 
 
   handleSubmit = () => {
     //do this 
+    // this.setState({
+    //   ...this.state,
+    //   submitButton: {
+    //     ...this.state.submitButton,
+    //     disabled: true
+    //   }
+    // })
   }
 
 
-  addAnotherBaby = () => {
-  //    this.setState({
-  //     ...this.state,
-  //     babies:{
-  //       ...this.state.babies.push(this.state.baby)
-  //     }
-  //   })
+  handleSubscribe = (event) => {
     this.setState({
-      numberBabies: this.state.numberBabies + 1
-    })
-   
+      ...this.state,
+      subscription: !this.state.subscription
+    });
   };
 
 
   removeBaby = () => {
-    if (this.state.numberBabies > 1) {
-      this.setState({
-        numberBabies: this.state.numberBabies - 1
-      })
-    }
-  }
+    this.setState({
+      ...this.state,
+      baby: [
+        this.state.baby.pop()
+      ]
+    });
+  };
 
 
 
   render() {
     console.log(this.state);
     // mapping through how many times to render the babyInfoDiv
-    // switch to this eventually, once the babies array is set
-    let babyInfoArray = this.state.baby.map(
-    // let babyInfoArray = new Array(this.state.numberBabies).fill(null).map(
-    (item, index) => (
-      <BabyInfo 
+    let babyArray = this.state.baby.map((item, index) => (
+      <BabyInfo
         key={index}
-        babyIndex={index} 
+        babyIndex={index}
         handleInputChangeForBaby={this.handleInputChangeForBaby}
-        removeBaby={this.removeBaby} 
-        addAnotherBaby={this.addAnotherBaby} 
+        removeBaby={this.removeBaby}
+        addAnotherBaby={this.addAnotherBaby}
       />
-    ))
+    ));
 
 
     return (
-      <div id="formDiv">
-        <form onSubmit={e => e.preventDefault()}>
+      <div id="requestFormDiv">
+        <form id="requestForm" onSubmit={e => e.preventDefault()}>
           <div id="babyInfoField">
-            {babyInfoArray}
+            {babyArray}
           </div>
-          <br />
           <div id="contactDiv">
             <div id="nominatorDiv">
-              Nominator Name:&nbsp;
-                <input type="text" placeholder="Your Name" onChange={this.handleInputChangeFor('nominatorName')} />
-              <br />
-              Nominator Email:&nbsp;
-                <input type="text" placeholder="Your Email" onChange={this.handleInputChangeFor('nominatorEmail')} />
-              <br />
-              <br />
-              If you are not the parents,
-              <br />
-              would the parents like to be contacted?
+              Nominator Name:
+                <input
+                type="text"
+                placeholder="Your Name"
+                onChange={this.handleInputChangeFor('nominatorName')}
+              />
+              Nominator Email:
+                <input
+                type="text"
+                placeholder="Your Email"
+                onChange={this.handleInputChangeFor('nominatorEmail')}
+              />
+            </div>
+            <div id="parentContactDiv">
+              <p>If you are not the parents,</p>
+              <p>would the parents like to be contacted?</p>
+
               <Radiobox contactChecked={this.state.contactChecked}
                 handleInputChangeFor={this.handleInputChangeFor}
                 handleClearInput={this.handleClearInput}
@@ -158,10 +162,7 @@ class RequestForm extends Component {
                 parentEmail={this.state.parentEmail}
               />
             </div>
-            <br />
           </div>
-          <br />
-          <br />
           <AutoComplete
             handleInputChangeFor={this.handleInputChangeFor}
             streetAddress={this.state.streetAddress}
@@ -174,23 +175,44 @@ class RequestForm extends Component {
             country={this.state.country}
             searchField={this.state.searchField}
           />
-          <br />
-          <br />
           <div id="extrasDiv">
             <div id="notesDiv">
-              <label for="specialNotes">Use this space if you would like us to include a<br /> personalized note with your Potato Head Package?</label>
-              <br />
-              <textarea id="specialNotes" rows="5" cols="40" onChange={this.handleInputChangeFor('personalNote')}>
+              <label htmlFor="specialNotes">
+                <p>Use this space if you would like us</p>
+                <p>to include a personalized note</p>
+                <p>with your Potato Head Package?</p>
+              </label>
+              <textarea
+                id="specialNotes"
+                rows="5"
+                cols="40"
+                onChange={this.handleInputChangeFor('personalNote')}
+              >
               </textarea>
             </div>
-            <div id="subscribeDiv">
-              <div >
-                <input type="checkbox" name="subscribe" value="subscribe" onChange={this.handleSubscribe} />
-                <label htmlFor="subscribe">&nbsp;I would like to <b>subscribe</b> to
-                <br />the Potato Head Project newsletter</label>
+            <div id="subscribeAndSubmitDiv">
+              <div id="subscribeDiv">
+                  <input
+                    type="checkbox"
+                    name="subscribe"
+                    value="subscribe"
+                    onChange={this.handleSubscribe}
+                  />
+                  <label
+                    htmlFor="subscribe">
+                    <p>I would like to <b>subscribe</b> to</p>
+                    the Potato Head Project newsletter
+                </label>
               </div>
-              <br />
-              <input type="submit" value="Submit Request" onSubmit={this.handleSubmit} />
+              <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
+              <div id="submitDiv">
+                <input
+                  type="submit"
+                  ref="submitButton"
+                  value="Submit Request"
+                  onSubmit={this.handleSubmit}
+                />
+              </div>
             </div>
           </div>
         </form>
