@@ -100,7 +100,11 @@ class Request extends Component {
             <Button title="Print Shipping Label" onClick={() => {
               window.open('https://www.paypal.com/shiplabel/create/', '_blank');
             }}/>
-            <Button title={markedSent ? 'Unsent' : 'Sent'} onClick={toggleMarkedSent} />
+            <Button 
+              title={markedSent ? 'Mark Unsent' : ' Mark Sent'} 
+              onClick={toggleMarkedSent}
+              style={ markedSent ? { backgroundColor: '#c3e1e1' } : {} } 
+            />
 
         </div>  
 
@@ -115,14 +119,18 @@ class Request extends Component {
       baby,
       nominatorName,
       parentName,
-      hospitalName
+      hospitalName,
+      markedSent
     } = this.props;
     return (
         <div
           className="Request"
           onClick={this.props.openRequest}
         >
-          <div className="request-header">
+          <div 
+            className="request-header"
+            style={ markedSent ? { backgroundColor: '#c3e1e1' } : {} }
+          >
 
               <div>
                 {
