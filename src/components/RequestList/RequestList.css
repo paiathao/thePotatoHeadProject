@@ -1,0 +1,14 @@
+.RequestListHeader {
+  margin: 12px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.RequestListHeader > * {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+  font-size: 1.4em;
+  color: #666;
+}

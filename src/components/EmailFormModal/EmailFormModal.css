@@ -1,0 +1,17 @@
+.EmailFormModal {
+  display: flex;
+  flex-direction: column;
+}
+
+.EmailFormModal > * {
+  margin: 18px 0;
+}
+
+.EmailFormModal > button {
+  margin: 0;
+  align-self: flex-end;
+}
+
+.EmailFormModal span {
+  font-weight: bold;
+}
