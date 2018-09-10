@@ -7,14 +7,14 @@ class Radiobox extends Component {
     if (this.props.contactChecked === "true") {
       msg = 
       <div id="parentDiv">
-        Parent Name(s):
+        <p className="requestFormPtag">Parent Name(s):</p>
           <input
           type="text"
           placeholder="Parent Name(s)"
           onChange={this.props.handleInputChangeFor('parentName')}
           value={this.props.parentName}
         />
-        Parent Email:
+        <p className="requestFormPtag">Parent Email:</p>
           <input
           type="text"
           placeholder="Parent Email"

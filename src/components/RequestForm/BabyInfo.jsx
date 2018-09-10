@@ -21,7 +21,7 @@ class BabyInfo extends Component {
       <div id="babyInfoDiv" >
         <div id="babyNameDiv" >
           <div id="firstNameDiv">
-            <p><b>Baby's First Name:</b></p>
+            <p className="requestFormPtag"><b>Baby's First Name:</b></p>
             <input
               type="text"
               placeholder="First Name"
@@ -29,7 +29,7 @@ class BabyInfo extends Component {
             />
           </div>
           <div id="lastNameDiv">
-            <p><b>Baby's Last Name:</b></p>
+            <p className="requestFormPtag"><b>Baby's Last Name:</b></p>
             <input
               type="text"
               placeholder="Last Name"
@@ -40,7 +40,7 @@ class BabyInfo extends Component {
         <div id="genderAndStatsDiv">
           <div id="genderAndBirthdateDiv">
             <div id="birthdateDiv">
-              <p><b>Baby's Birth Date:</b></p>
+              <p className="requestFormPtag"><b>Baby's Birth Date:</b></p>
               <input
                 type="date"
                 onChange={this.handleInputChangeForBaby('birthDate')}
@@ -48,7 +48,7 @@ class BabyInfo extends Component {
             </div>
             <div id="genderDiv">
               <div id="genderGirlDiv">
-                <p>Girl</p>
+                <p className="requestFormPtag">Girl</p>
                 <input
                   id="genderGirl"
                   type="radio"
@@ -58,7 +58,7 @@ class BabyInfo extends Component {
                 />
               </div>
               <div id="genderBoyDiv">
-                <p>Boy</p>
+                <p className="requestFormPtag">Boy</p>
                 <input
                   id="genderBoy"
                   type="radio"
@@ -72,8 +72,8 @@ class BabyInfo extends Component {
           <div id="statsDiv">
             <div id="gestationAndWeightDiv">
               <div id="gestationDiv">
-                <p><b>Gestation:</b></p>
-                <p>Weeks:</p>
+                <p className="requestFormPtag"><b>Gestation:</b></p>
+                <p className="requestFormPtag">Weeks:</p>
                 <select
                   name="Weeks"
                   id="selectWeeks"
@@ -122,7 +122,7 @@ class BabyInfo extends Component {
                   <option value="39">39</option>
                   <option value="40">40</option>
                 </select>
-                <p>Days:</p>
+                <p className="requestFormPtag">Days:</p>
                 <select
                   name="Days"
                   id="selectDays"
@@ -139,8 +139,8 @@ class BabyInfo extends Component {
                 </select>
               </div>
               <div id="weightDiv">
-                <p><b>Weight:</b></p>
-                <p>Pounds:</p>
+                <p className="requestFormPtag"><b>Weight:</b></p>
+                <p className="requestFormPtag">Pounds:</p>
                 <select
                   name="Pounds"
                   id="selectPounds"
@@ -156,7 +156,7 @@ class BabyInfo extends Component {
                   <option value="6">6</option>
                   <option value="7">7</option>
                 </select>
-                <p>Ounces:</p>
+                <p className="requestFormPtag">Ounces:</p>
                 <select
                   name="Ounces"
                   id="selectOunces"

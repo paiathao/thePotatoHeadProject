@@ -1,0 +1,131 @@
+.requestFormPtag{
+  margin: 0rem;
+}
+
+
+#autoCompleteDiv{
+  align-items: center;
+  border: 0.5rem solid #74CAD1;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+#autoCompleteDiv2{
+  align-items: center;
+  border: 0.125rem solid #74CAD1;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.125rem;
+  padding: 0.25rem 1rem;
+  width: 31.25rem;
+}
+
+#babyInfoDiv{
+  animation: fadeIn 1s;
+  border: 0.5rem solid #E75128;
+  border-radius: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+}
+
+#babyNameDiv{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+#contactDiv{
+  border: 0.5rem solid #74CAD1;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  padding: 1rem; 
+}
+
+#extrasDiv{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+#requestFormDiv{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3.125rem;
+}
+
+#genderDiv{
+display: flex;
+justify-content: space-evenly;
+margin-bottom: 2rem;
+margin-right: 0.75rem;
+}
+
+#genderAndBirthdateDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#genderAndStatsDiv{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#gestationAndWeightDiv{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+#nominatorDiv{
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+}
+
+#parentDiv{
+  animation: fadeIn 1s;
+  display: flex;
+  flex-direction: column; 
+}
+
+#requestForm{
+  background-color: #B8E1E3;
+  border-radius: 1rem;
+}
+
+#statsDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#subscribeAndSubmitDiv{
+  display: flex;
+  flex-direction: column
+}
+
+#subscribeDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly; 
+  margin-left: 1rem;
+}
+
+#submitDiv{
+  margin-left: 6rem;
+  margin-top: 3rem;
+}
+
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

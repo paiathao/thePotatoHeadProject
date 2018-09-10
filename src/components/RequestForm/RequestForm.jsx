@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import BabyInfo from './BabyInfo';
 import AutoComplete from '../GoogleAutoComplete/AutoComplete';
 import Radiobox from './Radiobox';
+import './RequestForm.css';
 
 const BABY_OBJECT = {
   gender: '',
@@ -137,13 +138,13 @@ class RequestForm extends Component {
           </div>
           <div id="contactDiv">
             <div id="nominatorDiv">
-              Nominator Name:
+              <p className="requestFormPtag">Nominator Name:</p>
                 <input
                 type="text"
                 placeholder="Your Name"
                 onChange={this.handleInputChangeFor('nominatorName')}
               />
-              Nominator Email:
+              <p className="requestFormPtag">Nominator Email:</p>
                 <input
                 type="text"
                 placeholder="Your Email"
@@ -151,8 +152,8 @@ class RequestForm extends Component {
               />
             </div>
             <div id="parentContactDiv">
-              <p>If you are not the parents,</p>
-              <p>would the parents like to be contacted?</p>
+              <p className="requestFormPtag">If you are not the parents,</p>
+              <p className="requestFormPtag">would the parents like to be contacted?</p>
 
               <Radiobox contactChecked={this.state.contactChecked}
                 handleInputChangeFor={this.handleInputChangeFor}
@@ -178,9 +179,9 @@ class RequestForm extends Component {
           <div id="extrasDiv">
             <div id="notesDiv">
               <label htmlFor="specialNotes">
-                <p>Use this space if you would like us</p>
-                <p>to include a personalized note</p>
-                <p>with your Potato Head Package?</p>
+                <p className="requestFormPtag">Use this space if you would like us</p>
+                <p className="requestFormPtag">to include a personalized note</p>
+                <p className="requestFormPtag">with your Potato Head Package?</p>
               </label>
               <textarea
                 id="specialNotes"
@@ -200,8 +201,8 @@ class RequestForm extends Component {
                   />
                   <label
                     htmlFor="subscribe">
-                    <p>I would like to <b>subscribe</b> to</p>
-                    the Potato Head Project newsletter
+                    <p className="requestFormPtag">I would like to <b>subscribe</b> to</p>
+                    <p className="requestFormPtag">the Potato Head Project newsletter</p>
                 </label>
               </div>
               <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
