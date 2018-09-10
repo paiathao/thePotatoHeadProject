@@ -24,7 +24,11 @@ class AuthPage extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(clearError());
+    const { dispatch, isAuthenticated, history } = this.props;
+    dispatch(clearError());
+    if (isAuthenticated) {
+      history.push('/admin');
+    }
   }
 
   componentWillReceiveProps = ({ isAuthenticated, history }) => {
