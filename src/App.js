@@ -78,13 +78,6 @@ const App = () => (
 
         />
 
-        />
-        <Route
-          path="/Verification"
-          component={Verification}
-        />
-
-
         <Route render={() => <h1>404</h1>} />
 
       </Switch>
