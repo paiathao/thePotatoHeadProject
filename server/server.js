@@ -14,7 +14,6 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const verifyRouter = require('./routes/verify.router');
 const emailRouter = require('./routes/email.router');
 const requestRouter = require('./routes/request.router');
 
@@ -33,7 +32,6 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/verify', verifyRouter);
 app.use('/api/email', emailRouter);
 app.use('/api/request', requestRouter);
 
