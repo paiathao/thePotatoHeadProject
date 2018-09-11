@@ -64,3 +64,20 @@ button {
   display: flex;
   align-items: center;
 }
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+a:link {
+  color: #6dcad0;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #ec522b;
+  background-color: transparent;
+  text-decoration: none;
+}

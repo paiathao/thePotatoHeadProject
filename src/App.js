@@ -10,7 +10,7 @@ import AuthPage from './components/AuthPage/AuthPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
-
+import ForgotPage from './components/ForgotPassword/ForgotPassword'
 
 import RequestForm from './components/RequestForm/RequestForm';
 import AdminPortal from './components/AdminPortal/AdminPortal';
@@ -34,6 +34,11 @@ const App = () => (
         <Route
           path="/reset-password/:token"
           component={AuthPage}
+        />
+
+        <Route
+          path="/forgot"
+          component={ForgotPage}
         />
 
         <Route

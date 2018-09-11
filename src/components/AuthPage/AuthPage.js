@@ -51,17 +51,11 @@ class AuthPage extends Component {
         payload: this.state.password,
         token: this.props.match.params.token
       })
+      this.props.history.push('/login');
     } else {
       console.log('unmatch')
       alert('Password do not match! Please try again!')
     }
-    this.props.history.push('/login');
-  }
-
-  forgotPassword = event => {
-    this.props.dispatch({
-      type: 'FORGOT_PASSWORD',
-    })
   }
 
   handleInputChangeFor = propertyName => (event) => {
@@ -106,7 +100,7 @@ class AuthPage extends Component {
               onChange={this.handleInputChangeFor('password')}
             />
           </form>
-          <button onClick={this.forgotPassword}>Forgot Password?</button>
+          <a href="#/forgot">Forgot Password?</a>
           </div>
         )} />
 
