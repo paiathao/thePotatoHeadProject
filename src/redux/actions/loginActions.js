@@ -7,7 +7,11 @@ export const LOGIN_ACTIONS = {
   LOGIN_FAILED_NO_CODE: 'LOGIN_FAILED_NO_CODE',
   INPUT_ERROR: 'INPUT_ERROR',
   LOGOUT: 'LOGOUT',
-  AUTHENTICATE_USER: 'AUTHENTICATE_USER'
+  AUTHENTICATE_USER: 'AUTHENTICATE_USER',
+  HANDLE_FETCH_USER: 'HANDLE_FETCH_USER',
+  FETCH_USER: 'FETCH_USER',
+  FETCH_USER_SUCCESS: 'FETCH_USER_SUCCESS',
+  FETCH_USER_FAIL: 'FETCH_USER_FAIL'
 };
 
 export const clearError = () => ({
@@ -29,3 +33,21 @@ export function formError() {
     payload: 'Enter your username and password!',
   };
 }
+
+export const handleFetchUser = () => ({
+  type: LOGIN_ACTIONS.HANDLE_FETCH_USER
+});
+
+export const fetchUser = () => ({
+  type: LOGIN_ACTIONS.FETCH_USER
+});
+
+export const fetchUserSuccess = isAuthenticated => ({
+  type: LOGIN_ACTIONS.FETCH_USER_SUCCESS,
+  payload: isAuthenticated
+});
+
+export const fetchUserFail = error => ({
+  type: LOGIN_ACTIONS.FETCH_USER_FAIL,
+  error
+});

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
   Redirect,
   Switch,
 } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { handleFetchUser } from './redux/actions/loginActions';
 
 import AuthPage from './components/AuthPage/AuthPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
@@ -20,76 +22,68 @@ import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
 
 import './styles/main.css';
 
-const App = () => (
-  <div>
-    <Router>
-      <Switch>
-
-        <Route
-          path="/login"
-          component={AuthPage}
-        />
-
-        <Route
-          path="/reset-password/:token"
-          component={AuthPage}
-        />
-
-        <Route
-          path="/admin"
-          component={AdminPortal}
-        />
-
-        <Route
-          path="/form"
-          component={RequestForm}
-        />
-
-        <Route
-          path="/register"
-          component={RegisterPage}
-        />
-        <Route
-          path="/user"
-          component={UserPage}
-        />
-        <Route
-          path="/info"
-          component={InfoPage}
-        />
-        {/*  All Testing route */}
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 97540288e6eaca25e93290fd5da3d11f358799fc
-        <Route
-          path="/form"
-          component={RequestForm}
-        />
 
 
-        <Route
-          path="/AutoComplete"
-          component={AutoComplete}
+class App extends Component {
 
-        />
+  componentDidMount() {
+    this.props.dispatch(handleFetchUser());
+  }
 
-<<<<<<< HEAD
-=======
-        />
-        <Route
-          path="/Verification"
-          component={Verification}
-        />
+  render(){
+    return (
+      <div>
+        <Router>
+          <Switch>
+          
+            <Route
+              path="/login"
+              component={AuthPage}
+            />
 
+            <Route
+              path="/admin"
+              component={AdminPortal}
+            />
 
->>>>>>> 97540288e6eaca25e93290fd5da3d11f358799fc
-        <Route render={() => <h1>404</h1>} />
+            <Route
+              path="/form"
+              component={RequestForm}
+            />
 
-      </Switch>
-    </Router>
-  </div>
-);
+            <Route
+              path="/register"
+              component={RegisterPage}
+            />
+            <Route
+              path="/user"
+              component={UserPage}
+            />
+            <Route
+              path="/info"
+              component={InfoPage}
+            />
+            {/*  All Testing route */}
+      
+            <Route
+              path="/form"
+              component={RequestForm}
+            />
 
-export default App;
+      
+            <Route
+              path="/AutoComplete"
+              component={AutoComplete}
+
+            />
+
+            <Route render={() => <h1>404</h1>} />
+
+          </Switch>
+        </Router>
+      </div>
+    );
+  };
+};
+
+export default connect()(App);
