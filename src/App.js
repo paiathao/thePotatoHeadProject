@@ -18,7 +18,6 @@ import RequestForm from './components/RequestForm/RequestForm';
 import AdminPortal from './components/AdminPortal/AdminPortal';
 
 import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
-import Verification from './components/Verification/Verification';
 
 
 import './styles/main.css';
