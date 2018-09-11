@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './Request.css';
 
-const RequestDetail = ({ title, data }) => (
+import Button from '../Button/Button';
+
+const RequestDetail = ({ title, children }) => (
   <div className="RequestDetail">
-    <p>{title}</p>
-    <p>{data}</p>
+    { title && <p className="request-detail-header">{title}</p> }
+    { children }
   </div>
 )
 
@@ -23,41 +25,87 @@ class Request extends Component {
       subscription,
       nominatorEmail,
       parentEmail,
-      showEmailForm
+      showEmailForm,
+      showNotes,
+      markedSent,
+      toggleMarkedSent,
+      opened
     } = this.props;
+
+    if (!opened) return null;
+
     return (
-      <div className={`request-details ${this.state.open ? 'open' : null}`}>
-        <div>
+      <div className="request-sub-menu">
+        <div className="request-details">
+
           <div>
-            <div>
-              { baby.map((b, i) => (
-                <div key={i}>
-                  <RequestDetail title="DOB" data={b.dob} />      
-                  <RequestDetail title="Gender" data={b.gender} />      
-                  <RequestDetail title="Gestation" data={`${b.weeks} weeks`} />
-                  { b.days > 0 && <RequestDetail data={`${b.days} days`} /> }
-                  <RequestDetail title="Weight" data={`${b.pounds} pounds`} />
-                  { b.ounces > 0 && <RequestDetail data={`${b.ounces} ounces`} /> }
-                </div>
-              )) }
-            </div>     
+            { baby.map((b, i) => (
+              <div key={i}>
+
+                <RequestDetail title="DOB">
+                  <p className="request-detail-data">{b.birthDate}</p>
+                </RequestDetail>  
+
+                <RequestDetail title="Gender">
+                  <p className="request-detail-data">{b.gender}</p>
+                </RequestDetail> 
+
+                <RequestDetail title="Gestation">
+                  <p className="request-detail-data">{`${b.gestationWeeks} weeks`}</p>
+                  { b.gestationDays > 0 && <p className="request-detail-data">{`${b.gestationDays} days`}</p> }
+                </RequestDetail>
+
+              
+                <RequestDetail title="Weight">
+                  <p className="request-detail-data">{`${b.weightPounds} weeks`}</p>
+                  { b.weightOunces > 0 && <p className="request-detail-data">{`${b.weightOunces} ounces`}</p> }
+                </RequestDetail>
+
+              </div>
+            )) }
           </div> 
+
+
           <div>
-            <RequestDetail title="Email" data={nominatorEmail} />
-            { subscription && <RequestDetail title="Subscribed" data={String(subscription)} /> }
-          </div> 
+            <RequestDetail title="Email">
+              <p className="request-detail-data">{nominatorEmail}</p>
+            </RequestDetail>
+
+            <RequestDetail title="Subscribed">
+              <p className="request-detail-data">{String(subscription)}</p>
+            </RequestDetail>
+          </div>  
+
           <div>
-            <RequestDetail title="Email" data={parentEmail} />
+            <RequestDetail title="Email">
+              <p className="request-detail-data">{parentEmail}</p>
+            </RequestDetail>
           </div>
+            
+
           <div>
-            <RequestDetail title="Address" data={address} />
-            { address2 && <RequestDetail data={address2} />}
-            <RequestDetail data={`${city}, ${state} ${zip}`} />
+            <RequestDetail title="Address">
+              <p className="request-detail-data">{address}</p>
+              { address2 && <p className="request-detail-data">{address2}</p> }
+              <p className="request-detail-data">{`${city}, ${state} ${zip}`}</p>
+            </RequestDetail>
           </div> 
-        </div> 
+
+        </div>
+
+
         <div className="request-toolbar">
-            <button onClick={showEmailForm}>Send Email</button>
-        </div>      
+            <Button title="Show Notes" onClick={showNotes}/>
+            <Button title="Send Email" onClick={showEmailForm}/>
+            <Button title="Print Shipping Label" onClick={() => {
+              window.open('https://www.paypal.com/shiplabel/create/', '_blank');
+            }}/>
+            <Button title={markedSent ? 'Unsent' : 'Sent'} onClick={toggleMarkedSent} />
+
+        </div>  
+
+        
+        
       </div> 
     )
   }
@@ -72,12 +120,19 @@ class Request extends Component {
     return (
         <div
           className="Request"
-          onClick={() => this.setState({ open: !this.state.open })}
+          onClick={this.props.openRequest}
         >
           <div className="request-header">
 
               <div>
-                <p>{baby[0].first}</p>
+                {
+                  baby.map((b, i) => (
+                    i === 0 ? 
+                      <p key={i}>{b.firstName}</p> :
+                      <p key={i} style={{ marginLeft: '6px' }}> {`and ${b.firstName}`}</p>
+                  ))
+                }
+                
               </div>
 
               <div>

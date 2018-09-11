@@ -1,8 +1,9 @@
 import { all } from 'redux-saga/effects';
 import requestSaga from './requestSaga';
 import loginSaga from './loginSaga';
-import verifySaga from './verificationSaga'
-import googleMapSaga from './googleMapSaga'
+import verifySaga from './verificationSaga';
+import googleMapSaga from './googleMapSaga';
+import emailSaga from './emailSaga';
 
 
 export default function* rootSaga() {
@@ -11,6 +12,7 @@ export default function* rootSaga() {
     loginSaga(),
     verifySaga(),
     googleMapSaga(),
+    emailSaga()
     // watchIncrementAsync()
   ]);
 }

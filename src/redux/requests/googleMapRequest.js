@@ -10,9 +10,9 @@ export function runGetAddress(){
     .catch((error) => { throw error; });
 }
 //This will run geocode from the address we got from database
-export function runGetGeocode(mapAddress){
-    console.log('did we get the fake data?',mapAddress)
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${mapAddress.payload}&key=AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M`
+export function runGeocode(body){
+    console.log('dnasodnasojd?',body.adresss)
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${body.adresss}&key=AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M`
     return axios.get(url)
     .then(response => response.data.results)
     .catch((error) => { throw error; });

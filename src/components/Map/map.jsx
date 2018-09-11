@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 ///Google map
-import { Map,  Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 //action
-import {GET_MAP} from '../../redux/actions/googleMapAction'
+import { GET_MAP } from '../../redux/actions/googleMapAction'
 
 //css
 import '../../styles/googleMap.css'
 
 const mapStateToProps = state => ({
-
+    googleMap: state.googleMap
 });
 
 class MapContainer extends Component {
@@ -20,17 +20,16 @@ class MapContainer extends Component {
         this.state = {
             activeMarker: {},
             selectedPlace: {},
+            showingInfoWindow: false,
             latLng: {
                 lat: 38.964748,
                 lng: -94.579535,
             },
             zoom: 4.3,
         };
-
     }
 
     componentDidMount() {
-        console.log('did this run?')
         this.props.dispatch({ type: GET_MAP.GET });
     }
 
@@ -40,33 +39,32 @@ class MapContainer extends Component {
         });
     }
 
-    // handle = (props) => {
-    //     console.log('click')
-    //     this.props.dispatch({ type: GET_MAP.GET });
-    // }
-
     render() {
-        console.log('whatisthisstatehere',this.props)
+        console.log('godzilla', this.props.googleMap.googleMap)
+        const mapLocation = this.props.googleMap.googleMap
+            let mapMarker = 
+                        <Marker 
+                            visible={true}
+                            onClick={this.onMarkerClick}
+                            position={{ lng: mapLocation.longitude, lat: mapLocation.latitude }}>
+                        </Marker>
         return (
             <div className="mapContainer">
-                <button onClick={this.handle}>
-                Test  button
-            </button>
-            <Map
-                onClick={this.onMapClick}
-                google={this.props.google}
-                zoom={this.state.zoom}
-                initialCenter={this.state.latLng}
-            >
-            </Map>
-        
+                <Map
+                    onClick={this.onMapClick}
+                    google={this.props.google}
+                    zoom={this.state.zoom}
+                    initialCenter={this.state.latLng}
+                >
+                    {mapMarker}
+                </Map>
             </div>
         )
     }
 }
 
 const connectToGoogleMaps = GoogleApiWrapper({
-    // apiKey: ('AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M')
+    apiKey: ('AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M')
 })(MapContainer)
 
 export default (connect(mapStateToProps)(connectToGoogleMaps))
