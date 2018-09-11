@@ -7,7 +7,9 @@ export default ({
   type,
   submitLabel,
   value,
-  onChange
+  onChange,
+  childRef,
+  id
 }) => {
   return (
     <div className="Input">
@@ -17,6 +19,7 @@ export default ({
           name="input" 
           placeholder={placeholder}
           value={value}
+          ref={childRef}
           type={type}
           onChange={onChange}
         />

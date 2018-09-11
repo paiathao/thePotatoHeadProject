@@ -8,4 +8,7 @@ export const USER_ACTIONS = {
   USER_FETCH_FAILED: 'USER_FETCH_FAILED',
 };
 
+export const fetchUser = () => ({
+  type: USER_ACTIONS.FETCH_USER
+});
 

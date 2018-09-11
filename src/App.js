@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
   Redirect,
   Switch,
 } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { handleFetchUser } from './redux/actions/loginActions';
 
 import AuthPage from './components/AuthPage/AuthPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
@@ -16,7 +18,6 @@ import RequestForm from './components/RequestForm/RequestForm';
 import AdminPortal from './components/AdminPortal/AdminPortal';
 
 import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
-import Verification from './components/Verification/Verification';
 
 
 import './styles/main.css';
