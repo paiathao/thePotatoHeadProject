@@ -67,23 +67,15 @@ const App = () => (
         {/*  All Testing route */}
 
         <Route
-          path="/form"
-          component={RequestForm}
-        />
-
-
-        <Route
           path="/AutoComplete"
           component={AutoComplete}
 
         />
 
-        />
         <Route
           path="/Verification"
           component={Verification}
         />
-
 
         <Route render={() => <h1>404</h1>} />
 
