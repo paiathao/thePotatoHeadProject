@@ -1,7 +1,6 @@
 import { all, takeEvery, call } from 'redux-saga/effects';
 import requestSaga from './requestSaga';
 import loginSaga from './loginSaga';
-import verifySaga from './verificationSaga'
 import axios from 'axios';
 import emailSaga from './emailSaga';
 
@@ -12,7 +11,6 @@ export default function* rootSaga() {
   yield all([
     requestSaga(),
     loginSaga(),
-    verifySaga(),
     emailSaga()
     // watchIncrementAsync()
   ]);
