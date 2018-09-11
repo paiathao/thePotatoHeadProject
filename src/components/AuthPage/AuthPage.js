@@ -8,7 +8,6 @@ import Logo from '../Logo/Logo';
 import LandingPage from '../LandingPage/LandingPage';
 import './AuthPage.css';
 
-
 const mapStateToProps = ({ auth: { isAuthenticated } }) => ({
   isAuthenticated
 });
@@ -47,8 +46,27 @@ class AuthPage extends Component {
     }
   }
 
-  resetPassword = event => {
+  resetPassword = (event) => {
     event.preventDefault();
+    console.log('reset', this.props.match.params.token)
+    if(this.state.password === this.state.confirm) {
+      console.log('match')
+      this.props.dispatch({
+        type: 'RESET_PASSWORD', 
+        payload: this.state.password,
+        token: this.props.match.params.token
+      })
+    } else {
+      console.log('unmatch')
+      alert('Password do not match! Please try again!')
+    }
+  }
+
+  forgotPassword = event => {
+    console.log('click forgot PW')
+    this.props.dispatch({
+      type: 'FORGOT_PASSWORD',
+    })
   }
 
   handleInputChangeFor = propertyName => (event) => {
@@ -60,14 +78,12 @@ class AuthPage extends Component {
   renderForm() {
     return (
       <Switch>
-
-        <Route path="/reset-password" render={() => (
+        <Route path="/reset-password/:token" render={(props) => (
           <form className="auth-form" onSubmit={this.resetPassword}>
             <Input
                 data-test="login-password" 
                 label="Password"
                 type="password"
-                submitLabel="Login"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
@@ -84,6 +100,7 @@ class AuthPage extends Component {
         )} />
 
         <Route path="/login" render={() => (
+          <div>
           <form className="auth-form" onSubmit={this.login}>
             <Input
               data-test="login-password" 
@@ -94,6 +111,8 @@ class AuthPage extends Component {
               onChange={this.handleInputChangeFor('password')}
             />
           </form>
+          <button onClick={this.forgotPassword}>Forgot Password?</button>
+          </div>
         )} />
 
     </Switch>
