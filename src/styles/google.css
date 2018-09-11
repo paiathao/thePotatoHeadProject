@@ -1,13 +1,13 @@
-/* .address {
-  background-color: #fff;
+.address {
+  /* background-color: #fff;
   border-radius: ;
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.12);
   display: table;
   margin: auto;
   max-width: 540px;
-  padding: 16px;
+  padding: 16px; */
   width: 100%;
-} */
+}
 /* 
 .address .addressInput:before{
   display:none;

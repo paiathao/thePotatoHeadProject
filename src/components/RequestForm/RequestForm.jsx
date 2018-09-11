@@ -4,6 +4,7 @@ import BabyInfo from './BabyInfo';
 import AutoComplete from '../GoogleAutoComplete/AutoComplete';
 import Radiobox from './Radiobox';
 import './RequestForm.css';
+import Input from '../Input/Input'
 
 const BABY_OBJECT = {
   gender: '',
@@ -133,20 +134,18 @@ class RequestForm extends Component {
     return (
       <div id="requestFormDiv">
         <form id="requestForm" onSubmit={e => e.preventDefault()}>
-          <div id="babyInfoField">
-            {babyArray}
-          </div>
+          {babyArray}
           <div id="contactDiv">
             <div id="nominatorDiv">
-              <p className="requestFormPtag">Nominator Name:</p>
-                <input
+              <Input
                 type="text"
+                label="Your Name"
                 placeholder="Your Name"
                 onChange={this.handleInputChangeFor('nominatorName')}
               />
-              <p className="requestFormPtag">Nominator Email:</p>
-                <input
+              <Input
                 type="text"
+                label="Your Email"
                 placeholder="Your Email"
                 onChange={this.handleInputChangeFor('nominatorEmail')}
               />
@@ -154,7 +153,6 @@ class RequestForm extends Component {
             <div id="parentContactDiv">
               <p className="requestFormPtag">If you are not the parents,</p>
               <p className="requestFormPtag">would the parents like to be contacted?</p>
-
               <Radiobox contactChecked={this.state.contactChecked}
                 handleInputChangeFor={this.handleInputChangeFor}
                 handleClearInput={this.handleClearInput}
@@ -179,8 +177,8 @@ class RequestForm extends Component {
           <div id="extrasDiv">
             <div id="notesDiv">
               <label htmlFor="specialNotes">
-                <p className="requestFormPtag">Use this space if you would like us</p>
-                <p className="requestFormPtag">to include a personalized note</p>
+                <p className="requestFormPtag">Would you like to include</p>
+                <p className="requestFormPtag"> a personalized note</p>
                 <p className="requestFormPtag">with your Potato Head Package?</p>
               </label>
               <textarea
@@ -190,10 +188,12 @@ class RequestForm extends Component {
                 onChange={this.handleInputChangeFor('personalNote')}
               >
               </textarea>
+              <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
             </div>
             <div id="subscribeAndSubmitDiv">
-              <div id="subscribeDiv">
-                  <input
+              <div id="subscribeAndCaptchaDiv">
+                <div id="subscribeDiv">
+                  <Input
                     type="checkbox"
                     name="subscribe"
                     value="subscribe"
@@ -201,15 +201,15 @@ class RequestForm extends Component {
                   />
                   <label
                     htmlFor="subscribe">
-                    <p className="requestFormPtag">I would like to <b>subscribe</b> to</p>
-                    <p className="requestFormPtag">the Potato Head Project newsletter</p>
-                </label>
+                    <p className="requestFormPtag"><b>Subscribe</b> to the</p>
+                    <p className="requestFormPtag">Potato Head Project newsletter</p>
+                  </label>
+                </div>
               </div>
-              <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
               <div id="submitDiv">
                 <input
                   type="submit"
-                  ref="submitButton"
+                  className="Button"
                   value="Submit Request"
                   onSubmit={this.handleSubmit}
                 />

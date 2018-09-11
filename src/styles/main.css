@@ -1,6 +1,7 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
+  width: 100%
 }
 
 li {
@@ -38,7 +39,7 @@ ul {
   flex-direction: column;
   margin-top: 0.125rem;
   padding: 0.5rem 1rem;
-  width: 31.25rem;
+  /* width: 31.25rem; */
 }
 
 .Google_image{
@@ -46,13 +47,13 @@ ul {
   width: 10rem;
 }
 
-.hospAddInputs{
+/* .hospAddInputs{
   width: 12.5rem;
 }
 
 .hospitalInput{
   width: 31.25rem;
-}
+} */
 
 .instructions {
   background-color: #00acb0;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Input from '../Input/Input'
 class Radiobox extends Component {
 
   render = () => {
@@ -7,16 +7,18 @@ class Radiobox extends Component {
     if (this.props.contactChecked === "true") {
       msg = 
       <div id="parentDiv">
-        <p className="requestFormPtag">Parent Name(s):</p>
-          <input
+          <Input
           type="text"
+          name="parentContact"
+          label="Parent Name(s)"
           placeholder="Parent Name(s)"
           onChange={this.props.handleInputChangeFor('parentName')}
           value={this.props.parentName}
         />
-        <p className="requestFormPtag">Parent Email:</p>
-          <input
+          <Input
           type="text"
+          name="parentContact"
+          label="Parent Email"
           placeholder="Parent Email"
           onChange={this.props.handleInputChangeFor('parentEmail')}
           value={this.props.parentEmail}

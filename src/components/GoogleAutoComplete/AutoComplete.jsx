@@ -1,5 +1,6 @@
 import React from 'react';
 import Script from 'react-load-script';
+import Input from '../Input/Input'
 // import { thisExpression } from 'babel-types';
 // import '../../styles/google.css'
 
@@ -15,8 +16,8 @@ export default class GoogleAutoComplete extends React.Component {
       labels: {
         streetAddress: "Street Address 1",
         streetAddress2: "Street Address 2",
-        floorNumber: "Floor #",
-        roomNumber: "Room #",
+        floorNumber: "Floor Number",
+        roomNumber: "Room Number",
         city: "City",
         postalcode: "Postal / Zip Code",
         state: "State / Province",
@@ -50,14 +51,15 @@ export default class GoogleAutoComplete extends React.Component {
       return (
 
         <div id="autoCompleteDiv2" key={i} className={`address-field address-${key}`}>
-          <label htmlFor="this" >{this.state.labels[key]}</label>
-          <input 
-            required={required} 
-            type="text" 
-            className="hospAddInputs" 
-            id="this" 
-            onChange={this.props.handleInputChangeFor(key)} 
-            value={this.props[key]} 
+
+          <Input
+            required={required}
+            type="text"
+            label={this.state.labels[key]}
+            className="hospAddInputs"
+            id="this"
+            onChange={this.props.handleInputChangeFor(key)}
+            value={this.props[key]}
           />
         </div>
       )
@@ -154,24 +156,29 @@ export default class GoogleAutoComplete extends React.Component {
         onError={this.handleScriptError.bind(this)}
         onLoad={this.handleScriptLoad.bind(this)}
       />,
-      <div id="autoCompleteDiv" className={`address ${this.state.showResult ? "showFields" : ""}`}>
-        <div className="addressInput">
-          <label htmlFor="hospitalInput">Hospital Name</label>
-          <input 
-            type="search" 
-            className="hospitalInput" 
-            id={id} 
-            placeholder="Hospital Name" 
-            ref={ele => {
-              this.searchInput = ele;
-              (ele || {}).onsearch = this.handleSearchClear
-            }} 
-          />
-        </div>
-        <div className="addressFields">
-          {this.renderFields()}
+      <div id="autoCompleteDiv">
+        <p className="requestFormPtag"><b>Hospital Info</b></p>
+
+        <div  className={`address ${this.state.showResult ? "showFields" : ""}`}>
+          <div className="addressInput">
+            <Input
+              type="search"
+              label="Hospital Name"
+              className="hospitalInput"
+              id={id}
+              placeholder="Hospital Name"
+              childRef={ele => {
+                this.searchInput = ele;
+                (ele || {}).onsearch = this.handleSearchClear
+              }}
+            />
+          </div>
+          <div className="addressFields">
+            {this.renderFields()}
+          </div>
         </div>
       </div>
+
       ]
     )
   }
