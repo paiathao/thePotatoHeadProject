@@ -22,20 +22,18 @@ import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
 
 import './styles/main.css';
 
-
-
 class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(handleFetchUser());
   }
 
-  render(){
+  render() {
     return (
       <div>
         <Router>
           <Switch>
-          
+
             <Route
               path="/login"
               component={AuthPage}
@@ -49,6 +47,11 @@ class App extends Component {
             <Route
               path="/reset-password/:token"
               component={AuthPage}
+            />
+
+            <Route
+              path="/forgot"
+              component={ForgotPage}
             />
 
             <Route
@@ -69,13 +72,13 @@ class App extends Component {
               component={InfoPage}
             />
             {/*  All Testing route */}
-      
+
             <Route
               path="/form"
               component={RequestForm}
             />
 
-      
+
             <Route
               path="/AutoComplete"
               component={AutoComplete}

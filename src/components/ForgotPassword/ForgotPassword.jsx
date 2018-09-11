@@ -15,7 +15,7 @@ class ForgotPassword extends Component {
       <LandingPage>
         <div className="AuthPage">
           <Logo />
-          <p style={{color : '#6bcad0'}}>An email to reset your password has been sent to your inbox!</p>
+          <p>An email to reset your password has been sent to your inbox!</p>
         </div>
       </LandingPage>
     );
