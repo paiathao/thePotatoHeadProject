@@ -58,7 +58,11 @@ const App = () => (
           component={InfoPage}
         />
         {/*  All Testing route */}
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 97540288e6eaca25e93290fd5da3d11f358799fc
         <Route
           path="/form"
           component={RequestForm}
@@ -71,6 +75,16 @@ const App = () => (
 
         />
 
+<<<<<<< HEAD
+=======
+        />
+        <Route
+          path="/Verification"
+          component={Verification}
+        />
+
+
+>>>>>>> 97540288e6eaca25e93290fd5da3d11f358799fc
         <Route render={() => <h1>404</h1>} />
 
       </Switch>
