@@ -54,24 +54,6 @@ const App = () => (
           component={InfoPage}
         />
         {/*  All Testing route */}
-<<<<<<< HEAD
-        {/* <Route
-          path="/Admin"
-          component={Admin}
-        /> */}
-
-        {/* <Route
-          path="/Auto"
-          component={Auto}
-        /> */}
-        {/* <Route
-          path="/FollowUp"
-          component={FollowUp}
-        /> */}
-        <Route
-          path="/AutoComplete"
-          component={AutoComplete}
-=======
   
         <Route
           path="/form"
@@ -85,20 +67,14 @@ const App = () => (
 
         />
 
->>>>>>> 1fc2a97b1b9f1aeaecbd90511b597edd2b5c9e44
         />
         <Route
           path="/Verification"
           component={Verification}
         />
-<<<<<<< HEAD
-        {/* OTHERWISE (no path!)*/}
-        {/* <Route render={() => <h1>404</h1>} /> */}
-=======
 
 
         <Route render={() => <h1>404</h1>} />
->>>>>>> 1fc2a97b1b9f1aeaecbd90511b597edd2b5c9e44
 
       </Switch>
     </Router>
