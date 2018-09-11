@@ -22,66 +22,76 @@ import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
 
 import './styles/main.css';
 
-const App = () => (
-  <div>
-    <Router>
-      <Switch>
+class App extends Component {
 
-        <Route
-          path="/login"
-          component={AuthPage}
-        />
+  componentDidMount() {
+    this.props.dispatch(handleFetchUser());
+  }
 
-        <Route
-          path="/reset-password/:token"
-          component={AuthPage}
-        />
+  render() {
+    return (
+      <div>
+        <Router>
+          <Switch>
 
-        <Route
-          path="/forgot"
-          component={ForgotPage}
-        />
+            <Route
+              path="/login"
+              component={AuthPage}
+            />
 
-        <Route
-          path="/admin"
-          component={AdminPortal}
-        />
+            <Route
+              path="/admin"
+              component={AdminPortal}
+            />
 
-        <Route
-          path="/form"
-          component={RequestForm}
-        />
+            <Route
+              path="/reset-password/:token"
+              component={AuthPage}
+            />
 
-        <Route
-          path="/register"
-          component={RegisterPage}
-        />
-        <Route
-          path="/user"
-          component={UserPage}
-        />
-        <Route
-          path="/info"
-          component={InfoPage}
-        />
-        {/*  All Testing route */}
+            <Route
+              path="/forgot"
+              component={ForgotPage}
+            />
 
-        <Route
-          path="/AutoComplete"
-          component={AutoComplete}
+            <Route
+              path="/form"
+              component={RequestForm}
+            />
 
-        />
+            <Route
+              path="/register"
+              component={RegisterPage}
+            />
+            <Route
+              path="/user"
+              component={UserPage}
+            />
+            <Route
+              path="/info"
+              component={InfoPage}
+            />
+            {/*  All Testing route */}
 
-        <Route
-          path="/Verification"
-          component={Verification}
-        />
+            <Route
+              path="/form"
+              component={RequestForm}
+            />
 
-        <Route render={() => <h1>404</h1>} />
 
-      </Switch>
-    </Router>
-  </div>
-);
+            <Route
+              path="/AutoComplete"
+              component={AutoComplete}
 
-export default App;
+            />
+
+            <Route render={() => <h1>404</h1>} />
+
+          </Switch>
+        </Router>
+      </div>
+    );
+  };
+};
+
+export default connect()(App);
