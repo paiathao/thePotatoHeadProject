@@ -4,7 +4,8 @@ import BabyInfo from './BabyInfo';
 import AutoComplete from '../GoogleAutoComplete/AutoComplete';
 import Radiobox from './Radiobox';
 import './RequestForm.css';
-import Input from '../Input/Input'
+import Input from '../Input/Input';
+import swal from 'sweetalert';
 
 const BABY_OBJECT = {
   gender: '',
@@ -87,6 +88,13 @@ class RequestForm extends Component {
 
 
   handleSubmit = () => {
+    swal({
+      title: "Thank You for requesting a Potato Head Package!\nPlease consider Donating at",
+      content: <a href="https://www.thepotatoheadproject.org/donate">Donate</a>
+      
+    
+    });
+    
     //do this 
     // this.setState({
     //   ...this.state,
@@ -184,7 +192,7 @@ class RequestForm extends Component {
               <textarea
                 id="specialNotes"
                 rows="5"
-                cols="40"
+                // cols="40"
                 onChange={this.handleInputChangeFor('personalNote')}
               >
               </textarea>
@@ -211,7 +219,8 @@ class RequestForm extends Component {
                   type="submit"
                   className="Button"
                   value="Submit Request"
-                  onSubmit={this.handleSubmit}
+                  // onClick="alert('thank you for requesting!)"
+                  onClick={this.handleSubmit}
                 />
               </div>
             </div>
