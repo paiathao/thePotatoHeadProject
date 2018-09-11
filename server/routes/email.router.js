@@ -4,6 +4,11 @@ const nodemailer = require('nodemailer');
 const Email = require('email-templates');
 const Request = require('../models/Request');
 
+const Person = require('../models/Person');
+const encryptLib = require('../modules/encryption');
+const async = require('async');
+const crypto = require('crypto');
+
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -28,28 +33,68 @@ const email = new Email({
 
 //send reset email
 router.get('/reset', (req, res) => {
-    email.send({
-        template: 'resetEmail',
-        message: {
-            to: process.env.CLIENT_USER
+    async.waterfall([
+        function (done) {
+            crypto.randomBytes(20, function (err, buf) {
+                var token = buf.toString('hex');
+                done(err, token);
+            });
+        },
+        function (token, done) {
+            Person.findOne({ email: process.env.CLIENT_USER }, function (err, user) {
+                user.resetPasswordToken = token;
+                user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+                user.save(function (err) {
+                    done(err, token, user);
+                });
+            });
+        },
+        function (token) {
+            email.send({
+                template: 'resetEmail',
+                message: {
+                    to: process.env.CLIENT_USER
+                },
+                locals: {
+                    note: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                        'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                        'http://' + 'localhost:3000/#' + '/reset-password/' + token + '\n\n' +
+                        'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                },
+            })
+                .then(console.log)
+                .catch(console.error);
         }
-    })
-        .then(console.log)
-        .catch(console.error);
+    ], function (err) {
+        if (err) return next(err);
+        res.redirect('/reset');
+    });
 });
 
 //reset password
-router.put('/reset', (req, res) => {
+router.put('/reset/:token', (req, res) => {
+    console.log('got to reset pw token', req.body)
+    const password = encryptLib.encryptPassword(req.body.password);
+    async.waterfall([
+        function (done) {
+            Person.findOne({ resetPasswordToken: req.body.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
+                if (!user) {
+                    req.flash('error', 'Password reset token is invalid or has expired.');
+                    return res.redirect('back');
+                }
+                user.password = password;
+                user.resetPasswordToken = undefined;
+                user.resetPasswordExpires = undefined;
 
-    // update Database
-    Request.findByIdAndUpdate({
-        _id: req.body._id
-    }, {
-            $set: {
-                password: req.body.password
-            }
-        }).then(function (response) {
-            //send reset email confirmation
+                user.save(function (err) {
+                    req.logIn(user, function (err) {
+                        done(err, user);
+                    });
+                });
+            });
+        },
+        function () {
             email.send({
                 template: 'resetSuccessEmail',
                 message: {
@@ -58,11 +103,10 @@ router.put('/reset', (req, res) => {
             })
                 .then(console.log)
                 .catch(console.error);
-            res.sendStatus(200);
-        }).catch((err) => {
-            console.log(err);
-            res.sendStatus(500)
-        })
+        }
+    ], function (err) {
+        res.redirect('/');
+    });
 });
 
 

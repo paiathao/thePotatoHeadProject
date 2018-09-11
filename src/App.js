@@ -25,9 +25,14 @@ const App = () => (
   <div>
     <Router>
       <Switch>
-      
+
         <Route
           path="/login"
+          component={AuthPage}
+        />
+
+        <Route
+          path="/reset-password/:token"
           component={AuthPage}
         />
 
@@ -54,13 +59,13 @@ const App = () => (
           component={InfoPage}
         />
         {/*  All Testing route */}
-  
+
         <Route
           path="/form"
           component={RequestForm}
         />
 
-  
+
         <Route
           path="/AutoComplete"
           component={AutoComplete}
