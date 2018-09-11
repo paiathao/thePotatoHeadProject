@@ -59,24 +59,24 @@
   border: 1px solid rgba(0,0,0,0.2);
 }
 
-button {
+.AuthPage button {
   color: #6dcad0;
   display: flex;
   align-items: center;
 }
 
-a {
+.AuthPage a {
   display: block;
   text-align: center;
   margin-top: 10px;
 }
 
-a:link {
+.AuthPage a:link {
   color: #6dcad0;
   text-decoration: none;
 }
 
-a:visited {
+.AuthPage a:visited {
   color: #ec522b;
   background-color: transparent;
   text-decoration: none;
