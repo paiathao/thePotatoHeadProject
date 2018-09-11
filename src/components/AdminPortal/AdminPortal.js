@@ -6,6 +6,10 @@ import Header from '../Header/Header';
 import RequestList from '../RequestList/RequestList';
 import Request from '../Request/Request';
 import EmailFormModal from '../EmailFormModal/EmailFormModal';
+import NotesModal from '../NotesModal/NotesModal';
+import { handleGetAllRequests, handleToggle, setCurrentOpenedRequest } from '../../redux/actions/requestActions';
+import { handleSendEmail } from '../../redux/actions/emailActions';
+import { triggerLogout } from '../../redux/actions/loginActions';
 
 
 class AdminPortal extends Component {
@@ -14,19 +18,28 @@ class AdminPortal extends Component {
     emailForm: {
       show: false,
       nominator: {}
+    },
+    notes: {
+      show: false,
+      notes: ''
     }
   }
 
+  componentDidMount() {
+    const { isAuthenticated, history, dispatch } = this.props;
+    if (!isAuthenticated) {
+      history.push('/login');
+    }
+    dispatch(handleGetAllRequests());
+  }
+
   sendEmail = ({ note, tracking }) => {
-    this.props.dispatch({
-      type: 'SEND_EMAIL_WITH_TRACKING',
-      payload: {
+    this.props.dispatch(handleSendEmail({
         note,
         tracking,
         nominatorEmail: this.state.emailForm.nominator.nominatorEmail,
         nominatorName: this.state.emailForm.nominator.nominatorName
-      }
-    });
+      }));
   }
 
   showEmailForm = nominator => {
@@ -39,10 +52,32 @@ class AdminPortal extends Component {
     });
   }
 
+  showNotes = notes => {
+    this.setState({
+      ...this.state,
+      notes: {
+        show: true,
+        notes
+      }
+    });
+  }
+
+  handleToggleRequest = request => {
+    this.props.dispatch(handleToggle(request));
+  }
+
+  openRequest = id => {
+    this.props.dispatch(setCurrentOpenedRequest(id))
+  }
+
   renderRequest = request => (
     <Request 
-      key={request.id} 
-      {...request} 
+      key={request._id} 
+      {...request}
+      openRequest={this.openRequest.bind(this, request._id)}
+      opened={request._id === this.props.opened}
+      toggleMarkedSent={this.handleToggleRequest.bind(this, request)}
+      showNotes={this.showNotes.bind(this, request.note)} 
       showEmailForm={this.showEmailForm.bind(this, {
         nominatorEmail: request.nominatorEmail,
         nominatorName: request.nominatorName
@@ -50,14 +85,32 @@ class AdminPortal extends Component {
     />
   );
 
+  closeModal(name) {
+    this.setState({ 
+      ...this.state, 
+      [name]: {
+        ...this.state[name],
+        show: false
+      } 
+    });
+  }
+
+  handleLogout = () => {
+    const { dispatch, history } = this.props;
+    dispatch(triggerLogout());
+    history.push('/login');
+  }
+
   render() {
     return (
       <Main>
-        <Header />
+        <Header 
+          logout={this.handleLogout}
+        />
 
         <RequestList
           columns={['Baby', 'Nominator', 'Parents', 'Hospital']}
-          data={this.props.data}
+          data={this.props.requests}
           renderRow={this.renderRequest}
         />
 
@@ -65,14 +118,13 @@ class AdminPortal extends Component {
           onSend={this.sendEmail}
           visible={this.state.emailForm.show}
           nominator={this.state.emailForm.nominator}
-          closeModal={() => {
-            this.setState({ 
-              ...this.state, emailForm: {
-                ...this.state.emailForm,
-                show: false
-              } 
-            });
-          }}
+          closeModal={this.closeModal.bind(this, 'emailForm')}
+        />
+
+        <NotesModal
+          visible={this.state.notes.show} 
+          closeModal={this.closeModal.bind(this, 'notes')}
+          note={this.state.notes.notes}
         />
 
       </Main>
@@ -80,46 +132,10 @@ class AdminPortal extends Component {
   }
 }
 
-AdminPortal.defaultProps = {
-  data: [
-    {
-      id: 1,
-      baby: [{ first: 'Jerry', last: 'Smite', dob: '11/22/17', gender: 'boy', weeks: 22, days: 0, pounds: 4, ounces: 8 }],
-      nominatorName: 'Jimmy',
-      nominatorEmail: 'jimmy@jimmy.com',
-      parentName: 'Jean And Gary',
-      parentEmail: 'jean@jean.com',
-      hospitalName: 'MSP NCIU',
-      address: '123 Fake Hosptial St.',
-      address2: null,
-      city: 'Minneapolis',
-      state: 'MN',
-      zip: '55405',
-      country: 'USA',  
-      personalNote: 'I hope everything goes well for everyone!!!!',
-      subscription: true,
-    },
-    {
-      id: 2,
-      baby: [
-        { first: 'Jerry', last: 'Smite', dob: '11/22/17', gender: 'boy', weeks: 22, days: 0, pounds: 4, ounces: 8 },
-        { first: 'Jerry', last: 'Smite', dob: '11/22/17', gender: 'boy', weeks: 22, days: 0, pounds: 4, ounces: 8 }
-      ],
-      nominatorName: 'Jimmy',
-      nominatorEmail: 'jimmy@jimmy.com',
-      parentName: 'Jean And Gary',
-      parentEmail: 'jean@jean.com',
-      hospitalName: 'MSP NCIU',
-      address: '123 Fake Hosptial St.',
-      address2: null,
-      city: 'Minneapolis',
-      state: 'MN',
-      zip: '55405',
-      country: 'USA',  
-      personalNote: 'I hope everything goes well for everyone!!!!',
-      subscription: true,
-    }
-  ]
-}
+const mapStateToProps = ({ requests, auth }) => ({
+  opened: requests.currentlyOpened,
+  requests: requests.all,
+  isAuthenticated: auth.isAuthenticated,
+});
 
-export default connect()(AdminPortal);
+export default connect(mapStateToProps)(AdminPortal);

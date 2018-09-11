@@ -3,6 +3,7 @@ import requestSaga from './requestSaga';
 import loginSaga from './loginSaga';
 import verifySaga from './verificationSaga'
 import axios from 'axios';
+import emailSaga from './emailSaga';
 
 
 export default function* rootSaga() {
@@ -12,6 +13,7 @@ export default function* rootSaga() {
     requestSaga(),
     loginSaga(),
     verifySaga(),
+    emailSaga()
     // watchIncrementAsync()
   ]);
 }
