@@ -31,6 +31,7 @@ const email = new Email({
     transport: transporter
 });
 
+
 //send reset email
 router.get('/reset', (req, res) => {
     async.waterfall([
