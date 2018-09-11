@@ -48,7 +48,6 @@ class AuthPage extends Component {
 
   resetPassword = (event) => {
     event.preventDefault();
-    console.log('reset', this.props.match.params.token)
     if(this.state.password === this.state.confirm) {
       console.log('match')
       this.props.dispatch({
@@ -56,17 +55,11 @@ class AuthPage extends Component {
         payload: this.state.password,
         token: this.props.match.params.token
       })
+      this.props.history.push('/login');
     } else {
       console.log('unmatch')
       alert('Password do not match! Please try again!')
     }
-  }
-
-  forgotPassword = event => {
-    console.log('click forgot PW')
-    this.props.dispatch({
-      type: 'FORGOT_PASSWORD',
-    })
   }
 
   handleInputChangeFor = propertyName => (event) => {
@@ -80,16 +73,16 @@ class AuthPage extends Component {
       <Switch>
         <Route path="/reset-password/:token" render={(props) => (
           <form className="auth-form" onSubmit={this.resetPassword}>
-            <Input
+            <label className="resetText">Password</label>
+            <Input className="passInput"
                 data-test="login-password" 
-                label="Password"
                 type="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
+            <label className="resetText">Confirm Password</label>
             <Input
               data-test="confirm-password" 
-              label="Confirm Password"
               type="password"
               submitLabel="Submit"
               value={this.state.confirm}
@@ -102,16 +95,16 @@ class AuthPage extends Component {
         <Route path="/login" render={() => (
           <div>
           <form className="auth-form" onSubmit={this.login}>
+            <label className="loginText">Password</label>
             <Input
               data-test="login-password" 
-              label="Password"
               type="password"
               submitLabel="Login"
               value={this.state.password}
               onChange={this.handleInputChangeFor('password')}
             />
           </form>
-          <button onClick={this.forgotPassword}>Forgot Password?</button>
+          <a href="#/forgot">Forgot Password?</a>
           </div>
         )} />
 
