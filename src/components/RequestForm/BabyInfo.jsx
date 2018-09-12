@@ -50,27 +50,23 @@ class BabyInfo extends Component {
 
         <div className="date-gender">
 
-            <div id="birthdateDiv">
               <Input 
                 label="Birth Date"
                 type="date"
                 onChange={this.handleInputChangeForBaby('birthDate')}
-              />
-            </div>
-
-            <div id="gender-radio">
+              />   
               
-                <RadioGroup 
-                  title="Gender"
-                  name="gender"
-                  onChange={this.handleInputChangeForBaby}
-                  data={[
-                    { value: 'girl', label: 'Girl' },
-                    { value: 'boy', label: 'Boy' }
-                  ]}
-                />
+              <RadioGroup 
+                title="Gender"
+                name="gender"
+                onChange={this.handleInputChangeForBaby}
+                data={[
+                  { value: 'girl', label: 'Girl' },
+                  { value: 'boy', label: 'Boy' }
+                ]}
+              />
  
-            </div>
+            
         
         </div>
 
