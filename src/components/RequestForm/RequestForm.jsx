@@ -132,8 +132,8 @@ class RequestForm extends Component {
 
 
     return (
-      <div id="requestFormDiv">
-        <form id="requestForm" onSubmit={e => e.preventDefault()}>
+      <div id="requestForm">
+        <form onSubmit={e => e.preventDefault()}>
           {babyArray}
           <div id="contactDiv">
             <div id="nominatorDiv">

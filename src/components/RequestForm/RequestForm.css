@@ -1,212 +1,31 @@
-.requestFormPtag{
-  margin: 0rem;
+/* container */
+#requestForm {
+  width: 80%;
+  margin: 0 auto;
+  padding: 22px;
+  max-width: 600px;
+  background-color: #eee;
 }
 
-.g-recaptcha{
-  width: 70%
+/* form container  */
+#requestForm > form,
+.baby-form {
+  display: flex;
+  flex-direction: column;
 }
 
+/* sections of each inputs */
+.baby-form > div {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 
-
-#addRemoveDiv{
+/* the wrapper for each input */
+.baby-form > div > div {
+  flex: 1;
   display: flex;
   justify-content: center;
-}
-
-#autoCompleteDiv{
   align-items: center;
-  border: 0.125rem solid #e5512f;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-}
-
-#autoCompleteDiv2{
-  align-items: center;
-  border: 0.125rem solid #74CAD1;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  margin-top: 0.125rem;
-  padding: 0.25rem 1rem;
-
-}
-
-#babyDiv{
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  justify-content: center;
-}
-
-#babyFullInfoDiv{
-  animation: fadeIn 1s;
-  border: 0.125rem solid #e5512f;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  padding: 1rem;
-}
-
-#babyNameBirthdateDiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-  width: 50%;
-}
-
-#babyStatsDiv{
-  display: flex;
-  margin-top: 1rem;
-  width: 100%;
-}
-
-#birthdateDiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#contactDiv{
-  border: 0.125rem solid #e5512f;
-  border-radius: 1rem;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
-  padding: 1rem;
-}
-
-#extrasDiv{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.5rem;
-  border: 0.125rem solid #e5512f;
-  border-radius: 1rem;
-  padding: 1rem; 
-}
-
-#firstNameDiv{
-  display: flex;
-  justify-content: flex-start;
-}
-
-#genderAndStatsDiv{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
-}
-
-#genderDiv{
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 1rem;
-}
-
-#gestationAndWeightDiv{
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  margin-bottom: 1rem;
-  width: 100%;
-}
-
-#gestationDiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#gestationOptionsDiv{
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 1rem;
-}
-
-#lastNameDiv{
-  display: flex;
-  justify-content: flex-start;
-}
-
-#nominatorDiv{
-  display: flex;
-  flex-direction: column;
-  /* margin-right: 1rem; */
-  width: 50%;
-}
-
-#notesDiv{
-  width: 50%
-}
-
-#parentDiv{
-  animation: fadeIn 1s;
-  display: flex;
-  flex-direction: column;
-  width: 50%; 
-}
-
-#parentContactDiv{
-
-}
-
-#requestForm{
-  background-color: #B8E1E3;
-  border-radius: 1rem;
-  width: 50%
-}
-
-#requestFormDiv{
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 3.125rem;
-}
-
-#statsDiv{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-#submitDiv{
-  margin-left: 6rem;
-  margin-top: 8rem;
-}
-
-#subscribeAndSubmitDiv{
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-#subscribeDiv{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly; 
-}
-
-#weightDiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#weightOptionsDiv{
-  display: flex;
-  justify-content: space-evenly;
-}
-
-
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  margin: 12px 0;
 }

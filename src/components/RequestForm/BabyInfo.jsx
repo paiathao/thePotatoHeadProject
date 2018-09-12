@@ -25,7 +25,7 @@ class BabyInfo extends Component {
           <p className="requestFormPtag"><b>Baby's Info:</b></p>
         </div>
         
-      <div>
+      <div className="baby-form">
 
 
         <div className="name-info">
@@ -50,14 +50,14 @@ class BabyInfo extends Component {
         <div className="date-gender">
 
             <div id="birthdateDiv">
-              <p className="requestFormPtag">Birth Date:</p>
-              <input
+              <Input 
+                label="Birth Date"
                 type="date"
                 onChange={this.handleInputChangeForBaby('birthDate')}
               />
             </div>
 
-            <div id="genderDiv">
+            <div id="gender-radio">
               <div id="genderGirlDiv">
                 <p className="requestFormPtag">Girl</p>
                 <input
