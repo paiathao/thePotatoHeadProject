@@ -65,9 +65,7 @@ class BabyInfo extends Component {
                   { value: 'boy', label: 'Boy' }
                 ]}
               />
- 
-            
-        
+                      
         </div>
 
         <div className="gestation-weight">
