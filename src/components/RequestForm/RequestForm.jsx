@@ -61,7 +61,7 @@ class RequestForm extends Component {
       ...this.state,
       baby: [
         ...this.state.baby,
-        BABY_OBJECT
+        {...BABY_OBJECT}
       ]
     });
   };
