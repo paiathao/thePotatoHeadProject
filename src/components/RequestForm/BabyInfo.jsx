@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 import Input from '../Input/Input'
+import RadioGroup from '../RadioGroup/RadioGroup';
 
 
 class BabyInfo extends Component {
@@ -58,26 +59,17 @@ class BabyInfo extends Component {
             </div>
 
             <div id="gender-radio">
-              <div id="genderGirlDiv">
-                <p className="requestFormPtag">Girl</p>
-                <input
-                  id="genderGirl"
-                  type="radio"
+              
+                <RadioGroup 
+                  title="Gender"
                   name="gender"
-                  value="girl"
-                  onChange={this.handleInputChangeForBaby('gender')}
+                  onChange={this.handleInputChangeForBaby}
+                  data={[
+                    { value: 'girl', label: 'Girl' },
+                    { value: 'boy', label: 'Boy' }
+                  ]}
                 />
-              </div>
-              <div id="genderBoyDiv">
-                <p className="requestFormPtag">Boy</p>
-                <input
-                  id="genderBoy"
-                  type="radio"
-                  name="gender"
-                  value="boy"
-                  onChange={this.handleInputChangeForBaby('gender')}
-                />
-              </div>
+ 
             </div>
         
         </div>

@@ -25,7 +25,6 @@
 .baby-form > div > div {
   flex: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
   margin: 12px 0;
 }
