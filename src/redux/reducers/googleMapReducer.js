@@ -14,6 +14,17 @@ const googleMap = (state = [], action) => {
     }
 }
 
+const storeAddress = (state = [], action)=>{
+    // console.log('storing data in state',action)
+    switch(action.type){
+        case GET_MAP.SET:
+        return action.payload;
+        default:
+        return state;
+    }
+}
+
 export default combineReducers({
-    googleMap
+    googleMap,
+    storeAddress
 })

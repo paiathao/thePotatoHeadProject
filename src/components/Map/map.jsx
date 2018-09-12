@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 ///Google map
-import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 //action
 import { GET_MAP } from '../../redux/actions/googleMapAction'
@@ -31,23 +31,39 @@ class MapContainer extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: GET_MAP.GET });
+        // yield this.props.dispatch({
+        //     type:GET_MAP.RUN
+        // })
     }
 
     onMarkerClick = (props, marker, e) => {
         this.setState({
+            showingInfoWindow: true,
             activeMarker: marker,
         });
     }
 
+    onMapClick = (props) => {
+        if (this.state.showingInfoWindow) {
+            this.setState({
+                showingInfoWindow: false,
+                activeMarker: null,
+            });
+        }
+    }
+
     render() {
-        console.log('godzilla', this.props.googleMap.googleMap)
         const mapLocation = this.props.googleMap.googleMap
-            let mapMarker = 
-                        <Marker 
-                            visible={true}
-                            onClick={this.onMarkerClick}
-                            position={{ lng: mapLocation.longitude, lat: mapLocation.latitude }}>
-                        </Marker>
+        let mapMarker = mapLocation.map(((location,i) => {
+            return (
+                <Marker
+                    key={i}
+                    visible={true}
+                    onClick={this.onMarkerClick}
+                    position={{ lng: location.longitude, lat: location.latitude }}>
+                </Marker>
+            )
+        }))
         return (
             <div className="mapContainer">
                 <Map
@@ -57,6 +73,13 @@ class MapContainer extends Component {
                     initialCenter={this.state.latLng}
                 >
                     {mapMarker}
+                    <InfoWindow
+
+                        marker={this.state.activeMarker}
+                        visible={this.state.showingInfoWindow}
+                    >
+                        <p>Testing </p>
+                    </InfoWindow>
                 </Map>
             </div>
         )
