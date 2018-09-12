@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 import Input from '../Input/Input'
 import RadioGroup from '../RadioGroup/RadioGroup';
+import NumberSelect from '../NumberSelect/NumberSelect';
 
 
 class BabyInfo extends Component {
 
 
   handleInputChangeForBaby = name => event => {
-    console.log(name);
+    console.log(name, event);
     this.props.handleInputChangeForBaby({
       name,
       value: event.target.value,
@@ -52,6 +53,7 @@ class BabyInfo extends Component {
 
               <Input 
                 label="Birth Date"
+                placeholder="mm/dd/yyyy"
                 type="date"
                 onChange={this.handleInputChangeForBaby('birthDate')}
               />   
@@ -65,66 +67,45 @@ class BabyInfo extends Component {
                   { value: 'boy', label: 'Boy' }
                 ]}
               />
-                      
+
         </div>
 
         <div className="gestation-weight">
-          <div id="gestationDiv">
-              <p className="requestFormPtag"><b>Gestation:</b></p>
-              <div id="gestationOptionsDiv">
-                <p className="requestFormPtag">Weeks:</p>
-                <select
-                  name="Weeks"
-                  id="selectWeeks"
-                  onChange={this.handleInputChangeForBaby('gestationWeeks')}
-                >
-
-                  <option value="">---</option>
-                  { new Array(20).fill(null).map((o, i) => (
-                    <option key={i} value={i + 20}>{i + 20}</option>
-                  )) }
-
-                </select>
-                <p className="requestFormPtag">Days:</p>
-                <select
-                  name="Days"
-                  id="selectDays"
-                  onChange={this.handleInputChangeForBaby('gestationDays')}
-                >
-                  <option value="">---</option>
-                  { new Array(6).fill(null).map((o, i) => (
-                    <option key={i} value={i}>{i}</option>
-                  )) }
-                </select>
-              </div>
-            </div>
-            <div id="weightDiv">
-              <p className="requestFormPtag"><b>Weight:</b></p>
-              <div id="weightOptionsDiv">
-                <p className="requestFormPtag">Pounds:</p>
-                <select
-                  name="Pounds"
-                  id="selectPounds"
-                  onChange={this.handleInputChangeForBaby('weightPounds')}
-                >
-                  <option value="">---</option>
-                  { new Array(7).fill(null).map((o, i) => (
-                    <option key={i} value={i}>{i}</option>
-                  )) }
-                </select>
-                <p className="requestFormPtag">Ounces:</p>
-                <select
-                  name="Ounces"
-                  id="selectOunces"
-                  onChange={this.handleInputChangeForBaby('weightOunces')}
-                >
-                  <option value="">---</option>
-                  { new Array(16).fill(null).map((o, i) => (
-                    <option key={i} value={i}>{i}</option>
-                  )) }
-                </select>
-            </div>       
-          </div>       
+          <div className="select-group">
+            <p>Gestation</p>
+            <div>
+              <NumberSelect 
+                min={20}
+                max={40}
+                label="Weeks"
+                name="gestationWeeks"
+                onChange={this.handleInputChangeForBaby}
+              />
+              <NumberSelect 
+                max={6}
+                label="Days"
+                name="gestationDays"
+                onChange={this.handleInputChangeForBaby}
+              />
+            </div>            
+          </div>
+          <div className="select-group">
+            <p>Weight</p>
+            <div>
+              <NumberSelect 
+                max={6}
+                label="Pounds"
+                name="weightPounds"
+                onChange={this.handleInputChangeForBaby}
+              />
+              <NumberSelect 
+                max={15}
+                label="Ounces"
+                name="weightOunces"
+                onChange={this.handleInputChangeForBaby}
+              />
+            </div> 
+          </div>      
         </div>
 
         </div>
