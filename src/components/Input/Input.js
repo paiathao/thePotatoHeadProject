@@ -9,7 +9,8 @@ export default ({
   value,
   onChange,
   childRef,
-  id
+  id,
+  inputStyle,
 }) => {
   return (
     <div className="Input">
@@ -22,6 +23,7 @@ export default ({
           ref={childRef}
           type={type}
           onChange={onChange}
+          style={inputStyle}
         />
         { submitLabel &&
           <button type="submit">{submitLabel}</button>

@@ -25,14 +25,12 @@
   background-color: #ec522b;
   color: white;
   border-radius: 10px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
 }
 
-.passInput {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  background-color: #6bcad0
+#passInput {
+  background-color: #6bcad0;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .AuthPage input[type="submit"] {
@@ -80,4 +78,12 @@
   color: #ec522b;
   background-color: transparent;
   text-decoration: none;
+}
+
+.AuthPage input:focus {
+  outline-color: #6dcad0;
+}
+
+.AuthPage .Input button:focus {
+  outline-color: #6dcad0;
 }
