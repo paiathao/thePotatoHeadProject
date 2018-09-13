@@ -220,7 +220,7 @@ class RequestForm extends Component {
                     <p className="requestFormPtag">Potato Head Project newsletter</p>
                   </label>
                 </div>
-                <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
+                <div className="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
               </div>
               <div id="submitDiv">
                 <input
