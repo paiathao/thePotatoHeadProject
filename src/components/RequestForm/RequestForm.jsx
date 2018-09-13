@@ -4,7 +4,8 @@ import BabyInfo from './BabyInfo';
 import AutoComplete from '../GoogleAutoComplete/AutoComplete';
 import Radiobox from './Radiobox';
 import './RequestForm.css';
-import Input from '../Input/Input'
+import Input from '../Input/Input';
+import TextArea from '../TextArea/TextArea';
 
 const BABY_OBJECT = {
   gender: '',
@@ -192,23 +193,19 @@ class RequestForm extends Component {
             searchField={this.state.searchField}
           />
 
-          
+
           <div id="extrasDiv">
+
             <div id="notesDiv">
-              <label htmlFor="specialNotes">
-                <p className="requestFormPtag">Would you like to include</p>
-                <p className="requestFormPtag"> a personalized note</p>
-                <p className="requestFormPtag">with your Potato Head Package?</p>
-              </label>
-              <textarea
-                id="specialNotes"
-                rows="5"
-                cols="40"
-                onChange={this.handleInputChangeFor('personalNote')}
-              >
-              </textarea>
-              <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
+              <TextArea 
+                name="personalNote"
+                label="Personal Note"
+                onChange={this.handleInputChangeFor}
+
+              />
             </div>
+
+            <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
             <div id="subscribeAndSubmitDiv">
               <div id="subscribeAndCaptchaDiv">
                 <div id="subscribeDiv">
