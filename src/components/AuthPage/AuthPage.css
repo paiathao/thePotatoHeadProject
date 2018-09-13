@@ -27,12 +27,6 @@
   border-radius: 10px;
 }
 
-#passInput {
-  background-color: #6bcad0;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-}
-
 .AuthPage input[type="submit"] {
   background-color: #6bcad0;
 }

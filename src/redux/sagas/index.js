@@ -8,6 +8,7 @@ import emailSaga from './emailSaga';
 export default function* rootSaga() {
   yield takeEvery('FORGOT_PASSWORD', forgotPassword)
   yield takeEvery('RESET_PASSWORD', resetPassword)
+  yield takeEvery('ADD_REQUEST', addRequest)
   yield all([
     requestSaga(),
     loginSaga(),
@@ -35,6 +36,14 @@ function* resetPassword(action) {
     )
 
 
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* addRequest(action) {
+  try {
+    yield call(axios.post, '/api/request/new', action.payload)
   } catch (error) {
     console.log(error);
   }

@@ -33,8 +33,8 @@ router.get('/', (req, res) => {
                     to: 'process.env.CLIENT_USER'
                 },
                 locals: {
-                    resetLink: 
-                        `http://localhost:3000/#/reset-password/${token}` 
+                    resetLink:
+                        `http://localhost:3000/#/reset-password/${token}`
                 },
             })
                 .then(console.log)
