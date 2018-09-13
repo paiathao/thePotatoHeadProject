@@ -74,14 +74,14 @@ class AuthPage extends Component {
         <Route path="/reset-password/:token" render={(props) => (
           <form className="auth-form" onSubmit={this.resetPassword}>
             <label className="resetText">Password</label>
-            <Input className="passInput"
+            <Input 
                 data-test="login-password" 
                 type="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
             <label className="resetText">Confirm Password</label>
-            <Input
+            <Input inputStyle={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
               data-test="confirm-password" 
               type="password"
               submitLabel="Submit"
@@ -96,7 +96,7 @@ class AuthPage extends Component {
           <div>
           <form className="auth-form" onSubmit={this.login}>
             <label className="loginText">Password</label>
-            <Input
+            <Input inputStyle={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
               data-test="login-password" 
               type="password"
               submitLabel="Login"

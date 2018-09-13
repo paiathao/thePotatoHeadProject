@@ -25,7 +25,4 @@ const RequestSchema = new Schema({
     hospitalVerified: { type: Boolean, default: false },
     markedSent: { type: Boolean, default: false }
  });
- 
- 
-
 module.exports = mongoose.model('Request', RequestSchema);

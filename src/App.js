@@ -16,9 +16,9 @@ import ForgotPage from './components/ForgotPassword/ForgotPassword'
 
 import RequestForm from './components/RequestForm/RequestForm';
 import AdminPortal from './components/AdminPortal/AdminPortal';
-
 import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
-
+import googleMap from './components/Map/map'
+import cluster from './components/Map/googleCluster'
 
 import './styles/main.css';
 
@@ -78,10 +78,20 @@ class App extends Component {
               component={RequestForm}
             />
 
-
-            <Route
+                        <Route
               path="/AutoComplete"
               component={AutoComplete}
+
+            />
+            <Route
+              path="/cluster"
+              component={cluster}
+
+            />
+
+            <Route
+              path="/map"
+              component={googleMap}
 
             />
 

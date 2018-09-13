@@ -11,6 +11,33 @@
 #requestForm > form {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+  
+}
+
+#autoCompleteDiv2{
+  align-items: center;
+  border: 0.125rem solid #74CAD1;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.125rem;
+  padding: 0.25rem 1rem;
+/* width: 50%; */
+}
+
+#babyDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.baby-form,
+#nominatorDiv,
+#parentContactDiv {
+  animation: fadeIn 1s;
+  border: 0.125rem solid #e5512f;
+  border-radius: 1rem;
 }
 
 /* all direct children of the form  */
@@ -53,7 +80,15 @@
   width: 100%;
 }
 
+
 #requestForm #notesDiv {
   display: flex;
   padding: 0 26px;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+
 }
