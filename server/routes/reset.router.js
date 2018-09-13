@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
             email.send({
                 template: 'resetEmail',
                 message: {
-                    to: 'process.env.CLIENT_USER'
+                    to: process.env.CLIENT_USER
                 },
                 locals: {
                     resetLink:
