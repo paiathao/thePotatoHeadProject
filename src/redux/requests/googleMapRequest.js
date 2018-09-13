@@ -10,7 +10,6 @@ export function runGetAddress(){
 }
 //This will run geocode from the address we got from database
 export function runGeocode(data){
-    console.log('audhasidjoiasjd', data)
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${data}&key=AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M`
     return axios.get(url)
     .then(response => response.data.results)
