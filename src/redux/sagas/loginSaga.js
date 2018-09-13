@@ -1,5 +1,11 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { LOGIN_ACTIONS } from '../actions/loginActions';
+import axios from 'axios';
+import { 
+  LOGIN_ACTIONS,
+  fetchUser,
+  fetchUserSuccess,
+  fetchUserFail 
+} from '../actions/loginActions';
 import { USER_ACTIONS } from '../actions/userActions';
 import { callLogin, callLogout } from '../requests/loginRequests';
 
@@ -42,9 +48,26 @@ function* logoutUser(action) {
   }
 }
 
+function* getUser(action) {
+  try {
+    yield put(fetchUser());
+    let { data } = yield axios.get('/api/user');
+
+    if (data) {
+      yield put(fetchUserSuccess(true));
+    } else {
+      yield put(fetchUserSuccess(false));
+    }
+
+  } catch (err) {
+    yield put(fetchUserFail(err));
+  }
+}
+
 function* loginSaga() {
   yield takeLatest(LOGIN_ACTIONS.LOGIN, loginUser);
   yield takeLatest(LOGIN_ACTIONS.LOGOUT, logoutUser);
+  yield takeLatest(LOGIN_ACTIONS.HANDLE_FETCH_USER, getUser);
 }
 
 export default loginSaga;
