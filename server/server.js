@@ -15,8 +15,6 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const mapRouter = require('./routes/map.router')
-const verifyRouter = require('./routes/verify.router');
-const emailRouter = require('./routes/email.router');
 const resetRouter = require('./routes/reset.router');
 const requestRouter = require('./routes/request.router');
 
@@ -35,13 +33,8 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-<<<<<<< HEAD
-app.use('/api/verify', verifyRouter);
-app.use('/api/email', emailRouter);
 app.use('/api/map', mapRouter);
-=======
 app.use('/api/reset', resetRouter);
->>>>>>> c601402ce5e7adbaec3e8c501cc404d6df9c7b77
 app.use('/api/request', requestRouter);
 
 // Serve static files

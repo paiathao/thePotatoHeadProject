@@ -33,7 +33,7 @@ class MapContainer extends Component {
         this.props.dispatch({ type: GET_MAP.GET });
     }
 
-    onMarkerClick = (props, marker, e) => {
+    onMarkerClick = ( marker) => {
         this.setState({
             showingInfoWindow: true,
             activeMarker: marker,
@@ -50,7 +50,6 @@ class MapContainer extends Component {
     }
 
     render() {
-        console.log('testing',this.props)
         const mapLocation = this.props.googleMap.googleMap
         let mapMarker = mapLocation.map(((location,i) => {
             return (
