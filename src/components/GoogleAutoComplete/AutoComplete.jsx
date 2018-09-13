@@ -1,6 +1,7 @@
 import React from 'react';
 import Script from 'react-load-script';
-import Input from '../Input/Input'
+import Input from '../Input/Input';
+import './AutoComplete.css';
 // import { thisExpression } from 'babel-types';
 // import '../../styles/google.css'
 
