@@ -1,10 +1,6 @@
 import React from 'react';
 import Script from 'react-load-script';
 import Input from '../Input/Input'
-// import { thisExpression } from 'babel-types';
-// import '../../styles/google.css'
-
-// var clone = require('clone');
 
 export default class GoogleAutoComplete extends React.Component {
   constructor(props) {

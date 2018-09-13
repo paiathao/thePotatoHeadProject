@@ -6,7 +6,6 @@ import Radiobox from './Radiobox';
 import './RequestForm.css';
 import Input from '../Input/Input';
 import swal from 'sweetalert2';
-// import Logo from '../../components/Logo/Logo';
 import withReactContent from 'sweetalert2-react-content';
 import SubmitPopup from'../../components/SubmitPopup/SubmitPopup';
 
@@ -93,15 +92,11 @@ class RequestForm extends Component {
 
 
   handleSubmit = () => {
+    //need submit action
     MySwal.fire({
-      // title: '<strong>Thank You for requesting<br/> a Potato Head!</strong>',
-      // type: 'success',
-      // imageUrl: '../../../../images/logo.png',
 
       html:
         <SubmitPopup />,
-        // 'You will receive a confirmation email shortly' + '<br/>' + 'Please consider ' +
-        // '<a href="https://www.thepotatoheadproject.org/donate"><strong>Donating</strong></a>' + ' to the Potato Head Project',
       showCloseButton: true,
       showCancelButton: true,
       focusConfirm: true,
