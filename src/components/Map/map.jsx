@@ -31,9 +31,6 @@ class MapContainer extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: GET_MAP.GET });
-        // yield this.props.dispatch({
-        //     type:GET_MAP.RUN
-        // })
     }
 
     onMarkerClick = (props, marker, e) => {
@@ -53,6 +50,7 @@ class MapContainer extends Component {
     }
 
     render() {
+        console.log('testing',this.props)
         const mapLocation = this.props.googleMap.googleMap
         let mapMarker = mapLocation.map(((location,i) => {
             return (
@@ -78,7 +76,9 @@ class MapContainer extends Component {
                         marker={this.state.activeMarker}
                         visible={this.state.showingInfoWindow}
                     >
-                        <p>Testing </p>
+                        <p>Testing, This will take hospital information.
+                            For now it's just text
+                             </p>
                     </InfoWindow>
                 </Map>
             </div>

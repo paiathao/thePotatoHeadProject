@@ -5,12 +5,12 @@ import { runGetAddress, runGeocode, runGoogleMap } from '../requests/googleMapRe
 //Get data from database
 function* getAddress() {
     try {
-        // let storeAddress = []
+        //Grab address from database
         let data = yield runGetAddress()
+        //Now store those data in an array
         let locations = [];
-
+        //Run a for loop to get lat and lng and push it to the locations array
         for (let i = 0; i < data.length; i ++){
-            console.log('thisisisis',data)
             const location =  yield runGeocode(data[i].address);
             const body={
                 longitude: location[0].geometry.location.lng,
@@ -18,7 +18,6 @@ function* getAddress() {
             }
             locations.push(body);
         }
-        console.log('thihsie',locations)
             yield put({
                 type:GET_MAP.SET_DATABASE_ADDRESS,
                 payload: locations
@@ -28,19 +27,9 @@ function* getAddress() {
     };
 }
 
-// function* runGeo(){
-//     try{
 
-//     }
-// }
-
-
-
-//Need a new function to add geocode to google map
 function* googleMapSaga() {
     yield takeEvery(GET_MAP.GET, getAddress)
-    // yield takeEvery(GET_MAP.SET_DATABASE_ADDRESS, runGeo)
-
 }
 
 export default googleMapSaga;

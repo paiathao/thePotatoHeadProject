@@ -15,6 +15,7 @@ import AdminPortal from './components/AdminPortal/AdminPortal';
 import AutoComplete from './components/GoogleAutoComplete/AutoComplete';
 import Verification from './components/Verification/Verification';
 import ImpactMap from './components/Map/map'
+import cluster from './components/Map/googleCluster'
 import './styles/main.css';
 
 const App = () => (
@@ -72,6 +73,10 @@ const App = () => (
         <Route
           path="/Map"
           component={ImpactMap}
+        />
+                <Route
+          path="/cluster"
+          component={cluster}
         />
 
 
