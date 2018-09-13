@@ -41,8 +41,8 @@ router.get('/', (req, res) => {
                 .catch(console.error);
         }
     ], function (err) {
-        if (err) return next(err);
-        res.redirect('/reset');
+        if (err) 
+        res.send(err);
     });
 });
 
@@ -54,8 +54,7 @@ router.put('/:token', (req, res) => {
         function (done) {
             Person.findOne({ resetPasswordToken: req.body.token, resetPasswordExpires: { $gt: Date.now() } }, function (err, user) {
                 if (!user) {
-                    req.flash('error', 'Password reset token is invalid or has expired.');
-                    return res.redirect('back');
+                    return res.send('Password reset token is invalid or has expired.');
                 }
                 user.password = password;
                 user.resetPasswordToken = undefined;
@@ -79,7 +78,7 @@ router.put('/:token', (req, res) => {
                 .catch(console.error);
         }
     ], function (err) {
-        res.redirect('/');
+        res.send(err)
     });
 });
 
