@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 const Email = require('email-templates');
 
+
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,

@@ -8,7 +8,7 @@ const async = require('async');
 const crypto = require('crypto');
 
 //send reset email
-router.get('/reset', (req, res) => {
+router.get('/', (req, res) => {
     async.waterfall([
         function (done) {
             crypto.randomBytes(20, function (err, buf) {
@@ -30,11 +30,11 @@ router.get('/reset', (req, res) => {
             email.send({
                 template: 'resetEmail',
                 message: {
-                    to: process.env.CLIENT_USER
+                    to: 'process.env.CLIENT_USER'
                 },
                 locals: {
-                    resetLink: 
-                        `http://localhost:3000/#/reset-password/${token}` 
+                    resetLink:
+                        `http://localhost:3000/#/reset-password/${token}`
                 },
             })
                 .then(console.log)
@@ -47,7 +47,7 @@ router.get('/reset', (req, res) => {
 });
 
 //reset password
-router.put('/reset/:token', (req, res) => {
+router.put('/:token', (req, res) => {
     console.log('got to reset pw token', req.body)
     const password = encryptLib.encryptPassword(req.body.password);
     async.waterfall([
