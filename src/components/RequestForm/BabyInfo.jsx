@@ -24,7 +24,7 @@ class BabyInfo extends Component {
 
 
         <div>
-          <p className="requestFormPtag"><b>Baby's Info:</b></p>
+          <p className="requestFormPtag"><b>Baby</b></p>
         </div>
         
       <div className="baby-form">

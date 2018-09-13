@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Input from '../Input/Input'
+import RadioGroup from '../RadioGroup/RadioGroup';
+
 class Radiobox extends Component {
 
   render = () => {
@@ -29,6 +31,15 @@ class Radiobox extends Component {
     }
     return (
       <div>
+        <RadioGroup 
+          title="Radio Group"
+          name="parentContact"
+          onChange={this.handleInputChangeFor}
+          data={[
+            { value: 'true', label: 'Yes' },
+            { value: 'false', label: 'No' }
+          ]}
+        />
         <label htmlFor="parentContactYes"> Yes</label>
         <input
           type="radio"

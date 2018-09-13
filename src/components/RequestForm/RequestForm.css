@@ -8,8 +8,7 @@
 }
 
 /* form container  */
-#requestForm > form,
-.baby-form {
+#requestForm > form {
   display: flex;
   flex-direction: column;
 }
@@ -19,20 +18,19 @@
   margin: 16px 0;
 }
 
-/* direct chilren of direct children of form */
-#requestForm > form > * > * {
-  margin: 22px 0;
-}
-
-/* sections of each inputs */
-.baby-form > div {
+/* sections inputs */
+.baby-form > div,
+#nominatorDiv > div,
+#parentContactDiv > div {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
 /* the wrapper for each input */
-.baby-form > div > div {
+.baby-form > div > div,
+#nominatorDiv > div > div,
+#parentContactDiv > div > div {
   flex: 1;
   display: flex;
   align-items: center;

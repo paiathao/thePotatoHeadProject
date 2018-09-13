@@ -86,15 +86,12 @@ class RequestForm extends Component {
   };
 
 
-  handleSubmit = () => {
-    //do this 
-    // this.setState({
-    //   ...this.state,
-    //   submitButton: {
-    //     ...this.state.submitButton,
-    //     disabled: true
-    //   }
-    // })
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.dispatch({
+      type: 'ADD_REQUEST',
+      payload: this.state
+    });
   }
 
 
@@ -133,10 +130,17 @@ class RequestForm extends Component {
 
     return (
       <div id="requestForm">
-        <form onSubmit={e => e.preventDefault()}>
-          {babyArray}
-          <div id="contactDiv">
-            <div id="nominatorDiv">
+        <form onSubmit={this.handleSubmit}>
+
+          {babyArray}    
+        
+          <div id="nominatorDiv">
+
+            <div>
+              <p>You</p>
+            </div>
+
+            <div>
               <Input
                 type="text"
                 label="Your Name"
@@ -150,18 +154,31 @@ class RequestForm extends Component {
                 onChange={this.handleInputChangeFor('nominatorEmail')}
               />
             </div>
-            <div id="parentContactDiv">
-              <p className="requestFormPtag">If you are not the parents,</p>
-              <p className="requestFormPtag">would the parents like to be contacted?</p>
-              <Radiobox contactChecked={this.state.contactChecked}
-                handleInputChangeFor={this.handleInputChangeFor}
-                handleClearInput={this.handleClearInput}
-                handleClearParents={this.handleClearParents}
-                parentName={this.state.parentName}
-                parentEmail={this.state.parentEmail}
+          </div>
+
+
+
+          <div id="parentContactDiv">
+
+            <div>
+              <p>The Parent</p>
+            </div>
+
+            <div className="parents-form">
+              
+              <Input
+                label="Name"
+                placeholder="Mary and Dave"
+                onChange={this.handleInputChangeFor('parentName')}
+              />
+              <Input
+                label="Email"
+                placeholder="mary@yahoo.com"
+                onChange={this.handleInputChangeFor('parentEmail')}
               />
             </div>
-          </div>
+          </div>   
+
           <AutoComplete
             handleInputChangeFor={this.handleInputChangeFor}
             streetAddress={this.state.streetAddress}
@@ -174,6 +191,8 @@ class RequestForm extends Component {
             country={this.state.country}
             searchField={this.state.searchField}
           />
+
+          
           <div id="extrasDiv">
             <div id="notesDiv">
               <label htmlFor="specialNotes">
