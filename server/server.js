@@ -14,6 +14,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const mapRouter = require('./routes/map.router')
 const resetRouter = require('./routes/reset.router');
 const requestRouter = require('./routes/request.router');
 
@@ -32,6 +33,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/map', mapRouter);
 app.use('/api/reset', resetRouter);
 app.use('/api/request', requestRouter);
 

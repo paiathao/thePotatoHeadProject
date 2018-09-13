@@ -3,6 +3,7 @@ import requestSaga from './requestSaga';
 import loginSaga from './loginSaga';
 import axios from 'axios';
 import emailSaga from './emailSaga';
+import googleMapSaga from './googleMapSaga'
 
 
 export default function* rootSaga() {
@@ -12,7 +13,8 @@ export default function* rootSaga() {
   yield all([
     requestSaga(),
     loginSaga(),
-    emailSaga()
+    emailSaga(),
+    googleMapSaga()
     // watchIncrementAsync()
   ]);
 }
