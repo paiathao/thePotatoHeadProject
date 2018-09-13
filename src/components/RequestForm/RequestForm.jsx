@@ -6,6 +6,8 @@ import Radiobox from './Radiobox';
 import './RequestForm.css';
 import Input from '../Input/Input'
 
+<<<<<<< HEAD
+=======
 const BABY_OBJECT = {
   gender: '',
   lastName: '',
@@ -17,6 +19,7 @@ const BABY_OBJECT = {
   gestationWeeks: '',
 }
 
+>>>>>>> c601402ce5e7adbaec3e8c501cc404d6df9c7b77
 class RequestForm extends Component {
 
   constructor(props) {
