@@ -17,13 +17,30 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
 
     }
 });
+<<<<<<< HEAD
 //Work on this. We will have to 
 router.post('/', rejectUnauthenticated, async (req, res) => {
     try {
+=======
+
+router.post('/', async (req, res) => {
+    try {
+        console.log(req.body);
+>>>>>>> 77813afd97d7d8490fa96d4bcef07a96a51ab3f6
         const newRequest = req.body;
         console.log('testingthepostroute', req.body)
         newRequest.hospitalVerified = await verify(newRequest.hospitalName);
         await Request.create(newRequest);
+        await email.send({
+            template: 'initialEmail',
+            message: {
+                to: req.body.nominatorEmail,
+            },
+            // these are variable that get insert to the template
+            locals: {
+                name: req.body.nominatorName,
+            },
+        })
         res.sendStatus(200);
 
     } catch (err) {
@@ -82,34 +99,6 @@ router.put('/', (req, res) => {
         res.sendStatus(403);
     }
 
-});
-
-
-router.post('/new', (req, res) => {
-    console.log('here is req.body', req.body);
-
-    //save to mongodb
-    let newRequest = new Request(req.body);
-    newRequest.save().then((data) => {
-        console.log(data);
-        //send automate email sent when successfully posting
-        email.send({
-            template: 'initialEmail',
-            message: {
-                to: req.body.nominatorEmail,
-            },
-            // these are variable that get insert to the template
-            locals: {
-                name: req.body.nominatorName,
-            },
-        })
-            .then(console.log)
-            .catch(console.error);
-        res.sendStatus(201);
-    }).catch((err) => {
-        console.log(err);
-        res.sendStatus(500)
-    })
 });
 
 module.exports = router;
