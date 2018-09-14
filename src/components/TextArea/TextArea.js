@@ -18,7 +18,7 @@ export default ({
           placeholder={placeholder}
           value={value}
           ref={childRef}
-          onChange={onChange(name)}
+          onChange={onChange}
         ></textarea>
       </div>
     </div>

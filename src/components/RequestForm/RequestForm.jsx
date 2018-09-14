@@ -48,6 +48,7 @@ class RequestForm extends Component {
       postalcode: '',
       country: '',
       searchField: '',
+      hospitalName: ''
     };
   }
 
@@ -84,7 +85,6 @@ class RequestForm extends Component {
 
 
   handleInputChangeFor = propertyName => (event) => {
-    console.log(propertyName, event.target.value);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value
