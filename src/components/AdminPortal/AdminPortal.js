@@ -14,7 +14,7 @@ import { triggerLogout } from '../../redux/actions/loginActions';
 
 class AdminPortal extends Component {
 
-  state = { 
+  state = {
     emailForm: {
       show: false,
       nominator: {}
@@ -35,11 +35,11 @@ class AdminPortal extends Component {
 
   sendEmail = ({ note, tracking }) => {
     this.props.dispatch(handleSendEmail({
-        note,
-        tracking,
-        nominatorEmail: this.state.emailForm.nominator.nominatorEmail,
-        nominatorName: this.state.emailForm.nominator.nominatorName
-      }));
+      note,
+      tracking,
+      nominatorEmail: this.state.emailForm.nominator.nominatorEmail,
+      nominatorName: this.state.emailForm.nominator.nominatorName
+    }));
   }
 
   showEmailForm = nominator => {
@@ -71,13 +71,13 @@ class AdminPortal extends Component {
   }
 
   renderRequest = request => (
-    <Request 
-      key={request._id} 
+    <Request
+      key={request._id}
       {...request}
       openRequest={this.openRequest.bind(this, request._id)}
       opened={request._id === this.props.opened}
       toggleMarkedSent={this.handleToggleRequest.bind(this, request)}
-      showNotes={this.showNotes.bind(this, request.note)} 
+      showNotes={this.showNotes.bind(this, request.note)}
       showEmailForm={this.showEmailForm.bind(this, {
         nominatorEmail: request.nominatorEmail,
         nominatorName: request.nominatorName
@@ -86,12 +86,12 @@ class AdminPortal extends Component {
   );
 
   closeModal(name) {
-    this.setState({ 
-      ...this.state, 
+    this.setState({
+      ...this.state,
       [name]: {
         ...this.state[name],
         show: false
-      } 
+      }
     });
   }
 
@@ -104,7 +104,7 @@ class AdminPortal extends Component {
   render() {
     return (
       <Main>
-        <Header 
+        <Header
           logout={this.handleLogout}
         />
 
@@ -114,7 +114,7 @@ class AdminPortal extends Component {
           renderRow={this.renderRequest}
         />
 
-        <EmailFormModal 
+        <EmailFormModal
           onSend={this.sendEmail}
           visible={this.state.emailForm.show}
           nominator={this.state.emailForm.nominator}
@@ -122,7 +122,7 @@ class AdminPortal extends Component {
         />
 
         <NotesModal
-          visible={this.state.notes.show} 
+          visible={this.state.notes.show}
           closeModal={this.closeModal.bind(this, 'notes')}
           note={this.state.notes.notes}
         />
