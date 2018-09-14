@@ -1,6 +1,11 @@
 import React from 'react';
 import Script from 'react-load-script';
-import Input from '../Input/Input'
+import Input from '../Input/Input';
+import './AutoComplete.css';
+// import { thisExpression } from 'babel-types';
+// import '../../styles/google.css'
+
+// var clone = require('clone');
 
 export default class GoogleAutoComplete extends React.Component {
   constructor(props) {
@@ -84,6 +89,7 @@ export default class GoogleAutoComplete extends React.Component {
     this.props.callbackFunction(this.place);
     const fieldsForState = { ...this.state.fieldsForState };
     if (this.place.address_components) {
+      this.props.handleInputChangeFor('hospitalName')({ target: { value: this.place.name } });
       const addrComps = this.place.address_components;
       var matchForStreet1 = this.place.adr_address ? this.place.adr_address.match(/<span class="street-address">(.*?)<\/span>/) : false;
       if (matchForStreet1 && matchForStreet1[1]) fieldsForState.streetAddress = matchForStreet1[1];
@@ -163,6 +169,7 @@ export default class GoogleAutoComplete extends React.Component {
               className="hospitalInput"
               id={id}
               placeholder="Hospital Name"
+              onChange={this.props.handleInputChangeFor('hospitalName')}
               childRef={ele => {
                 this.searchInput = ele;
                 (ele || {}).onsearch = this.handleSearchClear

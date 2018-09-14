@@ -5,6 +5,7 @@ import AutoComplete from '../GoogleAutoComplete/AutoComplete';
 import Radiobox from './Radiobox';
 import './RequestForm.css';
 import Input from '../Input/Input';
+import TextArea from '../TextArea/TextArea';
 import swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import SubmitPopup from'../../components/SubmitPopup/SubmitPopup';
@@ -47,6 +48,7 @@ class RequestForm extends Component {
       postalcode: '',
       country: '',
       searchField: '',
+      hospitalName: ''
     };
   }
 
@@ -66,7 +68,7 @@ class RequestForm extends Component {
       ...this.state,
       baby: [
         ...this.state.baby,
-        { ...BABY_OBJECT }
+        {...BABY_OBJECT}
       ]
     });
   };
@@ -83,7 +85,6 @@ class RequestForm extends Component {
 
 
   handleInputChangeFor = propertyName => (event) => {
-    console.log(propertyName, event.target.value);
     this.setState({
       ...this.state,
       [propertyName]: event.target.value
@@ -91,7 +92,13 @@ class RequestForm extends Component {
   };
 
 
-  handleSubmit = () => {
+
+  handleSubmit = e => {
+      e.preventDefault()
+      this.props.dispatch({
+        type: 'ADD_REQUEST',
+        payload: this.state
+      });
     //need submit action
     MySwal.fire({
 
@@ -148,11 +155,18 @@ class RequestForm extends Component {
 
 
     return (
-      <div id="requestFormDiv">
-        <form id="requestForm" onSubmit={e => e.preventDefault()}>
-          {babyArray}
-          <div id="contactDiv">
-            <div id="nominatorDiv">
+      <div id="requestForm">
+        <form onSubmit={this.handleSubmit}>
+
+          {babyArray}    
+        
+          <div id="nominatorDiv">
+
+            <div>
+              <p>You</p>
+            </div>
+
+            <div>
               <Input
                 type="text"
                 label="Your Name"
@@ -166,18 +180,31 @@ class RequestForm extends Component {
                 onChange={this.handleInputChangeFor('nominatorEmail')}
               />
             </div>
-            <div id="parentContactDiv">
-              <p className="requestFormPtag">If you are not the parents,</p>
-              <p className="requestFormPtag">would the parents like to be contacted?</p>
-              <Radiobox contactChecked={this.state.contactChecked}
-                handleInputChangeFor={this.handleInputChangeFor}
-                handleClearInput={this.handleClearInput}
-                handleClearParents={this.handleClearParents}
-                parentName={this.state.parentName}
-                parentEmail={this.state.parentEmail}
+          </div>
+
+
+
+          <div id="parentContactDiv">
+
+            <div>
+              <p>The Parent</p>
+            </div>
+
+            <div className="parents-form">
+              
+              <Input
+                label="Name"
+                placeholder="Mary and Dave"
+                onChange={this.handleInputChangeFor('parentName')}
+              />
+              <Input
+                label="Email"
+                placeholder="mary@yahoo.com"
+                onChange={this.handleInputChangeFor('parentEmail')}
               />
             </div>
-          </div>
+          </div>   
+
           <AutoComplete
             handleInputChangeFor={this.handleInputChangeFor}
             streetAddress={this.state.streetAddress}
@@ -190,21 +217,19 @@ class RequestForm extends Component {
             country={this.state.country}
             searchField={this.state.searchField}
           />
+
+
           <div id="extrasDiv">
+
             <div id="notesDiv">
-              <label htmlFor="specialNotes">
-                <p className="requestFormPtag">Would you like to include</p>
-                <p className="requestFormPtag"> a personalized note</p>
-                <p className="requestFormPtag">with your Potato Head Package?</p>
-              </label>
-              <textarea
-                id="specialNotes"
-                rows="5"
-                cols="40"
-                onChange={this.handleInputChangeFor('personalNote')}
-              >
-              </textarea>
-              </div>
+              <TextArea 
+                name="personalNote"
+                label="Personal Note"
+                onChange={this.handleInputChangeFor}
+
+              />
+            </div>
+
             <div id="subscribeAndSubmitDiv">
               <div id="subscribeAndCaptchaDiv">
                 <div id="subscribeDiv">
