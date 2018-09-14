@@ -48,10 +48,10 @@ class AuthPage extends Component {
 
   resetPassword = (event) => {
     event.preventDefault();
-    if(this.state.password === this.state.confirm) {
+    if (this.state.password === this.state.confirm) {
       console.log('match')
       this.props.dispatch({
-        type: 'RESET_PASSWORD', 
+        type: 'RESET_PASSWORD',
         payload: this.state.password,
         token: this.props.match.params.token
       })
@@ -60,6 +60,11 @@ class AuthPage extends Component {
       console.log('unmatch')
       alert('Password do not match! Please try again!')
     }
+  }
+
+  forgotPassword = () => {
+    this.props.dispatch({ type: 'FORGOT_PASSWORD' })
+    this.props.history.push('/forgot');
   }
 
   handleInputChangeFor = propertyName => (event) => {
@@ -74,41 +79,42 @@ class AuthPage extends Component {
         <Route path="/reset-password/:token" render={(props) => (
           <form className="auth-form" onSubmit={this.resetPassword}>
             <label className="resetText">Password</label>
-            <Input 
-                data-test="login-password" 
-                type="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
+            <Input
+              data-test="login-password"
+              type="password"
+              value={this.state.password}
+              onChange={this.handleInputChangeFor('password')}
+            />
             <label className="resetText">Confirm Password</label>
             <Input inputStyle={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
-              data-test="confirm-password" 
+              data-test="confirm-password"
               type="password"
               submitLabel="Submit"
               value={this.state.confirm}
               onChange={this.handleInputChangeFor('confirm')}
             />
-    
+
           </form>
         )} />
 
         <Route path="/login" render={() => (
           <div>
-          <form className="auth-form" onSubmit={this.login}>
-            <label className="loginText">Password</label>
-            <Input inputStyle={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
-              data-test="login-password" 
-              type="password"
-              submitLabel="Login"
-              value={this.state.password}
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </form>
-          <a href="#/forgot">Forgot Password?</a>
+            <form className="auth-form" onSubmit={this.login}>
+              <label className="loginText">Password</label>
+              <Input inputStyle={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
+                data-test="login-password"
+                type="password"
+                submitLabel="Login"
+                value={this.state.password}
+                onChange={this.handleInputChangeFor('password')}
+              />
+            </form>
+            <button className="forgotButton" onClick={this.forgotPassword}>Forgot Password?</button>
+            {this.state.alert}
           </div>
         )} />
 
-    </Switch>
+      </Switch>
     )
   }
 
@@ -120,7 +126,7 @@ class AuthPage extends Component {
           className="alert"
           role="alert"
         >
-          { message }
+          {message}
         </h2>
       );
     }
@@ -133,9 +139,9 @@ class AuthPage extends Component {
         <div className="AuthPage">
           <Logo />
 
-          { this.renderAlert() }
+          {this.renderAlert()}
 
-          { this.renderForm() }
+          {this.renderForm()}
         </div>
       </LandingPage>
     );
@@ -146,8 +152,9 @@ AuthPage.defaultProps = {
   login: {
     message: ''
   },
-  dispatch: () => {}
+  dispatch: () => { }
 }
 
 export { AuthPage };
 export default connect(mapStateToProps)(AuthPage);
+
