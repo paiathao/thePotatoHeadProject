@@ -1,22 +1,14 @@
-.requestFormPtag{
-  margin: 0rem;
+/* container */
+#requestForm {
+  width: 80%;
+  margin: 0 auto;
+  padding: 22px;
+  max-width: 600px;
+  background-color: #eee;
 }
 
-.g-recaptcha{
-  width: 70%
-}
-
-
-
-#addRemoveDiv{
-  display: flex;
-  justify-content: center;
-}
-
-#autoCompleteDiv{
-  align-items: center;
-  border: 0.125rem solid #e5512f;
-  border-radius: 1rem;
+/* form container  */
+#requestForm > form {
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -37,191 +29,66 @@
 #babyDiv{
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
 }
 
-#babyFullInfoDiv{
+.baby-form,
+#nominatorDiv,
+#parentContactDiv {
   animation: fadeIn 1s;
   border: 0.125rem solid #e5512f;
   border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  padding: 1rem;
 }
 
-#babyNameBirthdateDiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-  width: 50%;
+/* all direct children of the form  */
+#requestForm > form > * {
+  margin: 16px 0;
 }
 
-#babyStatsDiv{
+/* sections inputs */
+.baby-form > div,
+#nominatorDiv > div,
+#parentContactDiv > div {
   display: flex;
-  margin-top: 1rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* the wrapper for each input */
+.baby-form > div > div,
+#nominatorDiv > div > div,
+#parentContactDiv > div > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+}
+
+#requestForm .select-group {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+}
+
+#requestForm .select-group > p {
+  font-size: 1.1em;
+}
+
+#requestForm .select-group > div {
+  display: flex;
+  justify-content: space-around;
   width: 100%;
 }
 
-#birthdateDiv{
+
+#requestForm #notesDiv {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 0 26px;
 }
-
-#contactDiv{
-  border: 0.125rem solid #e5512f;
-  border-radius: 1rem;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
-  padding: 1rem;
-}
-
-#extrasDiv{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.5rem;
-  border: 0.125rem solid #e5512f;
-  border-radius: 1rem;
-  padding: 1rem; 
-}
-
-#firstNameDiv{
-  display: flex;
-  justify-content: flex-start;
-}
-
-#genderAndStatsDiv{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
-}
-
-#genderDiv{
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 1rem;
-}
-
-#gestationAndWeightDiv{
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  margin-bottom: 1rem;
-  width: 100%;
-}
-
-#gestationDiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#gestationOptionsDiv{
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 1rem;
-}
-
-#lastNameDiv{
-  display: flex;
-  justify-content: flex-start;
-}
-
-#nominatorDiv{
-  display: flex;
-  flex-direction: column;
-  /* margin-right: 1rem; */
-  width: 50%;
-}
-
-#notesDiv{
-  width: 50%
-}
-
-#parentDiv{
-  animation: fadeIn 1s;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* width: 50%;  */
-}
-
-#parentContactDiv{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#radioContact{
-  display: flex;
-  justify-content: center;
-  /* width: 100%; */
-}
-
-#requestForm{
-  background-color: #B8E1E3;
-  border-radius: 1rem;
-  width: 50%
-}
-
-#requestFormDiv{
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 3.125rem;
-}
-
-#statsDiv{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-#submitDiv{
-  display: flex;
-  justify-content: center;
-  /* margin-left: 6rem; */
-  margin-top: 2rem;
-}
-
-#subscribeAndSubmitDiv{
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-#subscribeDiv{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-bottom: 1rem; 
-}
-
-#weightDiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#weightOptionsDiv{
-  display: flex;
-  justify-content: space-evenly;
-}
-
 
 
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
+
 }

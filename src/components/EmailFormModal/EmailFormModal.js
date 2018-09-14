@@ -4,6 +4,7 @@ import './EmailFormModal.css';
 import Modal from '../Modal/Modal';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import TextArea from '../TextArea/TextArea';
 
 class EmailFormModal extends Component {
 
@@ -46,7 +47,7 @@ class EmailFormModal extends Component {
             value={this.state.tracking}
           />
         
-          <Input 
+          <TextArea 
             label="Message"
             onChange={this.handleChange('note')}
             value={this.state.note}

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Input from '../Input/Input'
+import RadioGroup from '../RadioGroup/RadioGroup';
+
 class Radiobox extends Component {
 
   render = () => {
@@ -28,24 +30,30 @@ class Radiobox extends Component {
       msg = "";
     }
     return (
-      <div >
-        <div id="radioContact">
-          <label htmlFor="parentContactYes"> Yes</label>
-          <input
-            type="radio"
-            name="parentContact"
-            value="true"
-            onChange={this.props.handleInputChangeFor('contactChecked')}
-          />
-          <label htmlFor="parentContactNo" > No</label>
-          <input
-            type="radio"
-            name="parentContact"
-            value="false"
-            onChange={this.props.handleClearParents}
-          />
-        </div>
-
+      <div>
+        <RadioGroup 
+          title="Radio Group"
+          name="parentContact"
+          onChange={this.handleInputChangeFor}
+          data={[
+            { value: 'true', label: 'Yes' },
+            { value: 'false', label: 'No' }
+          ]}
+        />
+        <label htmlFor="parentContactYes"> Yes</label>
+        <input
+          type="radio"
+          name="parentContact"
+          value="true"
+          onChange={this.props.handleInputChangeFor('contactChecked')}
+        />
+        <label htmlFor="parentContactNo" > No</label>
+        <input
+          type="radio"
+          name="parentContact"
+          value="false"
+          onChange={this.props.handleClearParents}
+        />
         {msg}
       </div>
     );

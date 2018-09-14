@@ -1,0 +1,31 @@
+.RadioGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 16px;
+}
+
+.RadioGroup p {
+  margin-top: 0;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+/* actual radio group */
+.RadioGroup > div {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 6px;
+  font-size: 1.2em;
+}
+
+/* input container */
+.RadioGroup > div > div {
+  display: flex;
+  align-items: center;
+}
+
+.RadioGroup > div > div > label {
+  padding-right: 4px;
+}
