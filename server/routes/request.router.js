@@ -17,16 +17,10 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
 
     }
 });
-<<<<<<< HEAD
-//Work on this. We will have to 
-router.post('/', rejectUnauthenticated, async (req, res) => {
-    try {
-=======
 
 router.post('/', async (req, res) => {
     try {
         console.log(req.body);
->>>>>>> 77813afd97d7d8490fa96d4bcef07a96a51ab3f6
         const newRequest = req.body;
         console.log('testingthepostroute', req.body)
         newRequest.hospitalVerified = await verify(newRequest.hospitalName);
