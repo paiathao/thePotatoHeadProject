@@ -4,7 +4,12 @@ import BabyInfo from './BabyInfo';
 import AutoComplete from '../GoogleAutoComplete/AutoComplete';
 import Radiobox from './Radiobox';
 import './RequestForm.css';
-import Input from '../Input/Input'
+import Input from '../Input/Input';
+import swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import SubmitPopup from'../../components/SubmitPopup/SubmitPopup';
+
+const MySwal = withReactContent(swal);
 
 const BABY_OBJECT = {
   gender: '',
@@ -61,7 +66,7 @@ class RequestForm extends Component {
       ...this.state,
       baby: [
         ...this.state.baby,
-        BABY_OBJECT
+        { ...BABY_OBJECT }
       ]
     });
   };
@@ -87,14 +92,25 @@ class RequestForm extends Component {
 
 
   handleSubmit = () => {
-    //do this 
-    // this.setState({
-    //   ...this.state,
-    //   submitButton: {
-    //     ...this.state.submitButton,
-    //     disabled: true
-    //   }
-    // })
+    //need submit action
+    MySwal.fire({
+
+      html:
+        <SubmitPopup />,
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: true,
+      confirmButtonText:
+        '<i class="fa fa-thumbs-up"></i> Donate',
+      confirmButtonAriaLabel: 'Thumbs up, great!',
+      cancelButtonText:
+        '<i class="fa fa-thumbs-down">Close</i>',
+      cancelButtonAriaLabel: 'Thumbs down',
+    }).then(function (result) {
+      if (result.value) {
+        window.location.href = 'https://www.thepotatoheadproject.org/donate';
+      }
+    })
   }
 
 
@@ -106,11 +122,11 @@ class RequestForm extends Component {
   };
 
 
-  removeBaby = () => {
+  removeBaby = (state, index) => {
     this.setState({
       ...this.state,
       baby: [
-        this.state.baby.pop()
+        this.state.baby.filter(a => a !== index)
       ]
     });
   };
@@ -188,8 +204,7 @@ class RequestForm extends Component {
                 onChange={this.handleInputChangeFor('personalNote')}
               >
               </textarea>
-              <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
-            </div>
+              </div>
             <div id="subscribeAndSubmitDiv">
               <div id="subscribeAndCaptchaDiv">
                 <div id="subscribeDiv">
@@ -205,13 +220,14 @@ class RequestForm extends Component {
                     <p className="requestFormPtag">Potato Head Project newsletter</p>
                   </label>
                 </div>
+                <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
               </div>
               <div id="submitDiv">
                 <input
                   type="submit"
                   className="Button"
                   value="Submit Request"
-                  onSubmit={this.handleSubmit}
+                  onClick={this.handleSubmit}
                 />
               </div>
             </div>

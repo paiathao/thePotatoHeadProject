@@ -15,6 +15,7 @@
 
 .addressFields {
   display: none;
+  width: 75%;
 }
 
 .addressInput:before {
