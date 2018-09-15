@@ -156,7 +156,7 @@ class RequestForm extends Component {
 
     return (
       <div id="requestForm">
-        <form onSubmit={this.handleSubmit}>
+        <div className="form">
 
           {babyArray}    
         
@@ -257,7 +257,7 @@ class RequestForm extends Component {
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     )
   }
