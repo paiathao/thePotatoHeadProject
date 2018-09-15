@@ -12,7 +12,11 @@ const initialState = {
 
 export default (state=initialState, action) => {
   switch (action.type) {
-    
+    case FORM_SUBMIT_START:
+      return {
+        ...initialState,
+        isLoading: true
+      }
     default:
       return state;
   }

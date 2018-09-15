@@ -96,7 +96,7 @@ class RequestForm extends Component {
   handleSubmit = e => {
       e.preventDefault()
       this.props.dispatch({
-        type: 'ADD_REQUEST',
+        type: 'HANDLE_FORM_SUBMIT',
         payload: this.state
       });
     //need submit action

@@ -9,7 +9,6 @@ import googleMapSaga from './googleMapSaga'
 export default function* rootSaga() {
   yield takeEvery('FORGOT_PASSWORD', forgotPassword)
   yield takeEvery('RESET_PASSWORD', resetPassword)
-  yield takeEvery('ADD_REQUEST', addRequest)
   yield all([
     requestSaga(),
     loginSaga(),
