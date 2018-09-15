@@ -1,5 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import validateForm from '../services/validateForm';
 
 import {
   HANDLE_FORM_SUBMIT,
@@ -9,8 +10,20 @@ import {
 } from '../actions/formActions';
 
 function* handleFormSubmit(action) {
-  debugger;
-  yield put({ type: FORM_SUBMIT_START });
+  try {
+
+    yield put({ type: FORM_SUBMIT_START });
+
+    validateForm(action.payload);
+
+    yield axios.post('/api/request', action.payload);
+    yield put({ type: FORM_SUBMIT_SUCCESS });
+
+  } catch (error) {
+    console.log(error)
+    yield put({ type: FORM_SUBMIT_FAIL, error: error.message });
+
+  }
 }
 
 

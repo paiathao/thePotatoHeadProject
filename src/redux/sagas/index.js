@@ -3,7 +3,8 @@ import requestSaga from './requestSaga';
 import loginSaga from './loginSaga';
 import axios from 'axios';
 import emailSaga from './emailSaga';
-import googleMapSaga from './googleMapSaga'
+import googleMapSaga from './googleMapSaga';
+import formSaga from './formSaga';
 
 
 export default function* rootSaga() {
@@ -13,7 +14,8 @@ export default function* rootSaga() {
     requestSaga(),
     loginSaga(),
     emailSaga(),
-    googleMapSaga()
+    googleMapSaga(),
+    formSaga()
     // watchIncrementAsync()
   ]);
 }

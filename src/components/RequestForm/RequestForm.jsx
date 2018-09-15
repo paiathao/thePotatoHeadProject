@@ -9,6 +9,7 @@ import TextArea from '../TextArea/TextArea';
 import swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import SubmitPopup from'../../components/SubmitPopup/SubmitPopup';
+import {ProgressSpinner} from 'primereact/progressspinner';
 
 const MySwal = withReactContent(swal);
 
@@ -248,12 +249,16 @@ class RequestForm extends Component {
                 <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
               </div>
               <div id="submitDiv">
-                <input
-                  type="submit"
-                  className="Button"
-                  value="Submit Request"
-                  onClick={this.handleSubmit}
-                />
+                { this.props.isLoading ? 
+                  <p>Loading...</p> :
+                  <input
+                    type="submit"
+                    className="Button"
+                    value="Submit Request"
+                    onClick={this.handleSubmit}
+                  />
+                }
+                
               </div>
             </div>
           </div>
@@ -263,4 +268,8 @@ class RequestForm extends Component {
   }
 }
 
-export default connect()(RequestForm);
+const mapStateToProps = state => ({
+  isLoading: state.form.isLoading
+});
+
+export default connect(mapStateToProps)(RequestForm);
