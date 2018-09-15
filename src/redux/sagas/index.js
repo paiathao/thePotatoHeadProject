@@ -43,11 +43,3 @@ function* resetPassword(action) {
   }
 }
 
-function* addRequest(action) {
-  try {
-    yield call(axios.post, '/api/request/', action.payload)
-  } catch (error) {
-    console.log(error);
-  }
-}
-
