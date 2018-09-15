@@ -21,6 +21,7 @@ class BabyInfo extends Component {
   render() {
 
     const {
+      id,
       firstName,
       lastName,
       gender,
@@ -28,7 +29,8 @@ class BabyInfo extends Component {
       weightOunces,
       weightPounds,
       gestationDays,
-      gestationWeeks
+      gestationWeeks,
+      removeBaby
     } = this.props;
 
     return (
@@ -128,22 +130,6 @@ class BabyInfo extends Component {
         </div>
 
         </div>
-
-        <div id="addRemoveDiv">
-          <p className="requestFormPtag"><b>Multiples?</b></p>
-          <button
-            className="Button"
-            onClick={this.props.addAnotherBaby}>
-            Add Another Baby
-            </button>
-          <button
-            className="Button"
-            onClick={this.props.removeBaby}>
-            Undo Add
-            </button>
-        </div>
-
-
       </div>
     )
   }

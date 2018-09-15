@@ -10,10 +10,12 @@ import swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import SubmitPopup from'../../components/SubmitPopup/SubmitPopup';
 import {ProgressSpinner} from 'primereact/progressspinner';
+import Button from '../Button/Button'
 
 const MySwal = withReactContent(swal);
 
 const BABY_OBJECT = {
+  id: 1,
   gender: '',
   lastName: '',
   firstName: '',
@@ -28,6 +30,8 @@ class RequestForm extends Component {
 
   constructor(props) {
     super(props);
+
+    this.numBabies = 1;
 
     this.state = {
       baby: [
@@ -104,7 +108,6 @@ class RequestForm extends Component {
   }
 
   handleInputChangeForBaby = ({ index, name, value }) => {
-    console.log(index, name, value);
     let babies = this.state.baby;
     babies[index][name] = value;
     this.setState({
@@ -115,22 +118,16 @@ class RequestForm extends Component {
 
 
   addAnotherBaby = () => {
+    this.numBabies += 1;
     this.setState({
       ...this.state,
       baby: [
         ...this.state.baby,
-        {...BABY_OBJECT}
+        { 
+          ...BABY_OBJECT,
+          id: this.numBabies
+        }
       ]
-    });
-  };
-
-
-  handleClearParents = () => {
-    this.setState({
-      ...this.state,
-      parentName: '',
-      parentEmail: '',
-      contactChecked: "false"
     });
   };
 
@@ -161,13 +158,16 @@ class RequestForm extends Component {
   };
 
 
-  removeBaby = (state, index) => {
-    this.setState({
-      ...this.state,
-      baby: [
-        this.state.baby.filter(a => a !== index)
-      ]
-    });
+  removeBaby = id => {
+    if (this.numBabies > 1) {
+      this.numBabies -= 1;
+      const newArr = this.state.baby.filter(b => b.id !== id)
+  
+      this.setState({
+        ...this.state,
+        baby: newArr
+      });
+    }
   };
 
 
@@ -206,9 +206,6 @@ class RequestForm extends Component {
 
 
   render() {
-    console.log(this.state);
-    // mapping through how many times to render the babyInfoDiv
-
     const {
       baby,
       subscription,
@@ -250,7 +247,26 @@ class RequestForm extends Component {
         }
         <div className="form">
 
-          {babyArray}    
+          {babyArray}  
+          
+          <div id="addRemoveDiv">
+            { this.numBabies < 3 && 
+              <Button
+                onClick={this.addAnotherBaby}
+                title={
+                  this.numBabies === 1 ? 'Twins?' :
+                  'Triplets?'
+                }
+              />
+            }
+            {
+              this.numBabies > 1 && 
+                <Button 
+                  title="Undo"
+                  onClick={() => this.removeBaby(this.numBabies)}
+                />
+            }
+        </div>
         
           <div id="nominatorDiv">
 
