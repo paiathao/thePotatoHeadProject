@@ -20,7 +20,7 @@ function* handleFormSubmit(action) {
     yield put({ type: FORM_SUBMIT_SUCCESS });
 
   } catch (error) {
-    console.log(error)
+
     yield put({ type: FORM_SUBMIT_FAIL, error: error.message });
 
   }

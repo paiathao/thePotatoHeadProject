@@ -9,7 +9,8 @@ class NumberSelect extends Component {
       max,
       label,
       name,
-      onChange
+      onChange,
+      value
     } = this.props;
     return (
       <select 
@@ -22,6 +23,7 @@ class NumberSelect extends Component {
           <option 
             key={i}
             value={i + min}
+            selected={value === String(i + min)}
           >
             {i + min}
           </option>

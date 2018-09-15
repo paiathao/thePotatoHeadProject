@@ -19,6 +19,18 @@ class BabyInfo extends Component {
 
 
   render() {
+
+    const {
+      firstName,
+      lastName,
+      gender,
+      birthDate,
+      weightOunces,
+      weightPounds,
+      gestationDays,
+      gestationWeeks
+    } = this.props;
+
     return (
       <div id="babyDiv">
 
@@ -36,6 +48,7 @@ class BabyInfo extends Component {
               type="text"
               label="First Name"
               placeholder="First Name"
+              value={firstName}
               onChange={this.handleInputChangeForBaby('firstName')}
             />
 
@@ -43,6 +56,7 @@ class BabyInfo extends Component {
               type="text"
               label="Last Name"
               placeholder="Last Name"
+              value={lastName}
               onChange={this.handleInputChangeForBaby('lastName')}
             />
 
@@ -55,6 +69,7 @@ class BabyInfo extends Component {
                 label="Birth Date"
                 placeholder="mm/dd/yyyy"
                 type="date"
+                value={birthDate}
                 onChange={this.handleInputChangeForBaby('birthDate')}
               />   
               
@@ -79,12 +94,14 @@ class BabyInfo extends Component {
                 max={40}
                 label="Weeks"
                 name="gestationWeeks"
+                value={gestationWeeks}
                 onChange={this.handleInputChangeForBaby}
               />
               <NumberSelect 
                 max={6}
                 label="Days"
                 name="gestationDays"
+                value={gestationDays}
                 onChange={this.handleInputChangeForBaby}
               />
             </div>            
@@ -96,12 +113,14 @@ class BabyInfo extends Component {
                 max={6}
                 label="Pounds"
                 name="weightPounds"
+                value={weightPounds}
                 onChange={this.handleInputChangeForBaby}
               />
               <NumberSelect 
                 max={15}
                 label="Ounces"
                 name="weightOunces"
+                value={weightOunces}
                 onChange={this.handleInputChangeForBaby}
               />
             </div> 

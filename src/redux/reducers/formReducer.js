@@ -17,6 +17,11 @@ export default (state=initialState, action) => {
         ...initialState,
         isLoading: true
       }
+    case FORM_SUBMIT_SUCCESS:
+      return {
+        ...initialState,
+        success: true
+      }  
     case FORM_SUBMIT_FAIL: 
       return {
         ...initialState,
