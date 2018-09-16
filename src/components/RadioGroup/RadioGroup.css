@@ -7,8 +7,7 @@
 
 .RadioGroup p {
   margin-top: 0;
-  font-size: 1.1em;
-  text-align: center;
+  align-self: flex-start;
 }
 
 /* actual radio group */
