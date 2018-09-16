@@ -140,8 +140,8 @@ class RequestForm extends Component {
 
 
   render() 
-
   {
+    console.log('finding out what kind of data we get back ', this.state)
     // mapping through how many times to render the babyInfoDiv
     let babyArray = this.state.baby.map((item, index) => (
       <BabyInfo

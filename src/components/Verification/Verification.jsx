@@ -46,8 +46,6 @@ class Verification extends Component{
                 placeholder='this.data'>
                 </input>
                 </form>
-                
-                {JSON.stringify(this.state)}
             </div>
         )
     }

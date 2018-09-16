@@ -49,6 +49,7 @@ function* resetPassword(action) {
 
 function* addRequest(action) {
   try {
+    console.log('testing the addRequest in index.js', action)
     yield call(axios.post, '/api/request/', action.payload)
     yield put({
       type:GET_MAP.GET,
