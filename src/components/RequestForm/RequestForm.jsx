@@ -139,9 +139,9 @@ class RequestForm extends Component {
   };
 
 
+  render() 
 
-  render() {
-    console.log(this.state);
+  {
     // mapping through how many times to render the babyInfoDiv
     let babyArray = this.state.baby.map((item, index) => (
       <BabyInfo
@@ -156,7 +156,8 @@ class RequestForm extends Component {
 
     return (
       <div id="requestForm">
-        <form onSubmit={this.handleSubmit}>
+        <form
+         onSubmit={this.handleSubmit}>
 
           {babyArray}    
         
@@ -245,7 +246,7 @@ class RequestForm extends Component {
                     <p className="requestFormPtag">Potato Head Project newsletter</p>
                   </label>
                 </div>
-                <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
+                <div className="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
               </div>
               <div id="submitDiv">
                 <input

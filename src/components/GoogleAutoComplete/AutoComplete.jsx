@@ -97,7 +97,6 @@ export default class GoogleAutoComplete extends React.Component {
       Object.keys(addrComps).map((index, i) => {
 
         const addrType = addrComps[index].types[0];
-
         switch (addrType) {
 
           case fields.city: fieldsForState.city = addrComps[index].long_name;

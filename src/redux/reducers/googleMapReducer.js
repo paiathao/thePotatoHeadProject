@@ -5,7 +5,7 @@ import { GET_MAP } from '../actions/googleMapAction';
 
 const googleMap = (state = [], action) => {
     switch(action.type){
-        case GET_MAP.SET_DATABASE_ADDRESS:
+        case GET_MAP.USE_LAT_LNG:
         return action.payload;
         default:
         return state;
