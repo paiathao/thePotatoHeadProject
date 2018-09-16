@@ -3,7 +3,6 @@ const router = express.Router();
 const location = require ('../models/Location')
 
 router.post('/', (req, res) => {
-    console.log('did this hit the router?', req.body)
     try{
         location.create(req.body)
     }

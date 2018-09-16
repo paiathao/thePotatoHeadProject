@@ -6,13 +6,12 @@ import { runStoreLocation, runGeocode,runLatandLong } from '../requests/googleMa
 //intercept from index.js
 function* getAddress(action) {
     try {
-        const location = yield runGeocode(action.action.payload.streetAddress)
+        const location = yield runGeocode(action.payload.payload.streetAddress)
         const body = {
             longitude: location[0].geometry.location.lng,
             latitude: location[0].geometry.location.lat,
         }
        const checkData = yield runLatandLong()
-       console.log('checking info',checkData)
        let flag = false;
        for (let i = 0; i < checkData.length; i++) {
            if (checkData[i].latitude == body.latitude && checkData[i].longitude == body.longitude) {
