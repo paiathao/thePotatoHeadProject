@@ -1,35 +1,62 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import { GET_MAP } from '../actions/googleMapAction'
-import { runGetAddress, runGeocode, runGoogleMap } from '../requests/googleMapRequest'
+import { runStoreLocation, runGeocode,runLatandLong } from '../requests/googleMapRequest'
 
 //Get data from database
-function* getAddress() {
+//intercept from index.js
+function* getAddress(action) {
     try {
-        //Grab address from database
-        let data = yield runGetAddress()
-        //Now store those data in an array
-        let locations = [];
-        //Run a for loop to get lat and lng and push it to the locations array
-        for (let i = 0; i < data.length; i ++){
-            const location =  yield runGeocode(data[i].address);
-            const body={
-                longitude: location[0].geometry.location.lng,
-                latitude: location[0].geometry.location.lat,
-            }
-            locations.push(body);
+        const location = yield runGeocode(action.action.payload.streetAddress)
+        const body = {
+            longitude: location[0].geometry.location.lng,
+            latitude: location[0].geometry.location.lat,
         }
+       const checkData = yield runLatandLong()
+       console.log('checking info',checkData)
+       let flag = false;
+       for (let i = 0; i < checkData.length; i++) {
+           if (checkData[i].latitude == body.latitude && checkData[i].longitude == body.longitude) {
+               flag = true;
+               break;
+           }
+       }
+       if (!flag){
             yield put({
-                type:GET_MAP.SET_DATABASE_ADDRESS,
-                payload: locations
+                type: GET_MAP.STORE_GEO,
+                payload: body
             })
+       }
+
+    } catch (error) {
+        console.log(error);
+    };
+}
+//This store the address of lat and long to database
+function* storeLatAndLng(body){
+    try{
+        yield runStoreLocation(body.payload)
     }catch (error) {
         console.log(error);
     };
 }
 
+//this grab lat and long from database
+function* getLatAndLng(){
+    try{
+      const location = yield runLatandLong()
+       yield put({
+        type: GET_MAP.USE_LAT_LNG,
+        payload:location
+       })
+    }catch (error) {
+        console.log(error);
+    };
+}
 
 function* googleMapSaga() {
     yield takeEvery(GET_MAP.GET, getAddress)
+    yield takeEvery(GET_MAP.STORE_GEO, storeLatAndLng)
+    yield takeEvery(GET_MAP.LOCATION_LOADED , getLatAndLng)
 }
 
 export default googleMapSaga;

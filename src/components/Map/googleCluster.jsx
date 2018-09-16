@@ -76,11 +76,12 @@ class Cluster extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch({ type: GET_MAP.GET });
+    this.props.dispatch({ type: GET_MAP.LOCATION_LOADED });
 
   }
 
   render() {
+    console.log('this',this.props)
     return (
       <div>
         <MapWithAMarkerClusterer markers={this.props.googleMap.googleMap} />
