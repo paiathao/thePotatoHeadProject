@@ -11,10 +11,11 @@ export default ({
   childRef,
   id,
   inputStyle,
+  required,
 }) => {
   return (
     <div className="Input">
-      <label htmlFor="input">{label}</label>
+      <label htmlFor="input">{label} { required && <span className="required">*</span> }</label>
       <div className="input-container">
         <input 
           name="input" 

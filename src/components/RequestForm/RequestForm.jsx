@@ -9,10 +9,13 @@ import TextArea from '../TextArea/TextArea';
 import swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import SubmitPopup from'../../components/SubmitPopup/SubmitPopup';
+import {ProgressSpinner} from 'primereact/progressspinner';
+import Button from '../Button/Button'
 
 const MySwal = withReactContent(swal);
 
 const BABY_OBJECT = {
+  id: 1,
   gender: '',
   lastName: '',
   firstName: '',
@@ -28,11 +31,13 @@ class RequestForm extends Component {
   constructor(props) {
     super(props);
 
+    this.numBabies = 1;
+
     this.state = {
       baby: [
         BABY_OBJECT
       ],
-      subscription: null,
+      subscription: true,
       nominatorName: '',
       nominatorEmail: '',
       contactChecked: false,
@@ -52,8 +57,57 @@ class RequestForm extends Component {
     };
   }
 
+  componentWillReceiveProps = nextProps => {
+    if (nextProps.error) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    const { isLoading, success } = nextProps;
+    if (!isLoading && success) {
+      MySwal.fire({
+        html: <SubmitPopup />,
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: true,
+        confirmButtonText:
+          '<i class="fa fa-thumbs-up"></i> Donate',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        cancelButtonText:
+          '<i class="fa fa-thumbs-down">Close</i>',
+        cancelButtonAriaLabel: 'Thumbs down',
+      }).then(function (result) {
+          this.setState({
+            baby: [
+              BABY_OBJECT
+            ],
+            subscription: '',
+            nominatorName: '',
+            nominatorEmail: '',
+            contactChecked: false,
+            parentName: '',
+            parentEmail: '',
+            personalNote: '',
+            streetAddress: '',
+            streetAddress2: '',
+            floorNumber: '',
+            roomNumber: '',
+            city: '',
+            state: '',
+            postalcode: '',
+            country: '',
+            searchField: '',
+            hospitalName: ''
+          });
+        if (result.value) {
+          window.location.href = 'https://www.thepotatoheadproject.org/donate';
+        }
+      })
+    }
+  }
+
   handleInputChangeForBaby = ({ index, name, value }) => {
-    console.log(index, name, value);
     let babies = this.state.baby;
     babies[index][name] = value;
     this.setState({
@@ -64,22 +118,16 @@ class RequestForm extends Component {
 
 
   addAnotherBaby = () => {
+    this.numBabies += 1;
     this.setState({
       ...this.state,
       baby: [
         ...this.state.baby,
-        {...BABY_OBJECT}
+        { 
+          ...BABY_OBJECT,
+          id: this.numBabies
+        }
       ]
-    });
-  };
-
-
-  handleClearParents = () => {
-    this.setState({
-      ...this.state,
-      parentName: '',
-      parentEmail: '',
-      contactChecked: "false"
     });
   };
 
@@ -96,28 +144,9 @@ class RequestForm extends Component {
   handleSubmit = e => {
       e.preventDefault()
       this.props.dispatch({
-        type: 'ADD_REQUEST',
+        type: 'HANDLE_FORM_SUBMIT',
         payload: this.state
       });
-    //need submit action
-    MySwal.fire({
-
-      html:
-        <SubmitPopup />,
-      showCloseButton: true,
-      showCancelButton: true,
-      focusConfirm: true,
-      confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Donate',
-      confirmButtonAriaLabel: 'Thumbs up, great!',
-      cancelButtonText:
-        '<i class="fa fa-thumbs-down">Close</i>',
-      cancelButtonAriaLabel: 'Thumbs down',
-    }).then(function (result) {
-      if (result.value) {
-        window.location.href = 'https://www.thepotatoheadproject.org/donate';
-      }
-    })
   }
 
 
@@ -129,23 +158,88 @@ class RequestForm extends Component {
   };
 
 
-  removeBaby = (state, index) => {
-    this.setState({
-      ...this.state,
-      baby: [
-        this.state.baby.filter(a => a !== index)
-      ]
-    });
+  removeBaby = id => {
+    if (this.numBabies > 1) {
+      this.numBabies -= 1;
+      const newArr = this.state.baby.filter(b => b.id !== id)
+  
+      this.setState({
+        ...this.state,
+        baby: newArr
+      });
+    }
   };
 
 
+  handleError() {
+    return (
+      <div className="error">
+        <p>{this.props.error}</p>
+      </div>
+    )
+  }
 
-  render() {
-    console.log(this.state);
+  fillDummyData = () => {
+    this.setState({
+      baby: [
+        {
+          firstName: 'Suzy',
+          lastName: 'Black',
+          birthDate: '2018-09-09',
+          gender: '',
+          weightOunces: '3',
+          weightPounds: '2',
+          gestationDays: '2',
+          gestationWeeks: '22'
+        }
+      ],
+      subscription: false,
+      nominatorName: 'Dane Smith',
+      nominatorEmail: 'dane@dane.com',
+      floorNumber: '5',
+      roomNumber: '577',
+      contactChecked: false,
+      parentName: 'Jack Black',
+      parentEmail: 'jack@black.com',
+      personalNote: 'We\'re thinking of you, let us know if you need anything!',
+    });
+  }
+
+
+
+  render() 
+  
     // mapping through how many times to render the babyInfoDiv
     let babyArray = this.state.baby.map((item, index) => (
+
+
+  render() {
+    const {
+      baby,
+      subscription,
+      nominatorName,
+      nominatorEmail,
+      contactChecked,
+      parentName,
+      parentEmail,
+      personalNote,
+      streetAddress,
+      streetAddress2,
+      floorNumber,
+      roomNumber,
+      city,
+      state,
+      postalcode,
+      country,
+      searchField,
+      hospitalName
+    } = this.state;
+
+    let babyArray = baby.map((item, index) => (
+
       <BabyInfo
         key={index}
+        {...item}
         babyIndex={index}
         handleInputChangeForBaby={this.handleInputChangeForBaby}
         removeBaby={this.removeBaby}
@@ -156,27 +250,55 @@ class RequestForm extends Component {
 
     return (
       <div id="requestForm">
-        <form onSubmit={this.handleSubmit}>
 
-          {babyArray}    
+        <form
+         onSubmit={this.handleSubmit}>
+
+        { this.props.error ? 
+          this.handleError() :
+          null
+        }
+
+        <div className="form">
+          <span onClick={this.fillDummyData} className="required" style={{ alignSelf: 'flex-end' }}>* required</span>
+          {babyArray}  
+          
+          <div id="addRemoveDiv">
+            { this.numBabies < 3 && 
+              <Button
+                onClick={this.addAnotherBaby}
+                title={
+                  this.numBabies === 1 ? 'Twins?' :
+                  'Triplets?'
+                }
+              />
+            }
+            {
+              this.numBabies > 1 && 
+                <Button 
+                  title="Undo"
+                  onClick={() => this.removeBaby(this.numBabies)}
+                />
+            }
+        </div>
         
           <div id="nominatorDiv">
 
-            <div>
-              <p>You</p>
-            </div>
+            <p className="section-title">You</p>
 
             <div>
               <Input
+                required
                 type="text"
                 label="Your Name"
-                placeholder="Your Name"
+                value={nominatorName}
                 onChange={this.handleInputChangeFor('nominatorName')}
               />
               <Input
+                required
                 type="text"
                 label="Your Email"
-                placeholder="Your Email"
+                value={nominatorEmail}
                 onChange={this.handleInputChangeFor('nominatorEmail')}
               />
             </div>
@@ -186,20 +308,20 @@ class RequestForm extends Component {
 
           <div id="parentContactDiv">
 
-            <div>
-              <p>The Parent</p>
-            </div>
+            <p className="section-title">The Parents</p>
 
             <div className="parents-form">
               
               <Input
-                label="Name"
-                placeholder="Mary and Dave"
+                required
+                label="Parent's Name"
+                value={parentName}
                 onChange={this.handleInputChangeFor('parentName')}
               />
               <Input
-                label="Email"
-                placeholder="mary@yahoo.com"
+                required
+                label="Parent's Email"
+                value={parentEmail}
                 onChange={this.handleInputChangeFor('parentEmail')}
               />
             </div>
@@ -207,28 +329,49 @@ class RequestForm extends Component {
 
           <AutoComplete
             handleInputChangeFor={this.handleInputChangeFor}
-            streetAddress={this.state.streetAddress}
-            streetAddress2={this.state.streetAddress2}
-            floorNumber={this.state.floorNumber}
-            roomNumber={this.state.roomNumber}
-            city={this.state.city}
-            state={this.state.state}
-            postalcode={this.state.postalcode}
-            country={this.state.country}
-            searchField={this.state.searchField}
+            streetAddress={streetAddress}
+            streetAddress2={streetAddress2}
+            floorNumber={floorNumber}
+            roomNumber={roomNumber}
+            city={city}
+            state={state}
+            postalcode={postalcode}
+            country={country}
+            searchField={searchField}
           />
 
 
-          <div id="extrasDiv">
 
-            <div id="notesDiv">
-              <TextArea 
+
+          <div id="notesDiv">
+            <p className="section-title">Personal Note</p>
+            <div>
+              <TextArea
                 name="personalNote"
-                label="Personal Note"
+                placeholder="Add your personal note here"
+                value={personalNote}
                 onChange={this.handleInputChangeFor}
-
               />
             </div>
+          </div>
+
+          <div id="subscribeAndSubmitDiv">
+
+            <div>
+              <input 
+                type="checkbox" 
+                name="subscribe" 
+                value={subscription}
+                onChange={this.handleSubscribe}
+              />
+              <label
+                htmlFor="subscribe"
+              >
+              <p>Subscribe to the Potato Head Project newsletter</p>
+            </label>
+            
+            </div>
+
 
             <div id="subscribeAndSubmitDiv">
               <div id="subscribeAndCaptchaDiv">
@@ -245,22 +388,38 @@ class RequestForm extends Component {
                     <p className="requestFormPtag">Potato Head Project newsletter</p>
                   </label>
                 </div>
-                <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
+                <div className="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
               </div>
               <div id="submitDiv">
+
+              <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
+
+
+            <div id="submitDiv">
+              { this.props.isLoading ? 
+                <p>Loading...</p> :
+
                 <input
                   type="submit"
                   className="Button"
                   value="Submit Request"
                   onClick={this.handleSubmit}
                 />
-              </div>
+              }
+              
             </div>
+
           </div>
-        </form>
+        </div>
       </div>
     )
   }
 }
 
-export default connect()(RequestForm);
+const mapStateToProps = ({ form }) => ({
+  isLoading: form.isLoading,
+  error: form.error,
+  success: form.success
+});
+
+export default connect(mapStateToProps)(RequestForm);

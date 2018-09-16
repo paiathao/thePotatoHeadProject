@@ -9,7 +9,6 @@ class BabyInfo extends Component {
 
 
   handleInputChangeForBaby = name => event => {
-    console.log(name, event);
     this.props.handleInputChangeForBaby({
       name,
       value: event.target.value,
@@ -19,13 +18,25 @@ class BabyInfo extends Component {
 
 
   render() {
+
+    const {
+      id,
+      firstName,
+      lastName,
+      gender,
+      birthDate,
+      weightOunces,
+      weightPounds,
+      gestationDays,
+      gestationWeeks,
+      removeBaby
+    } = this.props;
+
     return (
       <div id="babyDiv">
 
 
-        <div>
-          <p className="requestFormPtag"><b>Baby</b></p>
-        </div>
+      <p className="section-title">Baby</p>
         
       <div className="baby-form">
 
@@ -33,16 +44,18 @@ class BabyInfo extends Component {
         <div className="name-info">
 
             <Input
+              required
               type="text"
               label="First Name"
-              placeholder="First Name"
+              value={firstName}
               onChange={this.handleInputChangeForBaby('firstName')}
             />
 
             <Input
+              required
               type="text"
               label="Last Name"
-              placeholder="Last Name"
+              value={lastName}
               onChange={this.handleInputChangeForBaby('lastName')}
             />
 
@@ -52,13 +65,16 @@ class BabyInfo extends Component {
         <div className="date-gender">
 
               <Input 
+                required
                 label="Birth Date"
                 placeholder="mm/dd/yyyy"
                 type="date"
+                value={birthDate}
                 onChange={this.handleInputChangeForBaby('birthDate')}
               />   
               
               <RadioGroup 
+                required
                 title="Gender"
                 name="gender"
                 onChange={this.handleInputChangeForBaby}
@@ -72,36 +88,42 @@ class BabyInfo extends Component {
 
         <div className="gestation-weight">
           <div className="select-group">
-            <p>Gestation</p>
+            <p>Gestation <span className="required">*</span></p>
             <div>
-              <NumberSelect 
+              <NumberSelect
+                required
                 min={20}
                 max={40}
                 label="Weeks"
                 name="gestationWeeks"
+                value={gestationWeeks}
                 onChange={this.handleInputChangeForBaby}
               />
               <NumberSelect 
+                required
                 max={6}
                 label="Days"
                 name="gestationDays"
+                value={gestationDays}
                 onChange={this.handleInputChangeForBaby}
               />
             </div>            
           </div>
           <div className="select-group">
-            <p>Weight</p>
+            <p>Weight <span className="required">*</span></p>
             <div>
               <NumberSelect 
                 max={6}
                 label="Pounds"
                 name="weightPounds"
+                value={weightPounds}
                 onChange={this.handleInputChangeForBaby}
               />
               <NumberSelect 
                 max={15}
                 label="Ounces"
                 name="weightOunces"
+                value={weightOunces}
                 onChange={this.handleInputChangeForBaby}
               />
             </div> 
@@ -109,22 +131,6 @@ class BabyInfo extends Component {
         </div>
 
         </div>
-
-        <div id="addRemoveDiv">
-          <p className="requestFormPtag"><b>Multiples?</b></p>
-          <button
-            className="Button"
-            onClick={this.props.addAnotherBaby}>
-            Add Another Baby
-            </button>
-          <button
-            className="Button"
-            onClick={this.props.removeBaby}>
-            Undo Add
-            </button>
-        </div>
-
-
       </div>
     )
   }

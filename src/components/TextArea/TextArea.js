@@ -7,11 +7,12 @@ export default ({
   value,
   childRef,
   onChange,
-  name
+  name,
+  required,
 }) => {
   return (
     <div className="TextArea">
-      <label htmlFor="input">{label}</label>
+      <label htmlFor="input">{label}  { required && <span className="required">*</span> }</label>
       <div className="input-container">
         <textarea 
           name="input" 

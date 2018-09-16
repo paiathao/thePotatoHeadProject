@@ -9,7 +9,7 @@
 
 .TextArea label {
   margin-bottom: 12px;
-  font-size: 1.1em;
+  align-self: flex-start;
 }
 
 
@@ -17,7 +17,7 @@
   display: flex;
   align-items: stretch;
   border-radius: 8px;
-  width: 100%;
+  width: 90%;
 }
 
 .TextArea textarea {
@@ -33,5 +33,4 @@
   height: 160px;
   min-height: 160px;
   min-width: 100%;
-
 }
