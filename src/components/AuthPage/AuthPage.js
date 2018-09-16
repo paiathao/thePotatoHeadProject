@@ -8,7 +8,7 @@ import Logo from '../Logo/Logo';
 import LandingPage from '../LandingPage/LandingPage';
 import './AuthPage.css';
 
-const mapStateToProps = ({ auth: { isAuthenticated } }) => ({
+const mapStateToProps = ({ auth: { isAuthenticated }, message }) => ({
   isAuthenticated
 });
 
@@ -41,6 +41,7 @@ class AuthPage extends Component {
 
     if (this.state.password === '') {
       this.props.dispatch(formError());
+      alert('Please enter your password!')
     } else {
       this.props.dispatch(triggerLogin(this.state.password));
     }
@@ -63,7 +64,6 @@ class AuthPage extends Component {
   }
 
   forgotPassword = () => {
-    this.props.dispatch({ type: 'FORGOT_PASSWORD' })
     this.props.history.push('/forgot');
   }
 
