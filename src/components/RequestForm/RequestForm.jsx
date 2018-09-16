@@ -99,16 +99,17 @@ class RequestForm extends Component {
         type: 'ADD_REQUEST',
         payload: this.state
       });
+      
     //need submit action
     MySwal.fire({
 
       html:
         <SubmitPopup />,
       showCloseButton: true,
-      showCancelButton: true,
+      showCancelButton: false,
       focusConfirm: true,
       confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Donate',
+        '<i class="fa fa-thumbs-up"></i> OK',
       confirmButtonAriaLabel: 'Thumbs up, great!',
       cancelButtonText:
         '<i class="fa fa-thumbs-down">Close</i>',
@@ -118,6 +119,30 @@ class RequestForm extends Component {
         window.location.href = 'https://www.thepotatoheadproject.org/donate';
       }
     })
+    // this.setState({
+    //   ...this.state,
+    //     baby: [
+    //       BABY_OBJECT
+    //     ],
+    //     subscription: null,
+    //     nominatorName: '',
+    //     nominatorEmail: '',
+    //     contactChecked: false,
+    //     parentName: '',
+    //     parentEmail: '',
+    //     personalNote: '',
+    //     streetAddress: '',
+    //     streetAddress2: '',
+    //     floorNumber: '',
+    //     roomNumber: '',
+    //     city: '',
+    //     state: '',
+    //     postalcode: '',
+    //     country: '',
+    //     searchField: '',
+    //     hospitalName: ''
+      
+    //   })
   }
 
 
@@ -225,6 +250,7 @@ class RequestForm extends Component {
               <TextArea 
                 name="personalNote"
                 label="Personal Note"
+                placeholder="Would you like to add a note with your package?"
                 onChange={this.handleInputChangeFor}
 
               />
