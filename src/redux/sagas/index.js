@@ -6,10 +6,6 @@ import emailSaga from './emailSaga';
 import googleMapSaga from './googleMapSaga';
 import formSaga from './formSaga';
 
-//action
-import { GET_MAP } from '../actions/googleMapAction'
-import { put } from 'redux-saga/effects';
-
 
 export default function* rootSaga() {
   yield takeEvery('FORGOT_PASSWORD', forgotPassword)
@@ -19,7 +15,7 @@ export default function* rootSaga() {
     loginSaga(),
     emailSaga(),
     googleMapSaga(),
-    formSaga()
+    formSaga(),
     // watchIncrementAsync()
   ]);
 }
@@ -48,17 +44,4 @@ function* resetPassword(action) {
   }
 }
 
-
-function* addRequest(action) {
-  try {
-    console.log('testing the addRequest in index.js', action)
-    yield call(axios.post, '/api/request/', action.payload)
-    yield put({
-      type:GET_MAP.GET,
-      action
-    })
-  } catch (error) {
-    console.log(error);
-  }
-}
 

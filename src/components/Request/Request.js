@@ -34,7 +34,6 @@ class Request extends Component {
       
     } = this.props;
     if (!opened) return null;
-    console.log('requestinginfoshowmewhatinhere',this.props.postalcode)
     return (
       <div className="request-sub-menu">
         <div className="request-details">

@@ -207,12 +207,6 @@ class RequestForm extends Component {
 
 
 
-  render() 
-  
-    // mapping through how many times to render the babyInfoDiv
-    let babyArray = this.state.baby.map((item, index) => (
-
-
   render() {
     const {
       baby,
@@ -236,7 +230,6 @@ class RequestForm extends Component {
     } = this.state;
 
     let babyArray = baby.map((item, index) => (
-
       <BabyInfo
         key={index}
         {...item}
@@ -247,17 +240,15 @@ class RequestForm extends Component {
       />
     ));
 
-
+    console.log(this.state)
     return (
       <div id="requestForm">
-
-        <form
-         onSubmit={this.handleSubmit}>
-
         { this.props.error ? 
           this.handleError() :
           null
         }
+
+        
 
         <div className="form">
           <span onClick={this.fillDummyData} className="required" style={{ alignSelf: 'flex-end' }}>* required</span>
@@ -372,33 +363,12 @@ class RequestForm extends Component {
             
             </div>
 
-
-            <div id="subscribeAndSubmitDiv">
-              <div id="subscribeAndCaptchaDiv">
-                <div id="subscribeDiv">
-                  <Input
-                    type="checkbox"
-                    name="subscribe"
-                    value="subscribe"
-                    onChange={this.handleSubscribe}
-                  />
-                  <label
-                    htmlFor="subscribe">
-                    <p className="requestFormPtag"><b>Subscribe</b> to the</p>
-                    <p className="requestFormPtag">Potato Head Project newsletter</p>
-                  </label>
-                </div>
-                <div className="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
-              </div>
-              <div id="submitDiv">
-
               <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
 
 
             <div id="submitDiv">
               { this.props.isLoading ? 
                 <p>Loading...</p> :
-
                 <input
                   type="submit"
                   className="Button"

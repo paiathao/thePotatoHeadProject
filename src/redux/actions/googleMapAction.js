@@ -13,4 +13,3 @@ export const GET_MAP={
     USE_LAT_LNG:'GET_MAP_USE_LAT_LNG'
 }
 
-console.log('googlemapAction')
