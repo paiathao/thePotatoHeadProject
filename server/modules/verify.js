@@ -1,5 +1,5 @@
 const axios = require('axios');
-//This work
+
 module.exports = async name => {
   try {
     const url=`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${name}&types=hospital&key=AIzaSyAfrUvtgh7j4JKGW6bkFPspZ4ZZ8uqlE-M`
