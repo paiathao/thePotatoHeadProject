@@ -13,7 +13,7 @@ function* sendTrackingEmail(action) {
   try {
 
     yield put(sendEmail());
-    yield axios.put('/api/email/', action.payload);
+    yield axios.put('/api/request/', action.payload);
     yield put(sendEmailSuccess());
 
 
