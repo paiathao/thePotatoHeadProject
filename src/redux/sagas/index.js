@@ -6,10 +6,6 @@ import emailSaga from './emailSaga';
 import googleMapSaga from './googleMapSaga';
 import formSaga from './formSaga';
 
-//action
-import { GET_MAP } from '../actions/googleMapAction'
-import { put } from 'redux-saga/effects';
-
 
 export default function* rootSaga() {
   yield takeEvery('FORGOT_PASSWORD', forgotPassword)
@@ -48,15 +44,4 @@ function* resetPassword(action) {
   }
 }
 
-function* addRequest(action) {
-  try {
-    yield call(axios.post, '/api/request/', action.payload)
-    yield put({
-      type:GET_MAP.GET,
-      action
-    })
-  } catch (error) {
-    console.log(error);
-  }
-}
 

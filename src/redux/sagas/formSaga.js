@@ -1,6 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import validateForm from '../services/validateForm';
+import { GET_MAP } from '../actions/googleMapAction'
 
 import {
   HANDLE_FORM_SUBMIT,
@@ -18,6 +19,10 @@ function* handleFormSubmit(action) {
 
     yield axios.post('/api/request', action.payload);
     yield put({ type: FORM_SUBMIT_SUCCESS });
+    yield put({
+      type:GET_MAP.GET,
+      action
+    })
 
   } catch (error) {
 
