@@ -238,9 +238,8 @@ class RequestForm extends Component {
         removeBaby={this.removeBaby}
         addAnotherBaby={this.addAnotherBaby}
       />
-    ));
-
-    console.log(this.state)
+    )); 
+    
     return (
       <div id="requestForm">
         { this.props.error ? 
