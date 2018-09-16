@@ -175,7 +175,6 @@ export default class GoogleAutoComplete extends React.Component {
               label="Hospital Name"
               className="hospitalInput"
               id={id}
-              placeholder="Hospital Name"
               onChange={this.props.handleInputChangeFor('hospitalName')}
               childRef={ele => {
                 this.searchInput = ele;

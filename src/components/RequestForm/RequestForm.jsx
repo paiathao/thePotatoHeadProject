@@ -82,7 +82,7 @@ class RequestForm extends Component {
             baby: [
               BABY_OBJECT
             ],
-            subscription: null,
+            subscription: '',
             nominatorName: '',
             nominatorEmail: '',
             contactChecked: false,
@@ -193,7 +193,7 @@ class RequestForm extends Component {
           gestationWeeks: '22'
         }
       ],
-      subscription: null,
+      subscription: false,
       nominatorName: 'Dane Smith',
       nominatorEmail: 'dane@dane.com',
       floorNumber: '5',
@@ -282,7 +282,6 @@ class RequestForm extends Component {
                 required
                 type="text"
                 label="Your Name"
-                placeholder="Your Name"
                 value={nominatorName}
                 onChange={this.handleInputChangeFor('nominatorName')}
               />
@@ -290,7 +289,6 @@ class RequestForm extends Component {
                 required
                 type="text"
                 label="Your Email"
-                placeholder="Your Email"
                 value={nominatorEmail}
                 onChange={this.handleInputChangeFor('nominatorEmail')}
               />
@@ -307,15 +305,13 @@ class RequestForm extends Component {
               
               <Input
                 required
-                label="Name"
-                placeholder="Mary and Dave"
+                label="Parent's Name"
                 value={parentName}
                 onChange={this.handleInputChangeFor('parentName')}
               />
               <Input
                 required
-                label="Email"
-                placeholder="mary@yahoo.com"
+                label="Parent's Email"
                 value={parentEmail}
                 onChange={this.handleInputChangeFor('parentEmail')}
               />
@@ -343,6 +339,7 @@ class RequestForm extends Component {
             <div>
               <TextArea
                 name="personalNote"
+                placeholder="Add your personal note here"
                 value={personalNote}
                 onChange={this.handleInputChangeFor}
               />

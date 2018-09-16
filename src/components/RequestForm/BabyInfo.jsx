@@ -47,7 +47,6 @@ class BabyInfo extends Component {
               required
               type="text"
               label="First Name"
-              placeholder="First Name"
               value={firstName}
               onChange={this.handleInputChangeForBaby('firstName')}
             />
@@ -56,7 +55,6 @@ class BabyInfo extends Component {
               required
               type="text"
               label="Last Name"
-              placeholder="Last Name"
               value={lastName}
               onChange={this.handleInputChangeForBaby('lastName')}
             />
