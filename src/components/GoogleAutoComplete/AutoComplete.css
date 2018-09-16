@@ -6,3 +6,7 @@
 .address-field > * {
   margin: 14px 0;
 }
+
+.addressInput {
+  margin: 0 24px;
+}

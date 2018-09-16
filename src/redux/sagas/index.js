@@ -3,18 +3,19 @@ import requestSaga from './requestSaga';
 import loginSaga from './loginSaga';
 import axios from 'axios';
 import emailSaga from './emailSaga';
-import googleMapSaga from './googleMapSaga'
+import googleMapSaga from './googleMapSaga';
+import formSaga from './formSaga';
 
 
 export default function* rootSaga() {
   yield takeEvery('FORGOT_PASSWORD', forgotPassword)
   yield takeEvery('RESET_PASSWORD', resetPassword)
-  yield takeEvery('ADD_REQUEST', addRequest)
   yield all([
     requestSaga(),
     loginSaga(),
     emailSaga(),
-    googleMapSaga()
+    googleMapSaga(),
+    formSaga()
     // watchIncrementAsync()
   ]);
 }
@@ -38,14 +39,6 @@ function* resetPassword(action) {
     )
 
 
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-function* addRequest(action) {
-  try {
-    yield call(axios.post, '/api/request/', action.payload)
   } catch (error) {
     console.log(error);
   }

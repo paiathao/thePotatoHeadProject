@@ -5,11 +5,12 @@ export default ({
   title,
   data,
   name,
-  onChange
+  onChange,
+  required,
 }) => {
   return (
     <div className="RadioGroup">
-      <p>{title}</p>
+      <p>{title}  { required && <span className="required">*</span> }</p>
       <div>
         { data.map((d, i) => (
           <div key={d.value}>
