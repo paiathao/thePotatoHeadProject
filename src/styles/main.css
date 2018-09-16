@@ -33,7 +33,6 @@ ul {
 
 .addressInput{
   align-items: center;
-  border: 0.125rem solid #74CAD1;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
@@ -86,4 +85,8 @@ ul {
   background-color: #00acb0;
   border-radius: 0rem;
   width: 100%;
+}
+
+span.required {
+  color: red;
 }

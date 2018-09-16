@@ -10,7 +10,8 @@ class NumberSelect extends Component {
       label,
       name,
       onChange,
-      value
+      value,
+      required,
     } = this.props;
     return (
       <select 

@@ -46,9 +46,14 @@ export default class GoogleAutoComplete extends React.Component {
     return Object.keys(this.props.fields).map((key, i) => {
 
       let required = true;
-      if (this.state.labels[key] === 'Street Address 2') {
-        required = false;
+      switch(key){
+        case 'streetAddress2':
+        case 'floorNumber':
+        case 'roomNumber':
+          required = false;
+          break;
       }
+
       return (
 
         <div id="autoCompleteDiv2" key={i} className={`address-field address-${key}`}>
@@ -159,11 +164,13 @@ export default class GoogleAutoComplete extends React.Component {
         onLoad={this.handleScriptLoad.bind(this)}
       />,
       <div id="autoCompleteDiv">
-        <p className="requestFormPtag"><b>Hospital Info</b></p>
+
+      <p className="section-title">Hospital</p>
 
         <div  className={`address ${this.state.showResult ? "showFields" : ""}`}>
           <div className="addressInput">
             <Input
+              required
               type="search"
               label="Hospital Name"
               className="hospitalInput"
@@ -190,12 +197,12 @@ GoogleAutoComplete.defaultProps = {
   fields: {
     streetAddress: "route",
     streetAddress2: "administrative_level_4",
-    floorNumber: "Floor #",
-    roomNumber: "Room #",
     city: "locality",
     state: "administrative_area_level_1",
     postalcode: "postal_code",
     country: "country",
+    floorNumber: "Floor #",
+    roomNumber: "Room #",
   },
   callbackFunction: f => f
 }

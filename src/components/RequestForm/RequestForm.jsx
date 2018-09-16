@@ -37,7 +37,7 @@ class RequestForm extends Component {
       baby: [
         BABY_OBJECT
       ],
-      subscription: null,
+      subscription: true,
       nominatorName: '',
       nominatorEmail: '',
       contactChecked: false,
@@ -173,7 +173,9 @@ class RequestForm extends Component {
 
   handleError() {
     return (
-      <p className="error">{this.props.error}</p>
+      <div className="error">
+        <p>{this.props.error}</p>
+      </div>
     )
   }
 
@@ -238,15 +240,18 @@ class RequestForm extends Component {
       />
     ));
 
-
+    console.log(this.state)
     return (
       <div id="requestForm">
         { this.props.error ? 
           this.handleError() :
           null
         }
-        <div className="form">
 
+        
+
+        <div className="form">
+          <span onClick={this.fillDummyData} className="required" style={{ alignSelf: 'flex-end' }}>* required</span>
           {babyArray}  
           
           <div id="addRemoveDiv">
@@ -270,12 +275,11 @@ class RequestForm extends Component {
         
           <div id="nominatorDiv">
 
-            <div>
-              <p onClick={this.fillDummyData}>You</p>
-            </div>
+            <p className="section-title">You</p>
 
             <div>
               <Input
+                required
                 type="text"
                 label="Your Name"
                 placeholder="Your Name"
@@ -283,6 +287,7 @@ class RequestForm extends Component {
                 onChange={this.handleInputChangeFor('nominatorName')}
               />
               <Input
+                required
                 type="text"
                 label="Your Email"
                 placeholder="Your Email"
@@ -296,19 +301,19 @@ class RequestForm extends Component {
 
           <div id="parentContactDiv">
 
-            <div>
-              <p>The Parent</p>
-            </div>
+            <p className="section-title">The Parents</p>
 
             <div className="parents-form">
               
               <Input
+                required
                 label="Name"
                 placeholder="Mary and Dave"
                 value={parentName}
                 onChange={this.handleInputChangeFor('parentName')}
               />
               <Input
+                required
                 label="Email"
                 placeholder="mary@yahoo.com"
                 value={parentEmail}
@@ -331,48 +336,52 @@ class RequestForm extends Component {
           />
 
 
-          <div id="extrasDiv">
 
-            <div id="notesDiv">
-              <TextArea 
+
+          <div id="notesDiv">
+            <p className="section-title">Personal Note</p>
+            <div>
+              <TextArea
                 name="personalNote"
-                label="Personal Note"
                 value={personalNote}
                 onChange={this.handleInputChangeFor}
-
               />
             </div>
+          </div>
 
-            <div id="subscribeAndSubmitDiv">
-              <div id="subscribeAndCaptchaDiv">
-                <div id="subscribeDiv">
-                  <Input
-                    type="checkbox"
-                    name="subscribe"
-                    value="subscribe"
-                    onChange={this.handleSubscribe}
-                  />
-                  <label
-                    htmlFor="subscribe">
-                    <p className="requestFormPtag"><b>Subscribe</b> to the</p>
-                    <p className="requestFormPtag">Potato Head Project newsletter</p>
-                  </label>
-                </div>
-                <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
-              </div>
-              <div id="submitDiv">
-                { this.props.isLoading ? 
-                  <p>Loading...</p> :
-                  <input
-                    type="submit"
-                    className="Button"
-                    value="Submit Request"
-                    onClick={this.handleSubmit}
-                  />
-                }
-                
-              </div>
+          <div id="subscribeAndSubmitDiv">
+
+            <div>
+              <input 
+                type="checkbox" 
+                name="subscribe" 
+                value={subscription}
+                onChange={this.handleSubscribe}
+              />
+              <label
+                htmlFor="subscribe"
+              >
+              <p>Subscribe to the Potato Head Project newsletter</p>
+            </label>
+            
             </div>
+
+              <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
+
+
+            <div id="submitDiv">
+              { this.props.isLoading ? 
+                <p>Loading...</p> :
+                <input
+                  type="submit"
+                  className="Button"
+                  value="Submit Request"
+                  onClick={this.handleSubmit}
+                />
+              }
+              
+            </div>
+
           </div>
         </div>
       </div>

@@ -9,7 +9,6 @@ class BabyInfo extends Component {
 
 
   handleInputChangeForBaby = name => event => {
-    console.log(name, event);
     this.props.handleInputChangeForBaby({
       name,
       value: event.target.value,
@@ -37,9 +36,7 @@ class BabyInfo extends Component {
       <div id="babyDiv">
 
 
-        <div>
-          <p className="requestFormPtag"><b>Baby</b></p>
-        </div>
+      <p className="section-title">Baby</p>
         
       <div className="baby-form">
 
@@ -47,6 +44,7 @@ class BabyInfo extends Component {
         <div className="name-info">
 
             <Input
+              required
               type="text"
               label="First Name"
               placeholder="First Name"
@@ -55,6 +53,7 @@ class BabyInfo extends Component {
             />
 
             <Input
+              required
               type="text"
               label="Last Name"
               placeholder="Last Name"
@@ -68,6 +67,7 @@ class BabyInfo extends Component {
         <div className="date-gender">
 
               <Input 
+                required
                 label="Birth Date"
                 placeholder="mm/dd/yyyy"
                 type="date"
@@ -76,6 +76,7 @@ class BabyInfo extends Component {
               />   
               
               <RadioGroup 
+                required
                 title="Gender"
                 name="gender"
                 onChange={this.handleInputChangeForBaby}
@@ -89,9 +90,10 @@ class BabyInfo extends Component {
 
         <div className="gestation-weight">
           <div className="select-group">
-            <p>Gestation</p>
+            <p>Gestation <span className="required">*</span></p>
             <div>
-              <NumberSelect 
+              <NumberSelect
+                required
                 min={20}
                 max={40}
                 label="Weeks"
@@ -100,6 +102,7 @@ class BabyInfo extends Component {
                 onChange={this.handleInputChangeForBaby}
               />
               <NumberSelect 
+                required
                 max={6}
                 label="Days"
                 name="gestationDays"
@@ -109,7 +112,7 @@ class BabyInfo extends Component {
             </div>            
           </div>
           <div className="select-group">
-            <p>Weight</p>
+            <p>Weight <span className="required">*</span></p>
             <div>
               <NumberSelect 
                 max={6}

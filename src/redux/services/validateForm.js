@@ -16,23 +16,20 @@ export default formData => {
     const requiredPropsArray = Object.keys(requiredProps);
 
     requiredPropsArray.every(key => {
-      if (key === 'baby') {
+      if (requiredProps[key] === '') {
+        throw Error('Please fill out all required fields');
+      } else if (key === 'baby') {
         return requiredProps[key].every(baby => {
           return Object.values(baby).every(babyValue => {
             if (babyValue === '') {
-              throw Error('Please fill out required fields');
+              throw Error('Please fill out all required fields');
             }
             return true;
           });
         });
-      }
-      if (requiredProps[key] === '') {
-        throw Error(`${key} is required`);
       } else {
         return true;
       }
-
-
     })
 
   } catch (error) {

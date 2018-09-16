@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
 
     } catch (err) {
 
-        res.status(400).send(err);
+        res.status(400).json({ message: 'An unknown Error Occured' })
 
     }
 });

@@ -1,10 +1,11 @@
 /* container */
 #requestForm {
   width: 80%;
-  margin: 0 auto;
-  padding: 22px;
+  margin: 22px auto;
+  padding: 0 22px;
   max-width: 600px;
-  background-color: #eee;
+  border-left: 2px solid #71cbcf;
+  border-right: 2px solid #71cbcf;
 }
 
 /* form container  */
@@ -12,12 +13,25 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  
+}
+
+#requestForm > .form > div {
+  padding: 20px 0 40px 0;
+  border-bottom: 1px solid #71cbcf;
+  animation: fadeIn 1s;
+}
+
+#addRemoveDiv {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#requestForm > .form > #babyDiv {
+  border: none;
 }
 
 #autoCompleteDiv2{
   align-items: center;
-  border: 0.125rem solid #74CAD1;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
@@ -32,13 +46,6 @@
   justify-content: center;
 }
 
-.baby-form,
-#nominatorDiv,
-#parentContactDiv {
-  animation: fadeIn 1s;
-  border: 0.125rem solid #e5512f;
-  border-radius: 1rem;
-}
 
 /* all direct children of the form  */
 #requestForm > form > * {
@@ -71,7 +78,7 @@
 }
 
 #requestForm .select-group > p {
-  font-size: 1.1em;
+  align-self: flex-start;
 }
 
 #requestForm .select-group > div {
@@ -82,8 +89,44 @@
 
 
 #requestForm #notesDiv {
+  padding: 26px;
+  padding-bottom: 56px;
+}
+
+#requestForm #notesDiv > div {
   display: flex;
-  padding: 0 26px;
+}
+
+#requestForm .section-title {
+  font-size: 2em;
+  color: #888;
+  margin: 12px 4px;
+}
+
+#subscribeAndSubmitDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#subscribeAndSubmitDiv > div {
+  display: flex;
+  align-items: center;
+  margin: 18px 0;
+}
+
+#subscribeAndSubmitDiv > div > input {
+  margin: 0 8px;
+}
+
+
+.error {
+  width: 80%;
+  background-color: #ffcece;
+  color: #aa0000;
+  padding: 8px;
+  padding-left: 20px;
+  border-radius: 8px;
 }
 
 
