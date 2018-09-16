@@ -81,7 +81,6 @@ class Cluster extends Component {
   }
 
   render() {
-    console.log('this',this.props)
     return (
       <div>
         <MapWithAMarkerClusterer markers={this.props.googleMap.googleMap} />

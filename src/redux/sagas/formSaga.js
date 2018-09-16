@@ -11,6 +11,7 @@ import {
 } from '../actions/formActions';
 
 function* handleFormSubmit(action) {
+  console.log('form saga testing', action)
   try {
 
     yield put({ type: FORM_SUBMIT_START });
@@ -21,7 +22,7 @@ function* handleFormSubmit(action) {
     yield put({ type: FORM_SUBMIT_SUCCESS });
     yield put({
       type:GET_MAP.GET,
-      action
+      payload:action
     })
 
   } catch (error) {
