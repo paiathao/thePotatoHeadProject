@@ -7,24 +7,28 @@ class Csv extends React.Component {
 
     filterBySubscription = (request) => {
         if (request.subscription === true) {
-            return request
+            return request.nominatorName && request.nominatorEmail;
         }
     }
 
     render() {
 
-        let array = this.props.requests
+        let array = this.props.requests;
 
-        let data = array.filter(this.filterBySubscription)
+        let data = array.filter(this.filterBySubscription);
 
-        console.log(data)
+        let headers = [
+            {label: 'Nominator Name', key: 'nominatorName'},
+            {label: 'Nominator Email', key: 'nominatorEmail'},
+          ];
 
         return (
             <div>
-                <CSVLink style={{ textDecoration: 'none' }}
+                <CSVLink 
                     data={data}
+                    headers={headers}
                     filename={"subscribers.csv"}
-                    className="btn">Export Subscribers to CSV <ArrowDown /></CSVLink>
+                    className="csvBtn">Export Subscribers to CSV <ArrowDown /></CSVLink>
             </div>
         );
     }

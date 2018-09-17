@@ -9,9 +9,30 @@
 }
 
 .Header > * {
-  margin: 12px 14px;
+  margin: 12px 12px;
+  display: flex;
+  align-items: center;
 }
 
 .Header h1 {
   font-size: 1.4em;
 }
+
+.Header button {
+  background-color: #e5512f;
+  border: none;
+  color: white;
+  font-size: 1.1em;
+  height: 75px;
+  text-align: center
+}
+
+.Header button:hover {
+  color: #6dcad0;
+}
+
+.csvBtn {
+  color: white;
+  text-decoration: none;
+}
+
