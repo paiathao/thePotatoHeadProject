@@ -1,17 +1,34 @@
 import React from 'react';
 import { CSVLink } from 'react-csv';
 import { connect } from 'react-redux';
+import ArrowDown from '@material-ui/icons/GetApp'
 
 class Csv extends React.Component {
 
+    filterBySubscription = (request) => {
+        if (request.subscription === true) {
+            return request.nominatorName && request.nominatorEmail;
+        }
+    }
+
     render() {
 
+        let array = this.props.requests;
+
+        let data = array.filter(this.filterBySubscription);
+
+        let headers = [
+            {label: 'Nominator Name', key: 'nominatorName'},
+            {label: 'Nominator Email', key: 'nominatorEmail'},
+          ];
+
         return (
-            <div style={{float : 'right', marginRight : 25}}>
-                <CSVLink
-                    data={this.props.requests}
+            <div>
+                <CSVLink 
+                    data={data}
+                    headers={headers}
                     filename={"subscribers.csv"}
-                    className="btn">Export Subscribers to CSV :arrow_down:</CSVLink>
+                    className="csvBtn">Export Subscribers to CSV <ArrowDown /></CSVLink>
             </div>
         );
     }
