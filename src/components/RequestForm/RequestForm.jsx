@@ -341,7 +341,7 @@ class RequestForm extends Component {
                 name="personalNote"
                 placeholder="Add your personal note here"
                 value={personalNote}
-                onChange={this.handleInputChangeFor}
+                onChange={this.handleInputChangeFor('personalNote')}
               />
             </div>
           </div>
