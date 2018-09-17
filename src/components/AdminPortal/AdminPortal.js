@@ -39,6 +39,7 @@ class AdminPortal extends Component {
       nominatorEmail: this.state.emailForm.nominator.nominatorEmail,
       nominatorName: this.state.emailForm.nominator.nominatorName
     }));
+    this.closeModal('emailForm');
   }
 
   showEmailForm = nominator => {
@@ -76,7 +77,7 @@ class AdminPortal extends Component {
       openRequest={this.openRequest.bind(this, request._id)}
       opened={request._id === this.props.opened}
       toggleMarkedSent={this.handleToggleRequest.bind(this, request)}
-      showNotes={this.showNotes.bind(this, request.note)}
+      showNotes={this.showNotes.bind(this, request.personalNote)}
       showEmailForm={this.showEmailForm.bind(this, {
         nominatorEmail: request.nominatorEmail,
         nominatorName: request.nominatorName

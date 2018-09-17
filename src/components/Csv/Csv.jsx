@@ -1,7 +1,6 @@
 import React from 'react';
 import { CSVLink } from 'react-csv';
 import { connect } from 'react-redux';
-import ArrowDown from '@material-ui/icons/GetApp'
 
 class Csv extends React.Component {
 
@@ -28,7 +27,7 @@ class Csv extends React.Component {
                     data={data}
                     headers={headers}
                     filename={"subscribers.csv"}
-                    className="csvBtn">Export Subscribers to CSV <ArrowDown /></CSVLink>
+                    className="csvBtn">Export Subscribers to CSV ⬇</CSVLink>
             </div>
         );
     }
