@@ -8,8 +8,8 @@ import Input from '../Input/Input';
 import TextArea from '../TextArea/TextArea';
 import swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import SubmitPopup from'../../components/SubmitPopup/SubmitPopup';
-import {ProgressSpinner} from 'primereact/progressspinner';
+import SubmitPopup from '../../components/SubmitPopup/SubmitPopup';
+import { ProgressSpinner } from 'primereact/progressspinner';
 import Button from '../Button/Button'
 
 const MySwal = withReactContent(swal);
@@ -69,40 +69,39 @@ class RequestForm extends Component {
       MySwal.fire({
         html: <SubmitPopup />,
         showCloseButton: true,
-        showCancelButton: true,
+        showCancelButton: false,
         focusConfirm: true,
         confirmButtonText:
-          '<i class="fa fa-thumbs-up"></i> Donate',
+          '<i class="fa fa-thumbs-up"></i> OK',
         confirmButtonAriaLabel: 'Thumbs up, great!',
         cancelButtonText:
           '<i class="fa fa-thumbs-down">Close</i>',
         cancelButtonAriaLabel: 'Thumbs down',
-      }).then(function (result) {
-          this.setState({
-            baby: [
-              BABY_OBJECT
-            ],
-            subscription: '',
-            nominatorName: '',
-            nominatorEmail: '',
-            contactChecked: false,
-            parentName: '',
-            parentEmail: '',
-            personalNote: '',
-            streetAddress: '',
-            streetAddress2: '',
-            floorNumber: '',
-            roomNumber: '',
-            city: '',
-            state: '',
-            postalcode: '',
-            country: '',
-            searchField: '',
-            hospitalName: ''
-          });
-        if (result.value) {
+      }).then(() => {
           window.location.href = 'https://www.thepotatoheadproject.org/donate';
-        }
+        }).then(function (result) {
+        this.setState({
+          baby: [
+            BABY_OBJECT
+          ],
+          subscription: '',
+          nominatorName: '',
+          nominatorEmail: '',
+          contactChecked: false,
+          parentName: '',
+          parentEmail: '',
+          personalNote: '',
+          streetAddress: '',
+          streetAddress2: '',
+          floorNumber: '',
+          roomNumber: '',
+          city: '',
+          state: '',
+          postalcode: '',
+          country: '',
+          searchField: '',
+          hospitalName: ''
+        })
       })
     }
   }
@@ -123,7 +122,7 @@ class RequestForm extends Component {
       ...this.state,
       baby: [
         ...this.state.baby,
-        { 
+        {
           ...BABY_OBJECT,
           id: this.numBabies
         }
@@ -142,11 +141,11 @@ class RequestForm extends Component {
 
 
   handleSubmit = e => {
-      e.preventDefault()
-      this.props.dispatch({
-        type: 'HANDLE_FORM_SUBMIT',
-        payload: this.state
-      });
+    e.preventDefault()
+    this.props.dispatch({
+      type: 'HANDLE_FORM_SUBMIT',
+      payload: this.state
+    });
   }
 
 
@@ -162,7 +161,7 @@ class RequestForm extends Component {
     if (this.numBabies > 1) {
       this.numBabies -= 1;
       const newArr = this.state.baby.filter(b => b.id !== id)
-  
+
       this.setState({
         ...this.state,
         baby: newArr
@@ -243,36 +242,36 @@ class RequestForm extends Component {
     console.log(this.state)
     return (
       <div id="requestForm">
-        { this.props.error ? 
+        {this.props.error ?
           this.handleError() :
           null
         }
 
-        
+
 
         <div className="form">
           <span onClick={this.fillDummyData} className="required" style={{ alignSelf: 'flex-end' }}>* required</span>
-          {babyArray}  
-          
+          {babyArray}
+
           <div id="addRemoveDiv">
-            { this.numBabies < 3 && 
+            {this.numBabies < 3 &&
               <Button
                 onClick={this.addAnotherBaby}
                 title={
                   this.numBabies === 1 ? 'Twins?' :
-                  'Triplets?'
+                    'Triplets?'
                 }
               />
             }
             {
-              this.numBabies > 1 && 
-                <Button 
-                  title="Undo"
-                  onClick={() => this.removeBaby(this.numBabies)}
-                />
+              this.numBabies > 1 &&
+              <Button
+                title="Undo"
+                onClick={() => this.removeBaby(this.numBabies)}
+              />
             }
-        </div>
-        
+          </div>
+
           <div id="nominatorDiv">
 
             <p className="section-title">You</p>
@@ -302,7 +301,7 @@ class RequestForm extends Component {
             <p className="section-title">The Parents</p>
 
             <div className="parents-form">
-              
+
               <Input
                 required
                 label="Parent's Name"
@@ -316,7 +315,7 @@ class RequestForm extends Component {
                 onChange={this.handleInputChangeFor('parentEmail')}
               />
             </div>
-          </div>   
+          </div>
 
           <AutoComplete
             handleInputChangeFor={this.handleInputChangeFor}
@@ -349,25 +348,25 @@ class RequestForm extends Component {
           <div id="subscribeAndSubmitDiv">
 
             <div>
-              <input 
-                type="checkbox" 
-                name="subscribe" 
+              <input
+                type="checkbox"
+                name="subscribe"
                 value={subscription}
                 onChange={this.handleSubscribe}
               />
               <label
                 htmlFor="subscribe"
               >
-              <p>Subscribe to the Potato Head Project newsletter</p>
-            </label>
-            
+                <p>Subscribe to the Potato Head Project newsletter</p>
+              </label>
+
             </div>
 
-              <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
+            <div class="g-recaptcha" data-sitekey="6Ld-fG8UAAAAAJd3wpbVbW5IlaMrs3TBHd1R8_2x"></div>
 
 
             <div id="submitDiv">
-              { this.props.isLoading ? 
+              {this.props.isLoading ?
                 <p>Loading...</p> :
                 <input
                   type="submit"
@@ -376,7 +375,7 @@ class RequestForm extends Component {
                   onClick={this.handleSubmit}
                 />
               }
-              
+
             </div>
 
           </div>
