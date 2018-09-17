@@ -11,9 +11,6 @@ import { handleGetAllRequests, handleToggle, setCurrentOpenedRequest } from '../
 import { handleSendEmail } from '../../redux/actions/emailActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
-import Csv from '../Csv/Csv'
-
-
 class AdminPortal extends Component {
 
   state = {
@@ -109,7 +106,7 @@ class AdminPortal extends Component {
         <Header
           logout={this.handleLogout}
         />
-        <Csv/>
+        
         <RequestList
           columns={['Baby', 'Nominator', 'Parents', 'Hospital']}
           data={this.props.requests}
