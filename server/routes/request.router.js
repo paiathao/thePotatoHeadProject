@@ -58,7 +58,6 @@ router.put('/:id', rejectUnauthenticated, async (req, res) => {
 router.put('/', (req, res) => {
 
     if (req.isAuthenticated) {
-        console.log('Got to PUT');
         //send email with tracking
         email.send({
             template: 'trackingEmail',
