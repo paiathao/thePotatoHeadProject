@@ -102,29 +102,7 @@ class RequestForm extends Component {
           }).bind(this);
         if (result.value) {
           window.location.href = 'https://www.thepotatoheadproject.org/donate';
-        }).then(function (result) {
-        this.setState({
-          baby: [
-            BABY_OBJECT
-          ],
-          subscription: '',
-          nominatorName: '',
-          nominatorEmail: '',
-          contactChecked: false,
-          parentName: '',
-          parentEmail: '',
-          personalNote: '',
-          streetAddress: '',
-          streetAddress2: '',
-          floorNumber: '',
-          roomNumber: '',
-          city: '',
-          state: '',
-          postalcode: '',
-          country: '',
-          searchField: '',
-          hospitalName: ''
-        })
+        }
       })
     }
   }
