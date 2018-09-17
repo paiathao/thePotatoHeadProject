@@ -99,7 +99,7 @@ class RequestForm extends Component {
             country: '',
             searchField: '',
             hospitalName: ''
-          });
+          }).bind(this);
         if (result.value) {
           window.location.href = 'https://www.thepotatoheadproject.org/donate';
         }
