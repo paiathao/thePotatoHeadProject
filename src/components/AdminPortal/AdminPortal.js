@@ -122,6 +122,7 @@ class AdminPortal extends Component {
         />
 
         <NotesModal
+        className='note'
           visible={this.state.notes.show}
           closeModal={this.closeModal.bind(this, 'notes')}
           note={this.state.notes.notes}

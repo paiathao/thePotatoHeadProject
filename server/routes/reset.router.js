@@ -48,7 +48,6 @@ router.get('/', (req, res) => {
 
 //reset password
 router.put('/:token', (req, res) => {
-    console.log('got to reset pw token', req.body)
     const password = encryptLib.encryptPassword(req.body.password);
     async.waterfall([
         function (done) {
