@@ -15,7 +15,7 @@ export default function* rootSaga() {
     loginSaga(),
     emailSaga(),
     googleMapSaga(),
-    formSaga()
+    formSaga(),
     // watchIncrementAsync()
   ]);
 }
@@ -23,9 +23,10 @@ export default function* rootSaga() {
 function* forgotPassword(action) {
   try {
     yield call(axios.get, '/api/reset')
-
+  
   } catch (error) {
     console.log(error);
+    
   }
 }
 
@@ -38,9 +39,9 @@ function* resetPassword(action) {
       }
     )
 
-
   } catch (error) {
     console.log(error);
   }
 }
+
 

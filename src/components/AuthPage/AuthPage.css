@@ -51,29 +51,6 @@
   border: 1px solid rgba(0,0,0,0.2);
 }
 
-.AuthPage button {
-  color: #6dcad0;
-  display: flex;
-  align-items: center;
-}
-
-.AuthPage a {
-  display: block;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.AuthPage a:link {
-  color: #6dcad0;
-  text-decoration: none;
-}
-
-.AuthPage a:visited {
-  color: #ec522b;
-  background-color: transparent;
-  text-decoration: none;
-}
-
 .AuthPage input:focus {
   outline-color: #6dcad0;
 }
@@ -81,3 +58,18 @@
 .AuthPage .Input button:focus {
   outline-color: #6dcad0;
 }
+
+.AuthPage .forgotButton {
+  color: #6dcad0;
+  border-style: none;
+  font-size: 17px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 5px;
+}
+
+.AuthPage .forgotButton:focus {
+  outline-style:none;
+}
+
+

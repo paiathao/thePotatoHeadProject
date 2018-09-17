@@ -17,11 +17,12 @@ class Request extends Component {
   renderRequestDetails() {
     const {
       baby,
-      address,
-      address2,
+      streetAddress,
+      streetAddress2,
       city,
       state,
-      zip,
+      postalcode,
+      hospitalVerified,
       subscription,
       nominatorEmail,
       parentEmail,
@@ -30,10 +31,9 @@ class Request extends Component {
       markedSent,
       toggleMarkedSent,
       opened
+      
     } = this.props;
-
     if (!opened) return null;
-
     return (
       <div className="request-sub-menu">
         <div className="request-details">
@@ -72,7 +72,7 @@ class Request extends Component {
             </RequestDetail>
 
             <RequestDetail title="Subscribed">
-              <p className="request-detail-data">{String(subscription)}</p>
+              <p className="request-detail-data">{subscription ? 'Yes' : 'No'}</p>
             </RequestDetail>
           </div>  
 
@@ -85,9 +85,12 @@ class Request extends Component {
 
           <div>
             <RequestDetail title="Address">
-              <p className="request-detail-data">{address}</p>
-              { address2 && <p className="request-detail-data">{address2}</p> }
-              <p className="request-detail-data">{`${city}, ${state} ${zip}`}</p>
+              <p className="request-detail-data">{streetAddress}</p>
+              { streetAddress2 && <p className="request-detail-data">{streetAddress2}</p> }
+              <p className="request-detail-data">{`${city}, ${state} ${postalcode}`}</p>
+            </RequestDetail>
+            <RequestDetail title="Verified">
+              <p className="request-detail-data">{hospitalVerified ? 'Yes' : 'No'}</p>
             </RequestDetail>
           </div> 
 

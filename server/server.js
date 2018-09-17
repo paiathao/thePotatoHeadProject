@@ -5,7 +5,6 @@ require('dotenv').config();
 const app = express();
 const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
-const flash = require('express-flash');
 
 // start up the mongo database
 require('./modules/database');
@@ -24,8 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Passport Session Configuration //
 app.use(sessionMiddleware);
-
-app.use(flash());
 
 // start up passport sessions
 app.use(passport.initialize());

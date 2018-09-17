@@ -1,5 +1,6 @@
 import React from 'react';
 import './TextArea.css';
+import {InputTextarea} from 'primereact/inputtextarea';
 
 export default ({
   label,
@@ -10,7 +11,10 @@ export default ({
   name,
   required,
 }) => {
+
+ 
   return (
+    
     <div className="TextArea">
       <label htmlFor="input">{label}  { required && <span className="required">*</span> }</label>
       <div className="input-container">

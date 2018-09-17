@@ -11,7 +11,6 @@ import { handleGetAllRequests, handleToggle, setCurrentOpenedRequest } from '../
 import { handleSendEmail } from '../../redux/actions/emailActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 
-
 class AdminPortal extends Component {
 
   state = {
@@ -40,6 +39,7 @@ class AdminPortal extends Component {
       nominatorEmail: this.state.emailForm.nominator.nominatorEmail,
       nominatorName: this.state.emailForm.nominator.nominatorName
     }));
+    this.closeModal('emailForm');
   }
 
   showEmailForm = nominator => {
@@ -77,7 +77,7 @@ class AdminPortal extends Component {
       openRequest={this.openRequest.bind(this, request._id)}
       opened={request._id === this.props.opened}
       toggleMarkedSent={this.handleToggleRequest.bind(this, request)}
-      showNotes={this.showNotes.bind(this, request.note)}
+      showNotes={this.showNotes.bind(this, request.personalNote)}
       showEmailForm={this.showEmailForm.bind(this, {
         nominatorEmail: request.nominatorEmail,
         nominatorName: request.nominatorName
@@ -107,7 +107,7 @@ class AdminPortal extends Component {
         <Header
           logout={this.handleLogout}
         />
-
+        
         <RequestList
           columns={['Baby', 'Nominator', 'Parents', 'Hospital']}
           data={this.props.requests}

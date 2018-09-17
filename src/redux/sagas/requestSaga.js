@@ -18,7 +18,6 @@ function* handleGetRequests() {
     yield put(getAllRequests());
     let { data } = yield axios.get('/api/request');
     yield put(getAllRequestsSuccess(data));
-
   } catch (err) {
 
     yield put(getAllRequestsFail(err));
