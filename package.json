@@ -35,6 +35,7 @@
     "prop-types": "^15.6.1",
     "pug": "^2.0.3",
     "react": "^16.2.0",
+    "react-csv": "^1.0.15-RC2",
     "react-dom": "^16.2.0",
     "react-google-autocomplete": "^1.0.16",
     "react-google-autocomplete-address-fields": "^1.0.9",

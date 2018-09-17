@@ -77,7 +77,30 @@ class RequestForm extends Component {
         cancelButtonText:
           '<i class="fa fa-thumbs-down">Close</i>',
         cancelButtonAriaLabel: 'Thumbs down',
-      }).then(() => {
+      }).then(function (result) {
+          this.setState({
+            baby: [
+              BABY_OBJECT
+            ],
+            subscription: '',
+            nominatorName: '',
+            nominatorEmail: '',
+            contactChecked: false,
+            parentName: '',
+            parentEmail: '',
+            personalNote: '',
+            streetAddress: '',
+            streetAddress2: '',
+            floorNumber: '',
+            roomNumber: '',
+            city: '',
+            state: '',
+            postalcode: '',
+            country: '',
+            searchField: '',
+            hospitalName: ''
+          }).bind(this);
+        if (result.value) {
           window.location.href = 'https://www.thepotatoheadproject.org/donate';
         }).then(function (result) {
         this.setState({
@@ -237,9 +260,8 @@ class RequestForm extends Component {
         removeBaby={this.removeBaby}
         addAnotherBaby={this.addAnotherBaby}
       />
-    ));
-
-    console.log(this.state)
+    )); 
+    
     return (
       <div id="requestForm">
         {this.props.error ?
@@ -340,7 +362,7 @@ class RequestForm extends Component {
                 name="personalNote"
                 placeholder="Add your personal note here"
                 value={personalNote}
-                onChange={this.handleInputChangeFor}
+                onChange={this.handleInputChangeFor('personalNote')}
               />
             </div>
           </div>

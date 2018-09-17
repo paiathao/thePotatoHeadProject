@@ -21,7 +21,8 @@ class Request extends Component {
       address2,
       city,
       state,
-      zip,
+      postalcode,
+      hospitalVerified,
       subscription,
       nominatorEmail,
       parentEmail,
@@ -30,10 +31,9 @@ class Request extends Component {
       markedSent,
       toggleMarkedSent,
       opened
+      
     } = this.props;
-
     if (!opened) return null;
-
     return (
       <div className="request-sub-menu">
         <div className="request-details">
@@ -87,7 +87,13 @@ class Request extends Component {
             <RequestDetail title="Address">
               <p className="request-detail-data">{address}</p>
               { address2 && <p className="request-detail-data">{address2}</p> }
-              <p className="request-detail-data">{`${city}, ${state} ${zip}`}</p>
+              <p className="request-detail-data">{`${city}, ${state} ${postalcode}`}</p>
+            </RequestDetail>
+          </div> 
+          <div>
+            <RequestDetail title="verify">
+              <p className="request-detail-data">{hospitalVerified}</p>
+              <p className="request-detail-data">{`${hospitalVerified}`}</p>
             </RequestDetail>
           </div> 
 

@@ -20,12 +20,11 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        console.log(req.body);
         const newRequest = req.body;
-        console.log('testingthepostroute', req.body)
         newRequest.hospitalVerified = await verify(newRequest.hospitalName);
         await Request.create(newRequest);
-        await email.send({
+        await email.send(
+            {
             template: 'initialEmail',
             message: {
                 to: req.body.nominatorEmail,
