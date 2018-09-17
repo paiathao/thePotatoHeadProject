@@ -37,7 +37,7 @@ class RequestForm extends Component {
       baby: [
         BABY_OBJECT
       ],
-      subscription: true,
+      subscription: false,
       nominatorName: '',
       nominatorEmail: '',
       contactChecked: false,
