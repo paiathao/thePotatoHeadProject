@@ -72,7 +72,7 @@ class Request extends Component {
             </RequestDetail>
 
             <RequestDetail title="Subscribed">
-              <p className="request-detail-data">{String(subscription)}</p>
+              <p className="request-detail-data">{subscription ? 'Yes' : 'No'}</p>
             </RequestDetail>
           </div>  
 
@@ -89,11 +89,8 @@ class Request extends Component {
               { streetAddress2 && <p className="request-detail-data">{streetAddress2}</p> }
               <p className="request-detail-data">{`${city}, ${state} ${postalcode}`}</p>
             </RequestDetail>
-          </div> 
-          <div>
-            <RequestDetail title="verify">
-              <p className="request-detail-data">{hospitalVerified}</p>
-              <p className="request-detail-data">{`${hospitalVerified}`}</p>
+            <RequestDetail title="Verified">
+              <p className="request-detail-data">{hospitalVerified ? 'Yes' : 'No'}</p>
             </RequestDetail>
           </div> 
 
