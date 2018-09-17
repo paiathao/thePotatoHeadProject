@@ -36,3 +36,7 @@
   text-decoration: none;
 }
 
+.csvBtn:hover{
+  color: #74CAD1;
+  text-decoration: none;
+}
