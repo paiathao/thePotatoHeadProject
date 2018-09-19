@@ -59,7 +59,7 @@ class RequestForm extends Component {
 
   componentWillReceiveProps = nextProps => {
     if (nextProps.error) {
-      window.scrollTo({
+      window.top.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
