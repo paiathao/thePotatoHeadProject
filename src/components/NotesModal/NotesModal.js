@@ -4,10 +4,10 @@ import Modal from '../Modal/Modal';
 
 export default ({ note, visible, closeModal }) => {
   return (
-    <Modal
+    <Modal 
       visible={visible}
     >
-      <button onClick={closeModal}>close</button>
+      <button className="cancel" onClick={closeModal}>close</button>
       <p>{note}</p>
     </Modal>
   )

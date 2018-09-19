@@ -23,7 +23,6 @@ class Verification extends Component{
         const data ={
             input:this.state.input
         }
-        console.log('did we get the right data?', data)
         this.props.dispatch({ type: CHECK_VERIFICATION_ACTION.CHECK, payload: data   });
     }
     
