@@ -19,11 +19,3 @@ if (process.env.MONGODB_URI) {
 }
 
 mongoose.connect(mongoURI);
-
-mongoose.connection.once('open', () => {
-  console.log('Mongo connected');
-});
-
-mongoose.connection.on('error', (err) => {
-  console.log('Error on mongoose connection: ', err);
-});

@@ -31,10 +31,7 @@ class InfoBox extends React.Component {
 
         const iw = this.infowindow = new google.maps.InfoWindow({
             content: ''
-        })
-
-        console.log('this.infowindow:', this.infowindow);
-        
+        });
     }
     
     updateContent(){
@@ -44,8 +41,6 @@ class InfoBox extends React.Component {
 
     renderChildren(){
         const {children} = this.props;
-        console.log('children in iw:'. children);
-        
         return ReactDOMServer.renderToString(children);
     }
 

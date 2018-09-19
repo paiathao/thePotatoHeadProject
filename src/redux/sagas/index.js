@@ -25,7 +25,7 @@ function* forgotPassword(action) {
     yield call(axios.get, '/api/reset')
   
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message);
     
   }
 }
@@ -40,7 +40,7 @@ function* resetPassword(action) {
     )
 
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message);
   }
 }
 

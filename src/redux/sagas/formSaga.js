@@ -11,7 +11,6 @@ import {
 } from '../actions/formActions';
 
 function* handleFormSubmit(action) {
-  console.log('form saga testing', action)
   try {
 
     yield put({ type: FORM_SUBMIT_START });

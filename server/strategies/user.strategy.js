@@ -21,13 +21,9 @@ passport.deserializeUser((id, done) => {
         username: user.username,
         _id: user._id,
       };
-      
-      console.log('user info: ', userInfo);
-      
       done(null, userInfo);
     }
   }).catch((err) => {
-    console.log('query err ', err);
     done(err);
   });
 });
@@ -51,7 +47,6 @@ passport.use('local', new LocalStrategy({
           done(null, false);
         }
       }).catch((err) => {
-        console.log('error', err);
         done(null, {});
       });
   })));

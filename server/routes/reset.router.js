@@ -37,8 +37,7 @@ router.get('/', (req, res) => {
                         `http://localhost:3000/#/reset-password/${token}`
                 },
             })
-                .then(console.log)
-                .catch(console.error);
+            .catch(err => res.status(400).json(err));
         }
     ], function (err) {
         if (err) 
@@ -48,7 +47,6 @@ router.get('/', (req, res) => {
 
 //reset password
 router.put('/:token', (req, res) => {
-    console.log('got to reset pw token', req.body)
     const password = encryptLib.encryptPassword(req.body.password);
     async.waterfall([
         function (done) {
@@ -74,8 +72,7 @@ router.put('/:token', (req, res) => {
                     to: process.env.CLIENT_USER
                 }
             })
-                .then(console.log)
-                .catch(console.error);
+            .catch(err => res.status(400).json(err));
         }
     ], function (err) {
         res.send(err)

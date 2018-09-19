@@ -44,7 +44,7 @@ function* logoutUser(action) {
       type: USER_ACTIONS.UNSET_USER,
     });
   } catch (error) {
-    console.log('LOGOUT FAILED -- CHECK YOUR SERVER', error);
+    throw new Error('logout failed');
   }
 }
 
