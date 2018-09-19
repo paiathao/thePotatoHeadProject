@@ -89,7 +89,7 @@ class Request extends Component {
               <p className="request-detail-data">{streetAddress}</p>
               { streetAddress2 && <p className="request-detail-data">{streetAddress2}</p> }
               <p className="request-detail-data">{`${city}, ${state} ${postalcode}`}</p>
-              { floornumber && <p className="request-detail-data">{`Floor: ${floorNumber}`}</p>}
+              { floorNumber && <p className="request-detail-data">{`Floor: ${floorNumber}`}</p>}
               { roomNumber && <p className="request-detail-data">{`Room: ${roomNumber}`}</p>}
             </RequestDetail>
             <RequestDetail title="Verified">
