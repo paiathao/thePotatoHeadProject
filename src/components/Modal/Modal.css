@@ -18,3 +18,9 @@
 .Modal p {
   margin: 4px;
 }
+
+.cancel{
+  position: relative;
+  left: 357px;
+  bottom: -45px;
+}

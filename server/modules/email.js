@@ -21,6 +21,8 @@ const email = new Email({
         from: process.env.CLIENT_USER
     },
     send: true,
+    htmlToText: false,
+    preview: false,
     transport: transporter
 });
 

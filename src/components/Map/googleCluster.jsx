@@ -36,9 +36,14 @@ const MapWithAMarkerClusterer = compose(
 
   (googleClusterMap =>
     <GoogleMap
-      defaultZoom={4.3}
+      defaultZoom={4.5}
       defaultCenter={{ lat: 38.964748, lng: -94.579535 }}
+<<<<<<< HEAD
     >
+=======
+    >{
+      }
+>>>>>>> master
       <MarkerClusterer
         onClick={googleClusterMap.onMarkerClustererClick}
         averageCenter
