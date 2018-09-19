@@ -50,7 +50,6 @@ class AuthPage extends Component {
   resetPassword = (event) => {
     event.preventDefault();
     if (this.state.password === this.state.confirm) {
-      console.log('match')
       this.props.dispatch({
         type: 'RESET_PASSWORD',
         payload: this.state.password,
@@ -58,7 +57,6 @@ class AuthPage extends Component {
       })
       this.props.history.push('/login');
     } else {
-      console.log('unmatch')
       alert('Password do not match! Please try again!')
     }
   }

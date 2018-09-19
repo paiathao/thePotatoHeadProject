@@ -27,9 +27,7 @@ const MapWithAMarkerClusterer = compose(
   }),
   withHandlers({
     onMarkerClustererClick: () => (markerClusterer) => {
-      const clickedMarkers = markerClusterer.getMarkers()
-      console.log(`Current clicked markers length: ${clickedMarkers.length}`)
-      console.log(clickedMarkers)
+      const clickedMarkers = markerClusterer.getMarkers();
     },
   }),
   withScriptjs,
@@ -40,8 +38,7 @@ const MapWithAMarkerClusterer = compose(
     <GoogleMap
       defaultZoom={4.5}
       defaultCenter={{ lat: 38.964748, lng: -94.579535 }}
-    >{
-      }
+    >
       <MarkerClusterer
         onClick={googleClusterMap.onMarkerClustererClick}
         averageCenter
