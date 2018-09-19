@@ -25,6 +25,7 @@ function* handleGetRequests() {
   }
 }
 
+// responsible for toggling between sent/unsent
 function* toggleRequestSent(action) {
   try {
 

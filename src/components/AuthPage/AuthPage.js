@@ -72,6 +72,8 @@ class AuthPage extends Component {
   }
 
   renderForm() {
+    // conditionally renders either a login form or forgot password form
+    // based on the current route url
     return (
       <Switch>
         <Route path="/reset-password/:token" render={(props) => (
