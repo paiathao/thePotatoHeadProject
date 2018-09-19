@@ -37,8 +37,7 @@ router.get('/', (req, res) => {
                         `http://localhost:3000/#/reset-password/${token}`
                 },
             })
-                .then(console.log)
-                .catch(console.error);
+            .catch(err => res.status(400).json(err));
         }
     ], function (err) {
         if (err) 
@@ -73,8 +72,7 @@ router.put('/:token', (req, res) => {
                     to: process.env.CLIENT_USER
                 }
             })
-                .then(console.log)
-                .catch(console.error);
+            .catch(err => res.status(400).json(err));
         }
     ], function (err) {
         res.send(err)

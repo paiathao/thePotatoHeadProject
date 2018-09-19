@@ -27,7 +27,7 @@ function* getAddress(action) {
        }
 
     } catch (error) {
-        console.log(error);
+        throw new Error(error.message);
     };
 }
 //This store the address of lat and long to database
@@ -35,7 +35,7 @@ function* storeLatAndLng(body){
     try{
         yield runStoreLocation(body.payload)
     }catch (error) {
-        console.log(error);
+        throw new Error(error.message)
     };
 }
 
@@ -48,7 +48,7 @@ function* getLatAndLng(){
         payload:location
        })
     }catch (error) {
-        console.log(error);
+        throw new Error(error.message);
     };
 }
 

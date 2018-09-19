@@ -15,15 +15,13 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res)=>{
-    if (req.isAuthenticated()) {
+    
         location.find({}).then(data => {
             res.send(data);
         }).catch((err) => {
             res.sendStatus(500);
         })
-    } else {
-        res.sendStatus(403)
-    }
+    
  })
 
 
