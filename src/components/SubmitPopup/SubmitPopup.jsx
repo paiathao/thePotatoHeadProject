@@ -21,12 +21,12 @@ export default ({ style }) => (
     </div>
     <div id="donateDiv">
       <h3>
-        Please consider&nbsp;<a href="https://www.thepotatoheadproject.org/donate"><strong>Donating</strong></a>
+        Please consider&nbsp;<a href="https://www.thepotatoheadproject.org/donate" target="_parent"><strong>Donating</strong></a>
       </h3>
       <h3> to The Potato Head Project</h3>
     </div>
     <div id="amazonDiv">
-      <h5>You can also Make A Difference by shopping at&nbsp;<a href="https://smile.amazon.com/">AmazonSmile</a></h5><h5> and choosing 'Potato Head Project' as your charity of choice</h5>
+      <h5>You can also Make A Difference by shopping at&nbsp;<a href="https://smile.amazon.com/" target="_parent">AmazonSmxsile</a></h5><h5> and choosing 'Potato Head Project' as your charity of choice</h5>
     </div>
   </div>
 );

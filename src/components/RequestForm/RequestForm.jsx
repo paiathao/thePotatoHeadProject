@@ -80,7 +80,7 @@ class RequestForm extends Component {
       }).then(function (result) {
           this.setState({
             baby: [
-              BABY_OBJECT
+              {...BABY_OBJECT}
             ],
             subscription: '',
             nominatorName: '',
@@ -101,7 +101,7 @@ class RequestForm extends Component {
             hospitalName: ''
           }).bind(this);
         if (result.value) {
-          window.location.href = 'https://www.thepotatoheadproject.org/donate';
+          window.top.location.href = 'https://www.thepotatoheadproject.org/donate';
         }
       })
     }
