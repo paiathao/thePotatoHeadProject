@@ -30,8 +30,9 @@ class Request extends Component {
       showNotes,
       markedSent,
       toggleMarkedSent,
-      opened
-      
+      opened,
+      floorNumber,
+      roomNumber
     } = this.props;
     if (!opened) return null;
     return (
@@ -88,6 +89,8 @@ class Request extends Component {
               <p className="request-detail-data">{streetAddress}</p>
               { streetAddress2 && <p className="request-detail-data">{streetAddress2}</p> }
               <p className="request-detail-data">{`${city}, ${state} ${postalcode}`}</p>
+              { floorNumber && <p className="request-detail-data">{`Floor: ${floorNumber}`}</p>}
+              { roomNumber && <p className="request-detail-data">{`Room: ${roomNumber}`}</p>}
             </RequestDetail>
             <RequestDetail title="Verified">
               <p className="request-detail-data">{hospitalVerified ? 'Yes' : 'No'}</p>
