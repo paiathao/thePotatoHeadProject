@@ -75,7 +75,6 @@ class AuthPage extends Component {
   }
 
   renderAlert() {
-    console.log('got to render')
     if (this.props.login.message !== '') {
       return (
         <h4
