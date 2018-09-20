@@ -36,7 +36,17 @@ GOOGLE_APIKEY=(insert the google API key here)
 ```
 4) If use gmail, set up your credentials. Find out more at https://developers.google.com/gmail/api/auth/about-auth & https://developers.google.com/gmail/api/auth/web-server
 5) Set up google API Key. Find out more at https://console.cloud.google.com
-6) In terminal, create a user "admin"
+6) You'll need to register an admin to be able to login. You can use [HTTPie](https://httpie.org/) or [Postman](https://www.getpostman.com/) to send a POST request to the following endpoint.
+
+Endpoint `/api/user/register`
+
+Data 
+```
+{
+  "username": "admin",
+  "password": "YOUR_PASSWORD"
+}
+```
 7) `npm run server`
 8) `npm run client`
 
