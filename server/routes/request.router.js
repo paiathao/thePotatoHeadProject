@@ -3,7 +3,7 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const Request = require('../models/Request');
 const verify = require('../modules/verify');
-const email = require('../modules/email')
+const {email, emailNoPreview} = require('../modules/email')
 
 router.get('/', rejectUnauthenticated, async (req, res) => {
     try {
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
         const newRequest = req.body;
         newRequest.hospitalVerified = await verify(newRequest.hospitalName);
         await Request.create(newRequest);
-        await email.send(
+        await emailNoPreview.send(
             {
             template: 'initialEmail',
             message: {
