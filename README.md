@@ -25,6 +25,7 @@ To run a development build on your own machine:
 1) Clone/download Repository
 2) npm install
 3) Create a .env file with the following variables:
+```
 SERVER_SESSION_SECRET=(insert a session secret here )
 CLIENT_SECRET=(insert ur email client secret here)
 CLIENT_USER=(insert ur email here)
@@ -32,6 +33,7 @@ CLIENT_ID=(insert your email client id here)
 CLIENT_REFRESHTOKEN=(insert your email refresh token here)
 CLIENT_ACCESSTOKEN=(insert your email access token here)
 GOOGLE_APIKEY=(insert the google API key here)
+```
 4) If use gmail, set up your credentials. Find out more at https://developers.google.com/gmail/api/auth/about-auth & https://developers.google.com/gmail/api/auth/web-server
 5) Set up google API Key. Find out more at https://console.cloud.google.com
 6) In terminal, create a user "admin"
@@ -48,4 +50,4 @@ GOOGLE_APIKEY=(insert the google API key here)
 
 
 ### Authors
-Jimmy Brannons, Casey Clowers, Paia Thao, and Toua Thao
+Jimmy Brannon, Casey Clowers, Paia Thao, and Toua Thao
