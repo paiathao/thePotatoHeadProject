@@ -21,6 +21,7 @@ export default function* rootSaga() {
 }
 
 function* forgotPassword(action) {
+  console.log('got to forgot')
   try {
     yield call(axios.get, '/api/reset')
   
