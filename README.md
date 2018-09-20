@@ -12,6 +12,7 @@ https://thepotatoheadproject.herokuapp.com/#/login
 - Mongoose
 - Passport
 - NodeMailer
+- CSS
 
 ### Getting Started
 
@@ -27,8 +28,8 @@ To run a development build on your own machine:
 3) Create a .env file with the following variables:
 ```
 SERVER_SESSION_SECRET=(insert a session secret here )
-CLIENT_SECRET=(insert ur email client secret here)
-CLIENT_USER=(insert ur email here)
+CLIENT_SECRET=(insert your email client secret here)
+CLIENT_USER=(insert your email here)
 CLIENT_ID=(insert your email client id here)
 CLIENT_REFRESHTOKEN=(insert your email refresh token here)
 CLIENT_ACCESSTOKEN=(insert your email access token here)
