@@ -13,14 +13,20 @@
 .Modal {
   background-color: white;
   padding: 20px;
+  border-radius: 7px;
 }
 
 .Modal p {
   margin: 4px;
 }
 
-.cancel{
+.Modal button:focus {
+  outline-color: #6dcad0;
+}
+
+.Modal .cancelBtn {
+  background-color: #6dcad0;
+  border-radius: 4px;
+  float: right;
   position: relative;
-  left: 357px;
-  bottom: -45px;
 }

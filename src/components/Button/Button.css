@@ -14,3 +14,7 @@
 .Button:active {
   filter: brightness(85%);
 }
+
+.Button:focus {
+  outline-color: #6dcad0;
+}

@@ -16,18 +16,6 @@ const message = (state = '', action) => {
   }
 };
 
-const isLoading = (state = false, action) => {
-  switch (action.type) {
-    case LOGIN_ACTIONS.REQUEST_START:
-      return true;
-    case LOGIN_ACTIONS.LOGIN_REQUEST_DONE:
-      return false;
-    default:
-      return state;
-  }
-};
-
 export default combineReducers({
-  isLoading,
   message,
 });
