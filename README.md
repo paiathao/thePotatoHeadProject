@@ -44,7 +44,8 @@ Data
 ```
 {
   "username": "admin",
-  "password": "YOUR_PASSWORD"
+  "password": "YOUR_PASSWORD",
+  "email": "YOUR_EMAIL"
 }
 ```
 7) `npm run server`
