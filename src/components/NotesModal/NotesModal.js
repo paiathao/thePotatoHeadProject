@@ -7,8 +7,8 @@ export default ({ note, visible, closeModal }) => {
     <Modal 
       visible={visible}
     >
-      <button className="closeBtn" onClick={closeModal}>close</button>
       <p>{note}</p>
+      <button className="closeBtn" onClick={closeModal}>close</button>
     </Modal>
   )
 }
