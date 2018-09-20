@@ -37,7 +37,7 @@ const MapWithAMarkerClusterer = compose(
   (googleClusterMap =>
     <GoogleMap
       defaultZoom={4.5}
-      defaultCenter={{ lat: 38.964748, lng: -94.579535 }}
+      defaultCenter={{ lat: 25.911047, lng:  -97.491602 }}
     >
       <MarkerClusterer
         onClick={googleClusterMap.onMarkerClustererClick}
