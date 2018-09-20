@@ -52,7 +52,7 @@ function* getUser(action) {
   try {
     yield put(fetchUser());
     let { data } = yield axios.get('/api/user');
-
+    
     if (data) {
       yield put(fetchUserSuccess(true));
     } else {
