@@ -21,7 +21,21 @@ const email = new Email({
         from: process.env.CLIENT_USER
     },
     send: true,
+    htmlToText: false,
+    preview: false,
     transport: transporter
 });
 
-module.exports = email;
+const emailWithPreview = new Email({
+    message: {
+        from: process.env.CLIENT_USER
+    },
+    send: true,
+    htmlToText: false,
+    transport: transporter
+});
+
+module.exports = {
+    email : email,
+    emailWithPreview : emailWithPreview
+}

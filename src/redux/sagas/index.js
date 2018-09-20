@@ -21,11 +21,12 @@ export default function* rootSaga() {
 }
 
 function* forgotPassword(action) {
+  console.log('got to forgot')
   try {
     yield call(axios.get, '/api/reset')
   
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message);
     
   }
 }
@@ -40,7 +41,7 @@ function* resetPassword(action) {
     )
 
   } catch (error) {
-    console.log(error);
+    throw new Error(error.message);
   }
 }
 

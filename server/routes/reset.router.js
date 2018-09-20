@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Person = require('../models/Person');
-const email = require('../modules/email')
+const { email } = require('../modules/email')
 
 const encryptLib = require('../modules/encryption');
 const async = require('async');
@@ -37,12 +37,11 @@ router.get('/', (req, res) => {
                         `http://localhost:3000/#/reset-password/${token}`
                 },
             })
-                .then(console.log)
-                .catch(console.error);
+                .catch(err => res.status(400).json(err));
         }
     ], function (err) {
-        if (err) 
-        res.send(err);
+        if (err)
+            res.send(err);
     });
 });
 
@@ -73,8 +72,7 @@ router.put('/:token', (req, res) => {
                     to: process.env.CLIENT_USER
                 }
             })
-                .then(console.log)
-                .catch(console.error);
+                .catch(err => res.status(400).json(err));
         }
     ], function (err) {
         res.send(err)

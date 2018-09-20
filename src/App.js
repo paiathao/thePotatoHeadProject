@@ -33,7 +33,7 @@ class App extends Component {
       <div>
         <Router>
           <Switch>
-
+            <Redirect exact from="/" to="/admin" />
             <Route
               path="/login"
               component={AuthPage}

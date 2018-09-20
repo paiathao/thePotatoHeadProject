@@ -8,9 +8,11 @@ import Logo from '../Logo/Logo';
 import LandingPage from '../LandingPage/LandingPage';
 import './AuthPage.css';
 
-const mapStateToProps = ({ auth: { isAuthenticated }, message }) => ({
-  isAuthenticated
+const mapStateToProps = (redux) => ({
+  isAuthenticated: redux.auth.isAuthenticated,
+  login: redux.login
 });
+
 
 class AuthPage extends Component {
   constructor(props) {
@@ -45,12 +47,12 @@ class AuthPage extends Component {
     } else {
       this.props.dispatch(triggerLogin(this.state.password));
     }
+
   }
 
   resetPassword = (event) => {
     event.preventDefault();
     if (this.state.password === this.state.confirm) {
-      console.log('match')
       this.props.dispatch({
         type: 'RESET_PASSWORD',
         payload: this.state.password,
@@ -58,7 +60,6 @@ class AuthPage extends Component {
       })
       this.props.history.push('/login');
     } else {
-      console.log('unmatch')
       alert('Password do not match! Please try again!')
     }
   }
@@ -73,9 +74,26 @@ class AuthPage extends Component {
     });
   }
 
+  renderAlert() {
+    if (this.props.login.message !== '') {
+      return (
+        <h4
+          className="alert"
+          role="alert"
+        >
+          {this.props.login.message}
+        </h4>
+      );
+    }
+    return null;
+  }
+
   renderForm() {
+    // conditionally renders either a login form or forgot password form
+    // based on the current route url
     return (
       <Switch>
+
         <Route path="/reset-password/:token" render={(props) => (
           <form className="auth-form" onSubmit={this.resetPassword}>
             <label className="resetText">Password</label>
@@ -93,7 +111,6 @@ class AuthPage extends Component {
               value={this.state.confirm}
               onChange={this.handleInputChangeFor('confirm')}
             />
-
           </form>
         )} />
 
@@ -118,27 +135,12 @@ class AuthPage extends Component {
     )
   }
 
-  renderAlert() {
-    const { login: { message } } = this.props;
-    if (message !== '') {
-      return (
-        <h2
-          className="alert"
-          role="alert"
-        >
-          {message}
-        </h2>
-      );
-    }
-    return null;
-  }
-
   render() {
+
     return (
       <LandingPage>
         <div className="AuthPage">
           <Logo />
-
           {this.renderAlert()}
 
           {this.renderForm()}
@@ -149,9 +151,6 @@ class AuthPage extends Component {
 }
 
 AuthPage.defaultProps = {
-  login: {
-    message: ''
-  },
   dispatch: () => { }
 }
 

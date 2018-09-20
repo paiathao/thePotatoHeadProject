@@ -131,7 +131,6 @@ export default class GoogleAutoComplete extends React.Component {
       this.setState({ showResult: true });
     }
     else {
-      console.log("It is not okay.")
     }
   }
 

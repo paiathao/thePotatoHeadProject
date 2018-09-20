@@ -67,9 +67,12 @@ class AdminPortal extends Component {
   }
 
   openRequest = id => {
+    // letting redux hold the openedRequest state so they don't close
+    // on any re-renders
     this.props.dispatch(setCurrentOpenedRequest(id))
   }
 
+  // renderRequest method passed down to RequestList to take care of building the list
   renderRequest = request => (
     <Request
       key={request._id}
@@ -134,8 +137,10 @@ class AdminPortal extends Component {
 }
 
 const mapStateToProps = ({ requests, auth }) => ({
+  // passing in what request is opened so opened requests stay open after re-render
   opened: requests.currentlyOpened,
   requests: requests.all,
+  // since there's only one user, we simply just need to know if the admin is authenticated or not
   isAuthenticated: auth.isAuthenticated,
 });
 

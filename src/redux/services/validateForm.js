@@ -30,7 +30,19 @@ export default formData => {
       } else {
         return true;
       }
-    })
+    });
+
+    const { nominatorEmail, parentEmail } = requiredProps;
+
+    if (!nominatorEmail.includes('@') || !nominatorEmail.includes('.')) {
+      throw Error('Please enter a valid email');
+    }
+
+    if (!parentEmail.includes('@') || !parentEmail.includes('.')) {
+      throw Error('Please enter a valid email');
+    }
+
+    return true;
 
   } catch (error) {
 

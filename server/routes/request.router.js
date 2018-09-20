@@ -3,7 +3,7 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const Request = require('../models/Request');
 const verify = require('../modules/verify');
-const email = require('../modules/email')
+const {email, emailWithPreview} = require('../modules/email')
 
 router.get('/', rejectUnauthenticated, async (req, res) => {
     try {
@@ -59,7 +59,7 @@ router.put('/', (req, res) => {
 
     if (req.isAuthenticated) {
         //send email with tracking
-        email.send({
+        emailWithPreview.send({
             template: 'trackingEmail',
             message: {
                 to: req.body.nominatorEmail
@@ -70,8 +70,7 @@ router.put('/', (req, res) => {
                 note: req.body.note
             },
         })
-            .then(console.log)
-            .catch(console.error);
+        .catch(err => res.status(400).json(err));
 
         // update Database
         Request.findByIdAndUpdate({
@@ -84,7 +83,6 @@ router.put('/', (req, res) => {
             }).then(function (response) {
                 res.sendStatus(200);
             }).catch((err) => {
-                console.log(err);
                 res.sendStatus(500)
             })
     } else {

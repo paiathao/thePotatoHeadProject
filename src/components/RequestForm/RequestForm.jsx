@@ -59,7 +59,8 @@ class RequestForm extends Component {
 
   componentWillReceiveProps = nextProps => {
     if (nextProps.error) {
-      window.scrollTo({
+      console.log('SCROLLL TO TOP')
+      window.parent.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
@@ -80,7 +81,7 @@ class RequestForm extends Component {
       }).then(function (result) {
           this.setState({
             baby: [
-              BABY_OBJECT
+              {...BABY_OBJECT}
             ],
             subscription: '',
             nominatorName: '',
@@ -101,7 +102,7 @@ class RequestForm extends Component {
             hospitalName: ''
           }).bind(this);
         if (result.value) {
-          window.location.href = 'https://www.thepotatoheadproject.org/donate';
+          window.top.location.href = 'https://www.thepotatoheadproject.org/donate';
         }
       })
     }
@@ -179,34 +180,6 @@ class RequestForm extends Component {
     )
   }
 
-  fillDummyData = () => {
-    this.setState({
-      baby: [
-        {
-          firstName: 'Suzy',
-          lastName: 'Black',
-          birthDate: '2018-09-09',
-          gender: '',
-          weightOunces: '3',
-          weightPounds: '2',
-          gestationDays: '2',
-          gestationWeeks: '22'
-        }
-      ],
-      subscription: false,
-      nominatorName: 'Dane Smith',
-      nominatorEmail: 'dane@dane.com',
-      floorNumber: '5',
-      roomNumber: '577',
-      contactChecked: false,
-      parentName: 'Jack Black',
-      parentEmail: 'jack@black.com',
-      personalNote: 'We\'re thinking of you, let us know if you need anything!',
-    });
-  }
-
-
-
   render() {
     const {
       baby,
@@ -250,9 +223,9 @@ class RequestForm extends Component {
 
 
         <div className="form">
-          <span onClick={this.fillDummyData} className="required" style={{ alignSelf: 'flex-end' }}>* required</span>
-          {babyArray}
-
+          <span className="required" style={{ alignSelf: 'flex-end' }}>* required</span>
+          {babyArray}  
+          
           <div id="addRemoveDiv">
             {this.numBabies < 3 &&
               <Button
