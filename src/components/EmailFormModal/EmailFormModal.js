@@ -33,7 +33,7 @@ class EmailFormModal extends Component {
       >
         <div className="EmailFormModal">
 
-          <button onClick={closeModal}>cancel</button>
+          <button className="cancelBtn" onClick={closeModal}>cancel</button>
 
           <div>
             <span>To:</span>
