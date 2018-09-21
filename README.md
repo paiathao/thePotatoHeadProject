@@ -52,7 +52,7 @@ To run a development build on your own machine:
    [https://developers.google.com/gmail/api/auth/about-auth](https://developers.google.com/gmail/api/auth/about-auth) &  
    [https://developers.google.com/gmail/api/auth/web-server](https://developers.google.com/gmail/api/auth/web-server)
 
-5) Set up Google API Key. Find out more at https://console.cloud.google.com
+5) Set up Google API Key. Find out more at [https://console.cloud.google.com](https://console.cloud.google.com)
 
 6) You'll need to register an admin to be able to login. You can use [HTTPie](https://httpie.org/) or [Postman](https://www.getpostman.com/) to send a POST request to the following endpoint.
 
