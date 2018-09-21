@@ -1,10 +1,14 @@
-# The Potato Head Project
-The Potato Head is a full-stack webapp designed to help thepotatoheadproject.org organized all of the requests they received for a care-package. The Potato Head Project is a non-profit organization that gives hope to families of micro-preemies babies.
+# The Potato Head Project Web App
 
-##Live on Heroku!:
-https://thepotatoheadproject.herokuapp.com/#/login
+The Potato Head Project is a non-profit organization that gives hope to families of micro-preemies babies.  
+*The Potato Head Project Web App* is a full-stack web application designed to help [thepotatoheadproject.org](thepotatoheadproject.org) organize all of the requests they receive for care packages.
+
+## Live on Heroku!
+
+[The Potato Head Project App](https://thepotatoheadproject.herokuapp.com/#/login)
 
 ## Built With
+
 - React.js
 - React-Redux
 - Redux Saga
@@ -14,52 +18,75 @@ https://thepotatoheadproject.herokuapp.com/#/login
 - NodeMailer
 - CSS
 
+---
+
 ### Getting Started
 
-Required: 
+Required:
+
 - [Node.js](https://nodejs.org/en/)
 - [Nodemon](https://nodemon.io/)
 - [Mongo DB](www.mongodb.com/)
 - [Robo 3T](https://robomongo.org/)
 
 To run a development build on your own machine:
-1) Clone/download Repository
-2) npm install
-3) Create a .env file with the following variables:
+
+1) Clone/download this Repository
+
+2) `npm install`
+
+3) Create a `.env` file with the following variables:
+
 ```
-SERVER_SESSION_SECRET=(insert a session secret here )
-CLIENT_SECRET=(insert your email client secret here)
-CLIENT_USER=(insert your email here)
-CLIENT_ID=(insert your email client id here)
-CLIENT_REFRESHTOKEN=(insert your email refresh token here)
-CLIENT_ACCESSTOKEN=(insert your email access token here)
-GOOGLE_APIKEY=(insert the google API key here)
+ SERVER_SESSION_SECRET=(insert a session secret here )
+ CLIENT_SECRET=(insert your email client secret here)
+ CLIENT_USER=(insert your email here)
+ CLIENT_ID=(insert your email client id here)
+ CLIENT_REFRESHTOKEN=(insert your email refresh token here)
+ CLIENT_ACCESSTOKEN=(insert your email access token here)
+ GOOGLE_APIKEY=(insert the google API key here)
 ```
-4) If use gmail, set up your credentials. Find out more at https://developers.google.com/gmail/api/auth/about-auth & https://developers.google.com/gmail/api/auth/web-server
-5) Set up google API Key. Find out more at https://console.cloud.google.com
+
+4) If you use Gmail, set up your credentials. Find out more at
+
+   [https://developers.google.com/gmail/api/auth/about-auth](https://developers.google.com/gmail/api/auth/about-auth) &  
+   [https://developers.google.com/gmail/api/auth/web-server](https://developers.google.com/gmail/api/auth/web-server)
+
+5) Set up Google API Key. Find out more at [https://console.cloud.google.com](https://console.cloud.google.com)
+
 6) You'll need to register an admin to be able to login. You can use [HTTPie](https://httpie.org/) or [Postman](https://www.getpostman.com/) to send a POST request to the following endpoint.
 
-Endpoint `/api/user/register`
+   Endpoint `/api/user/register`
 
-Data 
+   Data
+
 ```
-{
-  "username": "admin",
-  "password": "YOUR_PASSWORD",
-  "email": "YOUR_EMAIL"
-}
+   {
+     "username": "admin",
+     "password": "YOUR_PASSWORD",
+     "email": "YOUR_EMAIL"
+   }
 ```
+
 7) `npm run server`
 8) `npm run client`
 
-### Completed Features
-- A form to take in requests
-- Send a automate email once request is successfully submitted
-- Admin table with requests data
-- Button to add tracking number and note that will automatically send a response email to requestor with the input tracking number and note included in the email template
-- The ability to import all subscribers name & email into a csv
-- Cluster map that showed the impact that The Potato Head organization have made so far
+---
 
+## Completed Features
+
+- A form to take in care package requests
+- Email system for sending an automated email once the request is successfully submitted
+- Admin Portal containing a table with request data
+- Cluster map that shows the impact and reach that The Potato Head Project has made so far
+- Admin actions:  
+*'Show Notes'* opens a modal that contains the notes entered into the Request Form  
+*'Send Email'* opens a modal to enter the tracking number and a place for the Admin to include  
+a note to the requestor. This input will then be populated into the established email template  
+*'Print Shipping Label'* links to Admin PayPal page for shipping-label creation  
+*'Mark Sent'* changes the row color of the request row, for easy visual cue of open requests  
+*'Export Subscribers to CSV'* export a list of all subscribers' names & email addresses into a CSV file
 
 ### Authors
-Jimmy Brannon, Casey Clowers, Paia Thao, and Toua Thao
+
+[Jimmy Brannon](https://github.com/brannonjames), [Casey Clowers](https://github.com/caclowers), [Paia Thao](https://github.com/paiathao), and [Toua Thao](https://github.com/TouaThao)
